@@ -1,0 +1,8 @@
+
+user=""
+target=""
+remotePath=""
+localPath=""
+
+rsync -rmhvtP --del $user@$target:$remotePath $localPath
+
