@@ -1,7 +1,7 @@
 @echo off
 
 SET SOURCE=c:\local\
-SET DESTINATION=y:\autoBackup\REWL7060_local\
+SET DESTINATION=y:\autoBackup\MACHINENAME_local\
 
 SET /P ANSWER=Do you want to back up your files from %SOURCE% to %DESTINATION% now? (Y/N)?
 echo You chose: %ANSWER%
