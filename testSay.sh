@@ -7,6 +7,7 @@ if [ $(uname) == "Darwin" ] ; then
 	echo
 else
 	echo "This script works best on Mac OS X!"
+	echo "Exiting script!"
 	exit
 fi
 
