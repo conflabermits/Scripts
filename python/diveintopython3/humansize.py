@@ -5,10 +5,10 @@ approximate_size(size, a_kilobyte_is_1024_bytes)
     takes a file size and returns a human-readable string
 
 Examples:
->>> approximate_size(1024)
-'1.0 KiB'
->>> approximate_size(1000, False)
-'1.0 KB'
+# >>> approximate_size(1024)
+# '1.0 KiB'
+# >>> approximate_size(1000, False)
+# '1.0 KB'
 
 '''
 
