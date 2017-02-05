@@ -11,4 +11,3 @@ while break_count < total_breaks:
     webbrowser.open("https://www.youtube.com/watch?v=djV11Xbc914")
     print("Break "+str(break_count + 1)+" started at "+time.ctime())
     break_count += 1
-
