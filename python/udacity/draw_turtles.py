@@ -1,61 +1,46 @@
 import turtle
 
 
-def draw_square():
-    # Turtle brad is used to draw a square on the screen
-    brad = turtle.Turtle()
-    brad.shape("turtle")
-    # Turtle brad is shaped like a turtle. CLASSIC BRAD!
-    brad.color("black", "green")
-    # This makes brad greed and his line black
-    brad.speed(1)
-    # Brad is the slowest turtle at 1 out of 10
-
-    # Loop to create 4 equal sides
-    sq_i = 0
-    while sq_i < 4:
-        brad.forward(100)
-        brad.right(90)
-        sq_i += 1
+def draw_square(a_turtle):
+    for i in range(0, 4):
+        a_turtle.forward(100)
+        a_turtle.right(90)
 
 
-def draw_circle():
-    angie = turtle.Turtle()
-    # Turtle angie is a circle because she's making a circle
-    angie.shape("circle")
-    angie.color("blue")
-    # The circle function takes in a radius as a value and does the rest
-    angie.circle(100)
+def draw_circle(a_turtle):
+    a_turtle.circle(100)
 
 
-def draw_triangle():
-    charlie = turtle.Turtle()
-    # Turtle charlie is an arrow so that he's shaped like the triangle he will create
-    charlie.shape("arrow")
-    charlie.color("yellow")
-    # Charlie is the fastest of the three turtles, at 4 out of 10
-    charlie.speed(4)
-    # Charlie is told to do a 180 so he is pointing left instead of right
-    charlie.left(180)
-
-    # Loop to create 3 equal triangle sides
-    tr_i = 0
-    while tr_i < 3:
-        charlie.forward(100)
-        charlie.left(120)
-        tr_i += 1
+def draw_triangle(a_turtle):
+    for i in range(0, 3):
+        a_turtle.forward(100)
+        a_turtle.left(120)
 
 
-def create_window():
-    # Create the window
+def draw_turtles():
     window = turtle.Screen()
     window.bgcolor("red")
-    # Once we have a window, we can call the other functions to draw shapes
-    draw_square()
-    draw_circle()
-    draw_triangle()
-    # exitonclick needs to follow after the other commands
+    brad = turtle.Turtle()
+    brad.shape("turtle")
+    brad.color("black", "green")
+    brad.speed(5)
+    angie = turtle.Turtle()
+    angie.shape("circle")
+    angie.color("blue")
+    charlie = turtle.Turtle()
+    charlie.shape("arrow")
+    charlie.color("yellow")
+    charlie.speed(4)
+    charlie.left(180)
+    #cir_i = 0
+    #while cir_i < 8:
+    #    draw_square()
+    #    draw_square.brad.right(45)
+    #    cir_i += 1
+    draw_square(brad)
+    draw_circle(angie)
+    draw_triangle(charlie)
     window.exitonclick()
 
 
-create_window()
+draw_turtles()
