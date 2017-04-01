@@ -23,23 +23,21 @@ def draw_turtles():
     brad = turtle.Turtle()
     brad.shape("turtle")
     brad.color("black", "green")
-    brad.speed(5)
-    angie = turtle.Turtle()
-    angie.shape("circle")
-    angie.color("blue")
-    charlie = turtle.Turtle()
-    charlie.shape("arrow")
-    charlie.color("yellow")
-    charlie.speed(4)
-    charlie.left(180)
-    #cir_i = 0
-    #while cir_i < 8:
-    #    draw_square()
-    #    draw_square.brad.right(45)
-    #    cir_i += 1
-    draw_square(brad)
-    draw_circle(angie)
-    draw_triangle(charlie)
+    brad.speed(10)
+    # angie = turtle.Turtle()
+    # angie.shape("circle")
+    # angie.color("blue")
+    # charlie = turtle.Turtle()
+    # charlie.shape("arrow")
+    # charlie.color("yellow")
+    # charlie.speed(4)
+    # charlie.left(180)
+    for i in range(0, 72):
+        draw_square(brad)
+        brad.right(95)
+    # draw_square(brad)
+    # draw_circle(angie)
+    # draw_triangle(charlie)
     window.exitonclick()
 
 
