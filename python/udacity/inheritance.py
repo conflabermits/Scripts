@@ -24,7 +24,7 @@ billy_cyrus = Parent("Cyrus", "blue")
 #print(billy_cyrus.last_name)
 #billy_cyrus.show_info()
 
-miley_cyrus = Child("Cyrus", "Blue", 5)
+miley_cyrus = Child(billy_cyrus.last_name, billy_cyrus.eye_color, 5)
 #print(miley_cyrus.last_name)
 #print(miley_cyrus.number_of_toys)
 miley_cyrus.show_info()
