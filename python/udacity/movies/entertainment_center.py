@@ -34,3 +34,5 @@ movies = [toy_story,
           hunger_games]
 
 fresh_tomatoes.open_movies_page(sorted(movies, key=lambda movie: movie.title))
+
+#print(media.Movie.VALID_RATINGS)
