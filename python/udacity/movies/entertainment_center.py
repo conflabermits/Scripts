@@ -36,3 +36,11 @@ movies = [toy_story,
 fresh_tomatoes.open_movies_page(sorted(movies, key=lambda movie: movie.title))
 
 #print(media.Movie.VALID_RATINGS)
+
+#print("__doc__ = "+media.Movie.__doc__) #Returns media module's doc string
+#print("__name__ = "+media.Movie.__name__) #Returns Movie
+#print("__module__ = "+media.Movie.__module__) #Returns media
+#print("boondock doc = "+boondock_saints.__doc__) #Returns media module's doc string
+#print("toy story name = "+toy_story.__name__) #Doesn't work
+#print("avatar module = "+avatar.__module__) #Returns media
+
