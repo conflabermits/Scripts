@@ -33,4 +33,4 @@ movies = [toy_story,
           ratatouille,
           hunger_games]
 
-fresh_tomatoes.open_movies_page(movies)
+fresh_tomatoes.open_movies_page(sorted(movies, key=lambda movie: movie.title))
