@@ -1,3 +1,4 @@
+import fresh_tomatoes
 import media
 
 toy_story = media.Movie("Toy Story",
@@ -25,3 +26,11 @@ hunger_games = media.Movie("Hunger Games",
                            "https://upload.wikimedia.org/wikipedia/en/4/42/HungerGamesPoster.jpg",
                            "https://www.youtube.com/watch?v=PbA63a7H0bo")
 
+movies = [toy_story,
+          avatar,
+          boondock_saints,
+          school_of_rock,
+          ratatouille,
+          hunger_games]
+
+fresh_tomatoes.open_movies_page(movies)
