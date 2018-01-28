@@ -8,48 +8,48 @@ import textwrap
 import sys
 sys.dont_write_bytecode = True
 from reddit_creds import *
-#import pprint
-#import argparse
+import argparse
 
 
-#parser = argparse.ArgumentParser(description='Check for recent posts on /r/3DSdeals/new/')
-#parser.add_argument("-p", "--password", nargs='1', required=True)
-#
-#args = parser.parse_args()
+parser = argparse.ArgumentParser(description='Check for recent posts on /r/3DSdeals/new/')
+parser.add_argument("-s",
+                    "--silent",
+                    help="Suppress terminal output",
+                    action='store_true',
+                    required=False)
+parser.add_argument("-u",
+                    "--user",
+                    help="Send results to <USER> via Reddit message",
+                    required=False)
+parser.add_argument("-l",
+                    "--limit",
+                    help="Limit results to N posts (default: %(default)s)",
+                    required=False,
+                    type=int,
+                    default="5")
+parser.add_argument("-H",
+                    "--hours",
+                    help="Find results going back <HOURS> hours",
+                    type=int,
+                    required=False)
+parser.add_argument("-M",
+                    "--minutes",
+                    help="Find results going back <MINUTES> minutes",
+                    type=int,
+                    required=False)
 
-###def parse_args():
-###    parser = optparse.OptionParser()
-###    parser.add_option("-H", "--hostname",
-###                      type="str",
-###                      help="The hostname to be connected to.")
-###    parser.add_option("-P", "--port",
-###                      default="8983",
-###                      type="str",
-###                      help="Port to use to connect to the client.")
-###    parser.add_option("-u", "--uri",
-###                      type="str",
-###                      default="solr",
-###                      help="solr uri")
-###    parser.add_option("-c", "--critical",
-###                      default="300",
-###                      type="int",
-###                      help="Seconds since last modified time to consider critical")
-###    parser.add_option("-w", "--warning",
-###                      default="120",
-###                      type="int",
-###                      help="Seconds since last modified time to consider warning")
-###    parser.add_option("-v", "--verbose",
-###                      action='store_true',
-###                      help='Print more verbose error messages.')
-###    options, args = parser.parse_args()
-###
-###    if not options.hostname:
-###        parser.print_help()
-###        parser.error("Hostname is required for use.")
-###
-###    options.uri = options.uri.lstrip('/')
-###
-###    return options
+args = parser.parse_args()
+
+
+# Resolve argument conflicts
+if (args.user is None and args.silent is True):
+    print("No output method defined. Exiting.\n")
+    sys.exit(2)
+
+if (args.hours is not None and args.minutes is not None):
+    print("Warning: Both hours and minutes specified.")
+    print("They will be combined into a single value.\n")
+
 
 TIME_FORMAT = '%Y-%m-%d %H:%M:%S'
 
@@ -68,15 +68,12 @@ reddit = praw.Reddit(client_id=reddit_client_id,
                      user_agent='3dsDeals-Checkbot/0.1 by conflabermits')
 
 postNumber = 1
-postLimit = 5
-#postSeparator = "=" * 140 + "\n"
-redditNewline = "\n\n"
+postLimit = args.limit
 redditSeparator = "\n\n---\n\n"
-messageBody = "^Generated at: {0}{1}".format(datetime.datetime.now().strftime(TIME_FORMAT), redditSeparator)
-#messageBody += datetime.datetime.now().strftime(TIME_FORMAT) + redditNewline
+messageBody = "Generated at: {0}{1}".format(datetime.datetime.now().strftime(TIME_FORMAT), redditSeparator)
 
-for submission in reddit.subreddit('3DSdeals').new(limit=postLimit):
-    #messageBody += "\n"
+def printPost(submission):
+    global messageBody
     messageBody += "**Post Number:** {0}\n\n".format(postNumber)
     messageBody += "**Post Title:** {0}\n\n".format(submission.title)
     messageBody += "**Post Date:** {0}\n\n".format(utc_2_local(submission.created_utc))
@@ -84,20 +81,20 @@ for submission in reddit.subreddit('3DSdeals').new(limit=postLimit):
     if submission.is_self:
         messageBody += "**Post Selftext:**\n\n"
         messageBody += textwrap.indent(submission.selftext,
-                             #"             |  ",
-                             #"    ",
-                             "> ",
-                             lambda line: True)
+                                       "> ",
+                                       lambda line: True)
     else:
         messageBody += "**External URL:** {0}\n".format(submission.url)
     messageBody += redditSeparator
-    #if postNumber < postLimit:
-    #    messageBody += postSeparator
+
+
+for submission in reddit.subreddit('3DSdeals').new(limit=postLimit):
+    printPost(submission)
     postNumber += 1
 
-reddit.redditor('conflabermits').message("Today's 3DS Deals", messageBody)
-#print(messageBody)
+if args.silent is False:
+    print(messageBody)
 
+if args.user is not None:
+    reddit.redditor(args.user).message("Today's 3DS Deals", messageBody)
 
-
-#pprint.pprint(vars(submission))
