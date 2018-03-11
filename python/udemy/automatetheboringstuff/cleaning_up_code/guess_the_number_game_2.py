@@ -17,6 +17,15 @@ def get_secret_number():
 def greet_user():
     print('Hello. What is your name?')
 
+def take_guess():
+    print('Take a guess.')
+    try:
+        guess = int(input())
+    except ValueError:
+        print('It looks like you didn\'t enter a number.')
+        sys.exit(1)
+    return guess
+
 def check_guess(guess, secretNumber):
     if guess < secretNumber:
         print('Your guess is too low.')
@@ -26,12 +35,7 @@ def check_guess(guess, secretNumber):
 def take_guesses(name, secretNumber):
     print('Well, ' + name + ', I am thinking of a number between 1 and 20.')
     for guessesTaken in range(1, 7):
-        print('Take a guess.')
-        try:
-            guess = int(input())
-        except ValueError:
-            print('It looks like you didn\'t enter a number.')
-            sys.exit(1)
+        guess = take_guess()
         check_guess(guess, secretNumber)
         if guess == secretNumber:
             break
