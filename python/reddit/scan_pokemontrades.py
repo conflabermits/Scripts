@@ -32,11 +32,13 @@ parser.add_argument("-H",
                     "--hours",
                     help="Find results going back <HOURS> hours",
                     type=int,
+                    default="0",
                     required=False)
 parser.add_argument("-M",
                     "--minutes",
                     help="Find results going back <MINUTES> minutes",
                     type=int,
+                    default="0",
                     required=False)
 
 args = parser.parse_args()
@@ -47,7 +49,7 @@ if (args.user is None and args.silent is True):
     print("No output method defined. Exiting.\n")
     sys.exit(2)
 
-if (args.hours is not None and args.minutes is not None):
+if (args.hours != 0 and args.minutes != 0):
     print("Warning: Both hours and minutes specified.")
     print("They will be combined into a single value.\n")
 
@@ -57,10 +59,13 @@ TIME_FORMAT = '%Y-%m-%d %H:%M:%S'
 def utc_2_local(utc_time):
     utc = datetime.datetime.utcfromtimestamp(utc_time).strftime(TIME_FORMAT)
     #print "utc_2_local: before convert:", utc
-    timestamp =  calendar.timegm((datetime.datetime.strptime( utc, TIME_FORMAT)).timetuple())
+    timestamp =  calendar.timegm((datetime.datetime.strptime(utc, TIME_FORMAT)).timetuple())
     local = datetime.datetime.fromtimestamp(timestamp).strftime(TIME_FORMAT)
     #print "utc_2_local: after convert:", local
     return(local)
+
+## Gotta add the hours/minutes logic
+#  print(datetime.datetime.now() - datetime.timedelta(hours = 0, minutes = 0))
 
 reddit = praw.Reddit(client_id=reddit_client_id,
                      client_secret=reddit_client_secret,
