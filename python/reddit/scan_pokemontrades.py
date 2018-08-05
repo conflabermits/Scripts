@@ -1,15 +1,13 @@
 #!/usr/local/bin/python3
 
+import sys
+sys.dont_write_bytecode = True
 import argparse
 import praw
 import datetime
-# import time
 import calendar
 import textwrap
-import sys
 from reddit_creds import *
-
-sys.dont_write_bytecode = True
 
 
 parser = argparse.ArgumentParser(description='Scan recent posts on /r/pokemontrades/new/')
@@ -53,6 +51,9 @@ if (args.hours != 0 and args.minutes != 0):
     print("Warning: Both hours and minutes specified.")
     print("They will be combined into a single value.\n")
 
+if (args.hours == 0 and args.minutes == 0):
+    args.hours = 336
+
 
 TIME_FORMAT = '%Y-%m-%d %H:%M:%S'
 
@@ -64,8 +65,6 @@ def utc_2_local(utc_time):
     #print "utc_2_local: after convert:", local
     return(local)
 
-## Gotta add the hours/minutes logic
-#  print(datetime.datetime.now() - datetime.timedelta(hours = 0, minutes = 0))
 
 reddit = praw.Reddit(client_id=reddit_client_id,
                      client_secret=reddit_client_secret,
@@ -95,12 +94,15 @@ def printPost(submission):
 
 
 for submission in reddit.subreddit('pokemontrades').new(limit=postLimit):
-    printPost(submission)
-    postNumber += 1
+    if datetime.datetime.now() - datetime.timedelta(hours = args.hours, minutes = args.minutes) <= datetime.datetime.fromtimestamp(submission.created_utc):
+        printPost(submission)
+        postNumber += 1
+    else:
+        break
 
-if args.silent is False:
+if args.silent is False and postNumber > 1:
     print(messageBody)
 
-if args.user is not None:
+if args.user is not None and postNumber > 1:
     reddit.redditor(args.user).message("Today's Pokemon Trades", messageBody)
 
