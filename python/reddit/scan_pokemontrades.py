@@ -1,4 +1,4 @@
-#!/usr/local/bin/python3
+#!/usr/bin/python3
 
 import sys
 sys.dont_write_bytecode = True
@@ -43,15 +43,15 @@ args = parser.parse_args()
 
 
 # Resolve argument conflicts
-if (args.user is None and args.silent is True):
+if args.user is None and args.silent is True:
     print("No output method defined. Exiting.\n")
     sys.exit(2)
 
-if (args.hours != 0 and args.minutes != 0):
+if args.hours != 0 and args.minutes != 0:
     print("Warning: Both hours and minutes specified.")
     print("They will be combined into a single value.\n")
 
-if (args.hours == 0 and args.minutes == 0):
+if args.hours == 0 and args.minutes == 0:
     args.hours = 336
 
 
@@ -59,10 +59,8 @@ TIME_FORMAT = '%Y-%m-%d %H:%M:%S'
 
 def utc_2_local(utc_time):
     utc = datetime.datetime.utcfromtimestamp(utc_time).strftime(TIME_FORMAT)
-    #print "utc_2_local: before convert:", utc
     timestamp =  calendar.timegm((datetime.datetime.strptime(utc, TIME_FORMAT)).timetuple())
     local = datetime.datetime.fromtimestamp(timestamp).strftime(TIME_FORMAT)
-    #print "utc_2_local: after convert:", local
     return(local)
 
 
