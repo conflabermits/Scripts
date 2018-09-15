@@ -10,12 +10,17 @@ import textwrap
 from reddit_creds import *
 
 
-parser = argparse.ArgumentParser(description='Scan recent posts on /r/pokemontrades/new/')
+parser = argparse.ArgumentParser(description='Scan recent posts on a given subreddit')
 parser.add_argument("-s",
                     "--silent",
                     help="Suppress terminal output",
                     action='store_true',
                     required=False)
+parser.add_argument("-r",
+                    "--subreddit",
+                    help="Look for posts on <SUBREDDIT>",
+                    type=str,
+                    required=True)
 parser.add_argument("-u",
                     "--user",
                     help="Send results to <USER> via Reddit message",
@@ -68,7 +73,7 @@ reddit = praw.Reddit(client_id=reddit_client_id,
                      client_secret=reddit_client_secret,
                      username=reddit_username,
                      password=reddit_password,
-                     user_agent='3dsDeals-Checkbot/0.1 by conflabermits')
+                     user_agent='reddit-checkbot/0.1 by reddit-checkbot')
 
 postNumber = 1
 postLimit = args.limit
@@ -91,7 +96,7 @@ def printPost(submission):
     messageBody += redditSeparator
 
 
-for submission in reddit.subreddit('pokemontrades').new(limit=postLimit):
+for submission in reddit.subreddit(args.subreddit).new(limit=postLimit):
     if datetime.datetime.now() - datetime.timedelta(hours = args.hours, minutes = args.minutes) <= datetime.datetime.fromtimestamp(submission.created_utc):
         printPost(submission)
         postNumber += 1
@@ -102,5 +107,5 @@ if args.silent is False and postNumber > 1:
     print(messageBody)
 
 if args.user is not None and postNumber > 1:
-    reddit.redditor(args.user).message("Today's Pokemon Trades", messageBody)
+    reddit.redditor(args.user).message("Most recent posts from /r/{0}".format(args.subreddit), messageBody)
 
