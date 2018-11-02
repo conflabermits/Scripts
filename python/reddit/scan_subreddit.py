@@ -7,6 +7,7 @@ import praw
 import datetime
 import calendar
 import textwrap
+import re
 from reddit_creds import *
 
 
@@ -42,6 +43,11 @@ parser.add_argument("-M",
                     help="Find results going back <MINUTES> minutes",
                     type=int,
                     default="0",
+                    required=False)
+parser.add_argument("-f",
+                    "--filter",
+                    help="Filter results using string <FILTER>",
+                    type=str,
                     required=False)
 
 args = parser.parse_args()
@@ -80,6 +86,7 @@ postLimit = args.limit
 redditSeparator = "\n\n---\n\n"
 messageBody = "Generated at: {0}{1}".format(datetime.datetime.now().strftime(TIME_FORMAT), redditSeparator)
 
+
 def printPost(submission):
     global messageBody
     messageBody += "**Post Number:** {0}\n\n".format(postNumber)
@@ -98,8 +105,13 @@ def printPost(submission):
 
 for submission in reddit.subreddit(args.subreddit).new(limit=postLimit):
     if datetime.datetime.now() - datetime.timedelta(hours = args.hours, minutes = args.minutes) <= datetime.datetime.fromtimestamp(submission.created_utc):
-        printPost(submission)
-        postNumber += 1
+        if args.filter is None:
+            printPost(submission)
+            postNumber += 1
+        else:
+            if re.search(args.filter, submission.title, re.IGNORECASE) or re.search(args.filter, submission.selftext, re.IGNORECASE):
+                printPost(submission)
+                postNumber += 1
     else:
         break
 
