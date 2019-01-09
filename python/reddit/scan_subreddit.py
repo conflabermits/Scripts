@@ -44,9 +44,14 @@ parser.add_argument("-M",
                     type=int,
                     default="0",
                     required=False)
-parser.add_argument("-f",
-                    "--filter",
-                    help="Filter results using string <FILTER>",
+parser.add_argument("-i",
+                    "--include",
+                    help="Only include results matching <STRING>",
+                    type=str,
+                    required=False)
+parser.add_argument("-e",
+                    "--exclude",
+                    help="Exclude results matching <STRING>",
                     type=str,
                     required=False)
 
@@ -104,14 +109,25 @@ def printPost(submission):
 
 
 for submission in reddit.subreddit(args.subreddit).new(limit=postLimit):
-    if datetime.datetime.now() - datetime.timedelta(hours = args.hours, minutes = args.minutes) <= datetime.datetime.fromtimestamp(submission.created_utc):
-        if args.filter is None:
+    dateGate = datetime.datetime.now() - datetime.timedelta(hours = args.hours, minutes = args.minutes) <= datetime.datetime.fromtimestamp(submission.created_utc)
+    if dateGate:
+        if args.include is None and args.exclude is None:
             printPost(submission)
             postNumber += 1
         else:
-            if re.search(args.filter, submission.title, re.IGNORECASE) or re.search(args.filter, submission.selftext, re.IGNORECASE):
-                printPost(submission)
-                postNumber += 1
+            if args.include and args.exclude:
+                if (re.search(args.include, submission.title, re.IGNORECASE) or re.search(args.include, submission.selftext, re.IGNORECASE)):
+                    if not (re.search(args.exclude, submission.title, re.IGNORECASE) or re.search(args.exclude, submission.selftext, re.IGNORECASE)):
+                        printPost(submission)
+                        postNumber += 1
+            if args.exclude is None and args.include:
+                if (re.search(args.include, submission.title, re.IGNORECASE) or re.search(args.include, submission.selftext, re.IGNORECASE)):
+                    printPost(submission)
+                    postNumber += 1
+            if args.include is None and args.exclude:
+                if not (re.search(args.exclude, submission.title, re.IGNORECASE) or re.search(args.exclude, submission.selftext, re.IGNORECASE)):
+                    printPost(submission)
+                    postNumber += 1
     else:
         break
 
