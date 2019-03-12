@@ -1,0 +1,6 @@
+## Just a simple text file of the commands I used to get started
+
+sudo docker pull ubuntu:18.04
+sudo docker build -t local/python:2 /home/chris/docker/dockerfiles/python27
+sudo docker build -t local/python:3 /home/chris/docker/dockerfiles/python36
+
