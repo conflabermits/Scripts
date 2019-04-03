@@ -6,6 +6,5 @@ RUN apt-get --assume-yes upgrade
 RUN apt-get --assume-yes install \
     golang
 
-ENTRYPOINT ["/usr/bin/go"]
-
+ENTRYPOINT ["/bin/bash"]
 

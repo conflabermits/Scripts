@@ -3,4 +3,5 @@
 docker pull ubuntu:18.04
 docker build -t local/python:2 ./dockerfiles/python27
 docker build -t local/python:3 ./dockerfiles/python36
+docker build -t local/golang ./dockerfiles/golang
 
