@@ -14,7 +14,9 @@
         cache_valid_time=3600
 
     - name: create directories for ssl certificates
-      file: path=/etc/nginx/ssl state=directory
+      file:
+        path: /etc/nginx/ssl
+        state: directory
 
     - name: copy tls key
       copy: src=files/nginx.key dest={{ key_file }} owner=root mode=0600
@@ -33,7 +35,10 @@
       notify: restart nginx
 
     - name: copy index.html
-      template: src=templates/index.html.j2 dest=/usr/share/nginx/html/index.html mode=0644
+      template:
+        src: templates/index.html.j2
+        dest: /usr/share/nginx/html/index.html
+        mode: 0644
 
   handlers:
     - name: restart nginx
