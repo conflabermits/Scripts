@@ -1,0 +1,10 @@
+- name: Show return value of command module
+  hosts: "{{ hostgroup }}"
+  tasks:
+    - name: capture output of id commmand
+      command: id -un
+      register: login
+    ##- debug: var=login
+    ##- debug: msg="Logged in as user {{ login.stdout }}"
+    - debug: msg="Logged in as user {{ login['stdout'] }}"
+

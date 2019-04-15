@@ -1,0 +1,7 @@
+- name: print out facts
+  hosts: "{{hostgroup}}"
+  gather_facts: True
+  tasks:
+    - debug: var=ansible_facts
+    ##- debug: var=hostvars[inventory_hostname]
+
