@@ -6,5 +6,6 @@
       register: login
     ##- debug: var=login
     ##- debug: msg="Logged in as user {{ login.stdout }}"
-    - debug: msg="Logged in as user {{ login['stdout'] }}"
+    - debug: msg="Logged in as user {{ login['stdout'] }}" ##output like "user vagrant"
+    ##- debug: msg="Logged in as user {{ login.stdout_lines }}" ##output like "user [u'vagrant']"
 
