@@ -1,5 +1,7 @@
-[vagrant]
-vagrant1 ansible_host=127.0.0.1 ansible_port=2222
-vagrant2 ansible_host=127.0.0.1 ansible_port=2200
-vagrant3 ansible_host=127.0.0.1 ansible_port=2201
+#[vagrant]
+#vagrant1 ansible_host=127.0.0.1 ansible_port=2222
+#vagrant2 ansible_host=127.0.0.1 ansible_port=2200
+#vagrant3 ansible_host=127.0.0.1 ansible_port=2201
+
+web ansible_host=192.168.33.10
 
