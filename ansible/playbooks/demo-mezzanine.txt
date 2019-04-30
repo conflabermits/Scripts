@@ -1,0 +1,30 @@
+cd /home/chris/Scripts/ansible/playbooks
+
+ssh-add -l
+
+eval "$(ssh-agent -s)"
+
+ssh-add ~/.ssh/github_rsa
+
+ssh-add -l
+
+cd /home/chris/vagrant
+
+vagrant status
+
+vagrant up
+
+ssh-keygen -f "/home/chris/.ssh/known_hosts" -R "192.168.33.10"
+
+cd /home/chris/Scripts/ansible/playbooks
+
+ansible web -a "ssh-add -l"
+
+ansible-playbook mezzanine.yml | tee output.txt
+
+less output.txt
+
+curl -ILk https://192.168.33.10.xip.io
+
+curl -ILk -H "Host: 192.168.33.10.xip.io" http://192.168.33.10
+
