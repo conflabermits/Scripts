@@ -1,0 +1,8 @@
+# I've been given a request from someone to set up a script that looks at a website,
+# determines if socks are available for sale, and sends a notification if they are.
+# Additional requirements haven't been determined yet, but I imagine I'll need:
+# - The website address
+# - The page(s) to search for socks on the website
+# - The email address to send notifications to
+# - The check interval (daily?)
+# - Any specific details I should use to filter wanted from unwanted results
