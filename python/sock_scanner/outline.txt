@@ -6,3 +6,40 @@
 # - The email address to send notifications to
 # - The check interval (daily?)
 # - Any specific details I should use to filter wanted from unwanted results
+
+# If email notificaions can't be sent, I can leverage existing work with praw to send reddit messages.
+# A daily interval should be sufficient.
+# The best notifications will be of new additions to stock; no daily inventory lists, no disappearances of stock.
+# Specific filter details are included below.
+
+# https://www.nyandcompany.com/search/?Dy=1&Nty=1&Ntp=1&Ntt=socks
+#       "We found.*results for.*socks"
+# https://www.nyandcompany.com/search/?Dy=1&Nty=1&Ntp=1&Ntt=quijibo
+#       "We found 0 results for.*socks"
+
+# Positive result:
+#           <div class="container-fixed" style="width:1175px;">
+#            <p class="resultFound">
+#             We found
+#             <span id="filteredRecCount">
+#              1
+#             </span>
+#             results for
+#             <strong>
+#              socks
+#             </strong>
+#             .
+#            </p>
+
+# Negative result:
+#            <div class="container-full" id="noSearchResultNewUI">
+#             <div class="row">
+#              <h6 class="res_found">
+#               We found 0 results for
+#               <strong>
+#                quijibo
+#               </strong>
+#               .
+#              </h6>
+#             </div>
+
