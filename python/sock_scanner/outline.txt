@@ -43,3 +43,9 @@
 #              </h6>
 #             </div>
 
+# Next steps:
+# - Add __init__ and __main__ stuff to make this look right proper python
+# - Add verification of negative result instead of assuming by lack of positive result
+# - Work in local stock caching logic so it only notifies on new stock
+# - Add notification mechanism and pretty up the text output
+
