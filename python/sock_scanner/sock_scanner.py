@@ -16,6 +16,7 @@ soup = BeautifulSoup(page.content, 'html.parser')
 
 if soup.find_all(attrs={"class": "resultFound"}):
     print("Results found!")
+    print(soup.find_all(attrs={"class": "resultFound"}))
 else:
     print("No results found")
 
