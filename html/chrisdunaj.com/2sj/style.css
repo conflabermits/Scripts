@@ -1,0 +1,48 @@
+body
+{
+background-attachment:fixed;
+color: #666666;
+font-size : 10px;
+font-family : Arial, Helvetica, Helv, sans-serif;
+font-weight : normal;
+scrollbar-face-color: #FFFFFF;
+scrollbar-highlight-color: #FFFFFF;
+scrollbar-shadow-color: #999999;
+scrollbar-3dlight-color: #999999;
+scrollbar-arrow-color:  #999999;
+scrollbar-track-color: #FFFFFF;
+scrollbar-darkshadow-color: #FFFFFF;
+margin-top: 0px;
+margin-left: 0px;
+margin-right: 0px;
+margin-bottom: 0px
+}
+
+input
+{
+	font-size : 11px;
+	height : 19px
+}
+
+select
+{
+	font-size : 11px
+}
+
+textarea
+{
+	font-family : Tahoma, Arial, Helvetica, Helv, sans-serif;
+	font-size : 10px
+}
+
+
+/* default classes */
+td { font: 11px Arial, Helvetica, Helv, sans-serif; color: #000000; line-height: 130% }
+
+a:visited {  color: #3C9FDF; text-decoration: none; font-weight: bold}
+a:active {  color: #F2B84D; text-decoration: none; font-weight: bold}
+a:hover {  color: #BA1212; text-decoration: none; font-weight: bold}
+a:link {  color: #3C9FDF; text-decoration: none; font-weight: bold}
+a:visited:hover {  color: #BA1212; text-decoration: none; font-weight: bold}
+
+hr { border: thin dotted; color: #7F8693;  }

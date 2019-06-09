@@ -1,0 +1,523 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+	<title>Decks</title>
+
+	<link href="./css/prototip.css" type="text/css" rel="stylesheet" />
+
+	<script type="text/javascript" src="./js/prototype.js"></script>
+	<script type="text/javascript" src="./js/miscellaneous.js"></script>
+	<script src="./js/prototip.js" type="text/javascript"></script>
+	<script src="./js/navigation.js" type="text/javascript"></script>
+
+	<script type="text/javascript">
+	//<![CDATA[
+	var origionalGlobalSmartSearchTextBoxValue = 'Search Wizards.com';var enableGlobalSmartSearch = false;var searchGatherer = false;var gathererBaseURL = 'http://gatherer.wizards.com';
+
+	function ClientIDs() {}
+	ClientIDs.GoogleAnalyticsCode = 'ctl00_ctl00_GoogleAnalyticsCode';
+	ClientIDs.form1 = 'aspnetForm';
+	ClientIDs.header = 'ctl00_ctl00_header';
+	ClientIDs.globalSmartSearch = 'ctl00_ctl00_globalSmartSearch';
+	ClientIDs.globalSearchControlSubmitButton = 'ctl00_ctl00_globalSmartSearch_globalSearchControlSubmitButton';
+	ClientIDs.ContentPlaceHolder1 = 'ctl00_ctl00_ContentPlaceHolder1';
+	ClientIDs.MagicTopNavigation = 'ctl00_ctl00_ContentPlaceHolder1_MagicTopNavigation';
+	ClientIDs.topNavigation = 'ctl00_ctl00_ContentPlaceHolder1_MagicTopNavigation_topNavigation';
+	ClientIDs.multiverse = 'ctl00_ctl00_ContentPlaceHolder1_MagicTopNavigation_multiverse';
+	ClientIDs.tcg = 'ctl00_ctl00_ContentPlaceHolder1_MagicTopNavigation_tcg';
+	ClientIDs.magazine = 'ctl00_ctl00_ContentPlaceHolder1_MagicTopNavigation_magazine';
+	ClientIDs.dg = 'ctl00_ctl00_ContentPlaceHolder1_MagicTopNavigation_dg';
+	ClientIDs.novels = 'ctl00_ctl00_ContentPlaceHolder1_MagicTopNavigation_novels';
+	ClientIDs.HeaderAdSpace = 'ctl00_ctl00_ContentPlaceHolder1_HeaderAdSpace';
+	ClientIDs.topAdvertisementContent = 'ctl00_ctl00_ContentPlaceHolder1_topAdvertisementContent';
+	ClientIDs.mainContent = 'ctl00_ctl00_ContentPlaceHolder1_mainContent';
+	ClientIDs.Article = 'ctl00_ctl00_ContentPlaceHolder1_mainContent_Article';
+	ClientIDs.articleTop = 'ctl00_ctl00_ContentPlaceHolder1_mainContent_Article_articleTop';
+	ClientIDs.ArticleType = 'ctl00_ctl00_ContentPlaceHolder1_mainContent_Article_ArticleType';
+	ClientIDs.headerPanel = 'ctl00_ctl00_ContentPlaceHolder1_mainContent_Article_headerPanel';
+	ClientIDs.ArticleHeading = 'ctl00_ctl00_ContentPlaceHolder1_mainContent_Article_ArticleHeading';
+	ClientIDs.ArticleByline = 'ctl00_ctl00_ContentPlaceHolder1_mainContent_Article_ArticleByline';
+	ClientIDs.linksPanel = 'ctl00_ctl00_ContentPlaceHolder1_mainContent_Article_linksPanel';
+	ClientIDs.HeadingLinks = 'ctl00_ctl00_ContentPlaceHolder1_mainContent_Article_HeadingLinks';
+	ClientIDs.EmailFriend = 'ctl00_ctl00_ContentPlaceHolder1_mainContent_Article_EmailFriend';
+	ClientIDs.MessageBoard = 'ctl00_ctl00_ContentPlaceHolder1_mainContent_Article_MessageBoard';
+	ClientIDs.PrintFriendly = 'ctl00_ctl00_ContentPlaceHolder1_mainContent_Article_PrintFriendly';
+	ClientIDs.AuthorImageContainer = 'ctl00_ctl00_ContentPlaceHolder1_mainContent_Article_AuthorImageContainer';
+	ClientIDs.AuthorImage = 'ctl00_ctl00_ContentPlaceHolder1_mainContent_Article_AuthorImage';
+	ClientIDs.archiveSection = 'ctl00_ctl00_ContentPlaceHolder1_mainContent_Article_archiveSection';
+	ClientIDs.TypeArchive = 'ctl00_ctl00_ContentPlaceHolder1_mainContent_Article_TypeArchive';
+	ClientIDs.AuthorArchive = 'ctl00_ctl00_ContentPlaceHolder1_mainContent_Article_AuthorArchive';
+	ClientIDs.contentBlock = 'ctl00_ctl00_ContentPlaceHolder1_mainContent_Article_contentBlock';
+	ClientIDs.footerPanel = 'ctl00_ctl00_ContentPlaceHolder1_mainContent_Article_footerPanel';
+	ClientIDs.MessageBoardFooter = 'ctl00_ctl00_ContentPlaceHolder1_mainContent_Article_MessageBoardFooter';
+	ClientIDs.AuthorEmailFoooter = 'ctl00_ctl00_ContentPlaceHolder1_mainContent_Article_AuthorEmailFoooter';
+	ClientIDs.TypeArchiveFooter = 'ctl00_ctl00_ContentPlaceHolder1_mainContent_Article_TypeArchiveFooter';
+	ClientIDs.ErrorMessage = 'ctl00_ctl00_ContentPlaceHolder1_mainContent_Article_ErrorMessage';
+	ClientIDs.SideAdSpace = 'ctl00_ctl00_ContentPlaceHolder1_SideAdSpace';
+	ClientIDs.rightAdvertisementContent = 'ctl00_ctl00_ContentPlaceHolder1_rightAdvertisementContent';
+	ClientIDs.sideContent = 'ctl00_ctl00_ContentPlaceHolder1_sideContent';
+	ClientIDs.MagicLeftNavigation = 'ctl00_ctl00_ContentPlaceHolder1_MagicLeftNavigation';
+	ClientIDs.leftNav = 'ctl00_ctl00_ContentPlaceHolder1_MagicLeftNavigation_leftNav';
+	ClientIDs.planeswalkers = 'ctl00_ctl00_ContentPlaceHolder1_MagicLeftNavigation_planeswalkers';
+	ClientIDs.colors = 'ctl00_ctl00_ContentPlaceHolder1_MagicLeftNavigation_colors';
+	ClientIDs.planes = 'ctl00_ctl00_ContentPlaceHolder1_MagicLeftNavigation_planes';
+	ClientIDs.newToMagic = 'ctl00_ctl00_ContentPlaceHolder1_MagicLeftNavigation_newToMagic';
+	ClientIDs.products = 'ctl00_ctl00_ContentPlaceHolder1_MagicLeftNavigation_products';
+	ClientIDs.A1 = 'ctl00_ctl00_ContentPlaceHolder1_MagicLeftNavigation_A1';
+	ClientIDs.Literal3 = 'ctl00_ctl00_ContentPlaceHolder1_MagicLeftNavigation_Literal3';
+	ClientIDs.A3 = 'ctl00_ctl00_ContentPlaceHolder1_MagicLeftNavigation_A3';
+	ClientIDs.Literal1 = 'ctl00_ctl00_ContentPlaceHolder1_MagicLeftNavigation_Literal1';
+	ClientIDs.A13 = 'ctl00_ctl00_ContentPlaceHolder1_MagicLeftNavigation_A13';
+	ClientIDs.Literal17 = 'ctl00_ctl00_ContentPlaceHolder1_MagicLeftNavigation_Literal17';
+	ClientIDs.A11 = 'ctl00_ctl00_ContentPlaceHolder1_MagicLeftNavigation_A11';
+	ClientIDs.Literal14 = 'ctl00_ctl00_ContentPlaceHolder1_MagicLeftNavigation_Literal14';
+	ClientIDs.A12 = 'ctl00_ctl00_ContentPlaceHolder1_MagicLeftNavigation_A12';
+	ClientIDs.Literal15 = 'ctl00_ctl00_ContentPlaceHolder1_MagicLeftNavigation_Literal15';
+	ClientIDs.A5 = 'ctl00_ctl00_ContentPlaceHolder1_MagicLeftNavigation_A5';
+	ClientIDs.Literal8 = 'ctl00_ctl00_ContentPlaceHolder1_MagicLeftNavigation_Literal8';
+	ClientIDs.A6 = 'ctl00_ctl00_ContentPlaceHolder1_MagicLeftNavigation_A6';
+	ClientIDs.Literal9 = 'ctl00_ctl00_ContentPlaceHolder1_MagicLeftNavigation_Literal9';
+	ClientIDs.A2 = 'ctl00_ctl00_ContentPlaceHolder1_MagicLeftNavigation_A2';
+	ClientIDs.Literal6 = 'ctl00_ctl00_ContentPlaceHolder1_MagicLeftNavigation_Literal6';
+	ClientIDs.A14 = 'ctl00_ctl00_ContentPlaceHolder1_MagicLeftNavigation_A14';
+	ClientIDs.Literal18 = 'ctl00_ctl00_ContentPlaceHolder1_MagicLeftNavigation_Literal18';
+	ClientIDs.A8 = 'ctl00_ctl00_ContentPlaceHolder1_MagicLeftNavigation_A8';
+	ClientIDs.Literal12 = 'ctl00_ctl00_ContentPlaceHolder1_MagicLeftNavigation_Literal12';
+	ClientIDs.tournaments = 'ctl00_ctl00_ContentPlaceHolder1_MagicLeftNavigation_tournaments';
+	ClientIDs.A4 = 'ctl00_ctl00_ContentPlaceHolder1_MagicLeftNavigation_A4';
+	ClientIDs.Literal7 = 'ctl00_ctl00_ContentPlaceHolder1_MagicLeftNavigation_Literal7';
+	ClientIDs.A9 = 'ctl00_ctl00_ContentPlaceHolder1_MagicLeftNavigation_A9';
+	ClientIDs.Literal13 = 'ctl00_ctl00_ContentPlaceHolder1_MagicLeftNavigation_Literal13';
+	ClientIDs.resources = 'ctl00_ctl00_ContentPlaceHolder1_MagicLeftNavigation_resources';
+	ClientIDs.columns = 'ctl00_ctl00_ContentPlaceHolder1_MagicLeftNavigation_columns';
+	ClientIDs.features = 'ctl00_ctl00_ContentPlaceHolder1_MagicLeftNavigation_features';
+	ClientIDs.news = 'ctl00_ctl00_ContentPlaceHolder1_MagicLeftNavigation_news';
+	ClientIDs.event = 'ctl00_ctl00_ContentPlaceHolder1_MagicLeftNavigation_event';
+	ClientIDs.downloads = 'ctl00_ctl00_ContentPlaceHolder1_MagicLeftNavigation_downloads';
+	ClientIDs.mol = 'ctl00_ctl00_ContentPlaceHolder1_MagicLeftNavigation_mol';
+	ClientIDs.dotp = 'ctl00_ctl00_ContentPlaceHolder1_MagicLeftNavigation_dotp';
+	ClientIDs.Literal2 = 'ctl00_ctl00_ContentPlaceHolder1_MagicLeftNavigation_Literal2';
+	ClientIDs.Literal5 = 'ctl00_ctl00_ContentPlaceHolder1_MagicLeftNavigation_Literal5';
+	ClientIDs.Literal4 = 'ctl00_ctl00_ContentPlaceHolder1_MagicLeftNavigation_Literal4';
+	ClientIDs.tactics = 'ctl00_ctl00_ContentPlaceHolder1_MagicLeftNavigation_tactics';
+	ClientIDs.magicnovels = 'ctl00_ctl00_ContentPlaceHolder1_MagicLeftNavigation_magicnovels';
+	ClientIDs.IntlNews = 'ctl00_ctl00_ContentPlaceHolder1_MagicLeftNavigation_IntlNews';
+	ClientIDs.ENNews = 'ctl00_ctl00_ContentPlaceHolder1_MagicLeftNavigation_ENNews';
+	ClientIDs.MagicLocator = 'ctl00_ctl00_ContentPlaceHolder1_MagicLeftNavigation_MagicLocator';
+	ClientIDs.StoresRadio = 'ctl00_ctl00_ContentPlaceHolder1_MagicLeftNavigation_StoresRadio';
+	ClientIDs.EventsRadio = 'ctl00_ctl00_ContentPlaceHolder1_MagicLeftNavigation_EventsRadio';
+	ClientIDs.Address = 'ctl00_ctl00_ContentPlaceHolder1_MagicLeftNavigation_Address';
+	ClientIDs.Search = 'ctl00_ctl00_ContentPlaceHolder1_MagicLeftNavigation_Search';
+	ClientIDs.TwitterWidget = 'ctl00_ctl00_ContentPlaceHolder1_MagicLeftNavigation_TwitterWidget';
+	ClientIDs.twitterwidgetembed = 'ctl00_ctl00_ContentPlaceHolder1_MagicLeftNavigation_twitterwidgetembed';
+	ClientIDs.twitterwidgetusername = 'ctl00_ctl00_ContentPlaceHolder1_MagicLeftNavigation_twitterwidgetusername';
+	ClientIDs.MagicFooter = 'ctl00_ctl00_MagicFooter';
+	ClientIDs.LanguageLink = 'ctl00_ctl00_MagicFooter_LanguageLink';
+	ClientIDs.CopyrightYear = 'ctl00_ctl00_MagicFooter_CopyrightYear';
+	ClientIDs.affiliates = 'ctl00_ctl00_affiliates';
+	ClientIDs.affiliatesDuels = 'ctl00_ctl00_affiliatesDuels';
+	var textBoxHash = new Hash( {  } );//]]>
+	</script>
+
+</head>
+
+<body style="font-family:'Arial','Helvetica','Geneva'; font-size:13px;">
+Testing in-line card preview:
+<a keyName="name" keyValue="Gutter_Grime" onmouseover="OpenTip(event, this)" onclick="autoCardWindow(this)" href="javascript:void()">Gutter Grime</a>
+<BR><BR>
+
+<BR>
+	<table frame="box" style="vertical-align:top; text-align: center; padding:5px; background-color:#dddddd;">
+	<tr>
+		<td colspan="2">
+			<B><big>Zombie Curse</big></B>
+			<BR>Standard Format - 60 Cards
+			<BR><BR>
+		</td>
+	</tr>
+	<tr>
+		<td style="vertical-align:top;">
+			<table style="vertical-align:top; padding:5px;">
+				<tr style="vertical-align:top; text-align: left;">
+					<td width="200">
+						3 <a onmouseover="ChangeBigCard(5, this)" keyName="name" keyValue="Evolving_Wilds" onclick="autoCardWindow(this)" href="javascript:void()">Evolving Wilds</a><br />
+						1 <a onmouseover="ChangeBigCard(5, this)" keyName="name" keyValue="Haunted_Fengraf" onclick="autoCardWindow(this)" href="javascript:void()">Haunted Fengraf</a><br />
+						8 <a onmouseover="ChangeBigCard(5, this)" keyName="name" keyValue="Island" onclick="autoCardWindow(this)" href="javascript:void()">Island</a><br />
+						1 <a onmouseover="ChangeBigCard(5, this)" keyName="name" keyValue="Mountain" onclick="autoCardWindow(this)" href="javascript:void()">Mountain</a><br />
+						12 <a onmouseover="ChangeBigCard(5, this)" keyName="name" keyValue="Swamp" onclick="autoCardWindow(this)" href="javascript:void()">Swamp</a><br />
+						<hr size="1" width="50%" align="left" />
+						25 lands
+						<br /><br />
+						1 <a onmouseover="ChangeBigCard(5, this)" keyName="name" keyValue="Diregraf_Captain" onclick="autoCardWindow(this)" href="javascript:void()">Diregraf Captain</a><br />
+						1 <a onmouseover="ChangeBigCard(5, this)" keyName="name" keyValue="Ghoulraiser" onclick="autoCardWindow(this)" href="javascript:void()">Ghoulraiser</a><br />
+						2 <a onmouseover="ChangeBigCard(5, this)" keyName="name" keyValue="Gravedigger" onclick="autoCardWindow(this)" href="javascript:void()">Gravedigger</a><br />
+						1 <a onmouseover="ChangeBigCard(5, this)" keyName="name" keyValue="Scourge_Servant" onclick="autoCardWindow(this)" href="javascript:void()">Scourge Servant</a><br />
+						1 <a onmouseover="ChangeBigCard(5, this)" keyName="name" keyValue="Screeching_Skaab" onclick="autoCardWindow(this)" href="javascript:void()">Screeching Skaab</a><br />
+						1 <a onmouseover="ChangeBigCard(5, this)" keyName="name" keyValue="Sightless_Ghoul" onclick="autoCardWindow(this)" href="javascript:void()">Sightless Ghoul</a><br />
+						4 <a onmouseover="ChangeBigCard(5, this)" keyName="name" keyValue="Skinrender" onclick="autoCardWindow(this)" href="javascript:void()">Skinrender</a><br />
+						3 <a onmouseover="ChangeBigCard(5, this)" keyName="name" keyValue="Walking_Corpse" onclick="autoCardWindow(this)" href="javascript:void()">Walking Corpse</a><br />
+						<hr size="1" width="50%" align="left" />
+						14 creatures
+					</td>
+					<td width="200">
+						1 <a onmouseover="ChangeBigCard(5, this)" keyName="name" keyValue="Call_to_the_Grave" onclick="autoCardWindow(this)" href="javascript:void()">Call to the Grave</a><br />
+						1 <a onmouseover="ChangeBigCard(5, this)" keyName="name" keyValue="Cellar_Door" onclick="autoCardWindow(this)" href="javascript:void()">Cellar Door</a><br />
+						1 <a onmouseover="ChangeBigCard(5, this)" keyName="name" keyValue="Curiosity" onclick="autoCardWindow(this)" href="javascript:void()">Curiosity</a><br />
+						1 <a onmouseover="ChangeBigCard(5, this)" keyName="name" keyValue="Curse_of_Death[s_Hold" onclick="autoCardWindow(this)" href="javascript:void()">Curse of Death's Hold</a><br />
+						1 <a onmouseover="ChangeBigCard(5, this)" keyName="name" keyValue="Curse_of_Echoes" onclick="autoCardWindow(this)" href="javascript:void()">Curse of Echoes</a><br />
+						1 <a onmouseover="ChangeBigCard(5, this)" keyName="name" keyValue="Curse_of_Misfortunes" onclick="autoCardWindow(this)" href="javascript:void()">Curse of Misfortunes</a><br />
+						1 <a onmouseover="ChangeBigCard(5, this)" keyName="name" keyValue="Curse_of_the_Pierced_Heart" onclick="autoCardWindow(this)" href="javascript:void()">Curse of the Pierced Heart</a><br />
+						1 <a onmouseover="ChangeBigCard(5, this)" keyName="name" keyValue="Diabolic_Tutor" onclick="autoCardWindow(this)" href="javascript:void()">Diabolic Tutor</a><br />
+						2 <a onmouseover="ChangeBigCard(5, this)" keyName="name" keyValue="Ghoulcaller[s_Chant" onclick="autoCardWindow(this)" href="javascript:void()">Ghoulcaller's Chant</a><br />
+						1 <a onmouseover="ChangeBigCard(5, this)" keyName="name" keyValue="Grasp_of_Darkness" onclick="autoCardWindow(this)" href="javascript:void()">Grasp of Darkness</a><br />
+						1 <a onmouseover="ChangeBigCard(5, this)" keyName="name" keyValue="Jar_of_Eyeballs" onclick="autoCardWindow(this)" href="javascript:void()">Jar of Eyeballs</a><br />
+						1 <a onmouseover="ChangeBigCard(5, this)" keyName="name" keyValue="Mind_Unbound" onclick="autoCardWindow(this)" href="javascript:void()">Mind Unbound</a><br />
+						1 <a onmouseover="ChangeBigCard(5, this)" keyName="name" keyValue="Moan_of_the_Unhallowed" onclick="autoCardWindow(this)" href="javascript:void()">Moan of the Unhallowed</a><br />
+						3 <a onmouseover="ChangeBigCard(5, this)" keyName="name" keyValue="Reap_the_Seagraf" onclick="autoCardWindow(this)" href="javascript:void()">Reap the Seagraf</a><br />
+						2 <a onmouseover="ChangeBigCard(5, this)" keyName="name" keyValue="Think_Twice" onclick="autoCardWindow(this)" href="javascript:void()">Think Twice</a><br />
+						1 <a onmouseover="ChangeBigCard(5, this)" keyName="name" keyValue="Tragic_Slip" onclick="autoCardWindow(this)" href="javascript:void()">Tragic Slip</a><br />
+						1 <a onmouseover="ChangeBigCard(5, this)" keyName="name" keyValue="Zombie_Infestation" onclick="autoCardWindow(this)" href="javascript:void()">Zombie Infestation</a><br />
+						<hr size="1" width="50%" align="left" />
+						21 other spells
+						<br /><br />
+						<!--2 <a onmouseover="ChangeBigCard(5, this)" keyName="name" keyValue="Contagion_Engine" onclick="autoCardWindow(this)" href="javascript:void()">Contagion Engine</a><br />
+						2 <a onmouseover="ChangeBigCard(5, this)" keyName="name" keyValue="Crossway_Vampire" onclick="autoCardWindow(this)" href="javascript:void()">Crossway Vampire</a><br />
+						1 <a onmouseover="ChangeBigCard(5, this)" keyName="name" keyValue="Diabolic_Tutor" onclick="autoCardWindow(this)" href="javascript:void()">Diabolic Tutor</a><br />
+						4 <a onmouseover="ChangeBigCard(5, this)" keyName="name" keyValue="Dismember" onclick="autoCardWindow(this)" href="javascript:void()">Dismember</a><br />
+						2 <a onmouseover="ChangeBigCard(5, this)" keyName="name" keyValue="Doom_Blade" onclick="autoCardWindow(this)" href="javascript:void()">Doom Blade</a><br />
+						1 <a onmouseover="ChangeBigCard(5, this)" keyName="name" keyValue="Gruesome_Deformity" onclick="autoCardWindow(this)" href="javascript:void()">Gruesome Deformity</a><br />
+						1 <a onmouseover="ChangeBigCard(5, this)" keyName="name" keyValue="Sengir_Vampire" onclick="autoCardWindow(this)" href="javascript:void()">Sengir Vampire</a><br />
+						1 <a onmouseover="ChangeBigCard(5, this)" keyName="name" keyValue="Shock" onclick="autoCardWindow(this)" href="javascript:void()">Shock</a><br />
+						1 <a onmouseover="ChangeBigCard(5, this)" keyName="name" keyValue="Swiftfoot_Boots" onclick="autoCardWindow(this)" href="javascript:void()">Swiftfoot Boots</a><br />
+						<hr size="1" width="50%" align="left" />
+						15 sideboard cards -->
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td>
+			<table width="240" padding:5px;>
+				<td>
+					<tr>
+						<div id="bigcard_5">
+							<img src="http://Gatherer.wizards.com/Handlers/Image.ashx?size=small&amp;multiverseid=10100000&amp;type=card" />
+						</div>
+						<!-- Card: 223x310, Box:  235x325 -->
+					</tr>
+				</td>
+			</table>
+		</td>
+	</tr>
+	</table>
+
+<BR><BR>
+
+<BR>
+	<table frame="box" style="vertical-align:top; text-align: center; padding:5px; background-color:#dddddd;">
+	<tr>
+		<td colspan="2">
+			<B><big>Vamproliferate v2.0</big></B>
+			<BR>Standard Format - 60 Cards
+			<BR><BR>
+		</td>
+	</tr>
+	<tr>
+		<td style="vertical-align:top;">
+			<table style="vertical-align:top; padding:5px;">
+				<tr style="vertical-align:top; text-align: left;">
+					<td width="200">
+						11 <a onmouseover="ChangeBigCard(3, this)" keyName="name" keyValue="Swamp" onclick="autoCardWindow(this)" href="javascript:void()">Swamp</a><br />
+						10 <a onmouseover="ChangeBigCard(3, this)" keyName="name" keyValue="Mountain" onclick="autoCardWindow(this)" href="javascript:void()">Mountain</a><br />
+						3 <a onmouseover="ChangeBigCard(3, this)" keyName="name" keyValue="Dragonskull_Summit" onclick="autoCardWindow(this)" href="javascript:void()">Dragonskull Summit</a><br />
+						<hr size="1" width="50%" align="left" />
+						24 lands
+						<br /><br />
+						4 <a onmouseover="ChangeBigCard(3, this)" keyName="name" keyValue="Bloodcrazed_Neonate" onclick="autoCardWindow(this)" href="javascript:void()">Bloodcrazed Neonate</a><br />
+						1 <a onmouseover="ChangeBigCard(3, this)" keyName="name" keyValue="Bloodline_Keeper" onclick="autoCardWindow(this)" href="javascript:void()">Bloodline Keeper</a><br />
+						  <a onmouseover="ChangeBigCard(3, this)" keyName="name" keyValue="Lord_of_Lineage" onclick="autoCardWindow(this)" href="javascript:void()">Lord of Lineage</a><br />
+						2 <a onmouseover="ChangeBigCard(3, this)" keyName="name" keyValue="Bloodlord_of_Vaasgoth" onclick="autoCardWindow(this)" href="javascript:void()">Bloodlord of Vaasgoth</a><br />
+						3 <a onmouseover="ChangeBigCard(3, this)" keyName="name" keyValue="Child_of_Night" onclick="autoCardWindow(this)" href="javascript:void()">Child of Night</a><br />
+						2 <a onmouseover="ChangeBigCard(3, this)" keyName="name" keyValue="Falkenrath_Marauders" onclick="autoCardWindow(this)" href="javascript:void()">Falkenrath Marauders</a><br />
+						3 <a onmouseover="ChangeBigCard(3, this)" keyName="name" keyValue="Rakish_Heir" onclick="autoCardWindow(this)" href="javascript:void()">Rakish Heir</a><br />
+						1 <a onmouseover="ChangeBigCard(3, this)" keyName="name" keyValue="Sengir_Vampire" onclick="autoCardWindow(this)" href="javascript:void()">Sengir Vampire</a><br />
+						3 <a onmouseover="ChangeBigCard(3, this)" keyName="name" keyValue="Vampire_Interloper" onclick="autoCardWindow(this)" href="javascript:void()">Vampire Interloper</a><br />
+						3 <a onmouseover="ChangeBigCard(3, this)" keyName="name" keyValue="Vampire_Outcasts" onclick="autoCardWindow(this)" href="javascript:void()">Vampire Outcasts</a><br />
+						<hr size="1" width="50%" align="left" />
+						22 creatures
+					</td>
+					<td width="200">
+						1 <a onmouseover="ChangeBigCard(3, this)" keyName="name" keyValue="Bump_in_the_Night" onclick="autoCardWindow(this)" href="javascript:void()">Bump in the Night</a><br />
+						2 <a onmouseover="ChangeBigCard(3, this)" keyName="name" keyValue="Contagion_Clasp" onclick="autoCardWindow(this)" href="javascript:void()">Contagion Clasp</a><br />
+						2 <a onmouseover="ChangeBigCard(3, this)" keyName="name" keyValue="Curse_of_Stalked_Prey" onclick="autoCardWindow(this)" href="javascript:void()">Curse of Stalked Prey</a><br />
+						1 <a onmouseover="ChangeBigCard(3, this)" keyName="name" keyValue="Geistflame" onclick="autoCardWindow(this)" href="javascript:void()">Geistflame</a><br />
+						2 <a onmouseover="ChangeBigCard(3, this)" keyName="name" keyValue="Go_for_the_Throat" onclick="autoCardWindow(this)" href="javascript:void()">Go for the Throat</a><br />
+						2 <a onmouseover="ChangeBigCard(3, this)" keyName="name" keyValue="Spread_the_Sickness" onclick="autoCardWindow(this)" href="javascript:void()">Spread the Sickness</a><br />
+						2 <a onmouseover="ChangeBigCard(3, this)" keyName="name" keyValue="Vampiric_Fury" onclick="autoCardWindow(this)" href="javascript:void()">Vampiric Fury</a><br />
+						2 <a onmouseover="ChangeBigCard(3, this)" keyName="name" keyValue="Volt_Charge" onclick="autoCardWindow(this)" href="javascript:void()">Volt Charge</a><br />
+						<hr size="1" width="50%" align="left" />
+						14 other spells
+						<br /><br />
+						2 <a onmouseover="ChangeBigCard(3, this)" keyName="name" keyValue="Contagion_Engine" onclick="autoCardWindow(this)" href="javascript:void()">Contagion Engine</a><br />
+						2 <a onmouseover="ChangeBigCard(3, this)" keyName="name" keyValue="Crossway_Vampire" onclick="autoCardWindow(this)" href="javascript:void()">Crossway Vampire</a><br />
+						1 <a onmouseover="ChangeBigCard(3, this)" keyName="name" keyValue="Diabolic_Tutor" onclick="autoCardWindow(this)" href="javascript:void()">Diabolic Tutor</a><br />
+						4 <a onmouseover="ChangeBigCard(3, this)" keyName="name" keyValue="Dismember" onclick="autoCardWindow(this)" href="javascript:void()">Dismember</a><br />
+						2 <a onmouseover="ChangeBigCard(3, this)" keyName="name" keyValue="Doom_Blade" onclick="autoCardWindow(this)" href="javascript:void()">Doom Blade</a><br />
+						1 <a onmouseover="ChangeBigCard(3, this)" keyName="name" keyValue="Gruesome_Deformity" onclick="autoCardWindow(this)" href="javascript:void()">Gruesome Deformity</a><br />
+						1 <a onmouseover="ChangeBigCard(3, this)" keyName="name" keyValue="Sengir_Vampire" onclick="autoCardWindow(this)" href="javascript:void()">Sengir Vampire</a><br />
+						1 <a onmouseover="ChangeBigCard(3, this)" keyName="name" keyValue="Shock" onclick="autoCardWindow(this)" href="javascript:void()">Shock</a><br />
+						1 <a onmouseover="ChangeBigCard(3, this)" keyName="name" keyValue="Swiftfoot_Boots" onclick="autoCardWindow(this)" href="javascript:void()">Swiftfoot Boots</a><br />
+						<hr size="1" width="50%" align="left" />
+						15 sideboard cards
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td>
+			<table width="240" padding:5px;>
+				<td>
+					<tr>
+						<div id="bigcard_3">
+							<img src="http://Gatherer.wizards.com/Handlers/Image.ashx?size=small&amp;multiverseid=10100000&amp;type=card" />
+						</div>
+						<!-- Card: 223x310, Box:  235x325 -->
+					</tr>
+				</td>
+			</table>
+		</td>
+	</tr>
+	</table>
+
+<BR><BR>
+
+<BR>
+	<table frame="box" style="vertical-align:top; text-align: center; padding:5px; background-color:#dddddd;">
+	<tr>
+		<td colspan="2">
+			<B><big>How You Could Be So Heartless</big></B>
+			<BR>Standard Format - 60 Cards
+			<BR><BR>
+		</td>
+	</tr>
+	<tr>
+		<td style="vertical-align:top;">
+			<table style="vertical-align:top; padding:5px;">
+				<tr style="vertical-align:top; text-align: left;">
+					<td width="200">
+						23 <a onmouseover="ChangeBigCard(4, this)" keyName="name" keyValue="Swamp" onclick="autoCardWindow(this)" href="javascript:void()">Swamp</a><br />
+						<hr size="1" width="50%" align="left" />
+						23 lands
+						<br /><br />
+						1 <a onmouseover="ChangeBigCard(4, this)" keyName="name" keyValue="Blistergrub" onclick="autoCardWindow(this)" href="javascript:void()">Blistergrub</a><br />
+						1 <a onmouseover="ChangeBigCard(4, this)" keyName="name" keyValue="Bloodgift_Demon" onclick="autoCardWindow(this)" href="javascript:void()">Bloodgift Demon</a><br />
+						1 <a onmouseover="ChangeBigCard(4, this)" keyName="name" keyValue="Crumbling_Colossus" onclick="autoCardWindow(this)" href="javascript:void()">Crumbling Colossus</a><br />
+						2 <a onmouseover="ChangeBigCard(4, this)" keyName="name" keyValue="Falkenrath_Noble" onclick="autoCardWindow(this)" href="javascript:void()">Falkenrath Noble</a><br />
+						1 <a onmouseover="ChangeBigCard(4, this)" keyName="name" keyValue="Geistcatcher[s_Rig" onclick="autoCardWindow(this)" href="javascript:void()">Geistcatcher's Rig</a><br />
+						2 <a onmouseover="ChangeBigCard(4, this)" keyName="name" keyValue="Gravedigger" onclick="autoCardWindow(this)" href="javascript:void()">Gravedigger</a><br />
+						1 <a onmouseover="ChangeBigCard(4, this)" keyName="name" keyValue="Morkrut_Banshee" onclick="autoCardWindow(this)" href="javascript:void()">Morkrut Banshee</a><br />
+						4 <a onmouseover="ChangeBigCard(4, this)" keyName="name" keyValue="Peace_Strider" onclick="autoCardWindow(this)" href="javascript:void()">Peace Strider</a><br />
+						1 <a onmouseover="ChangeBigCard(4, this)" keyName="name" keyValue="Perilous_Myr" onclick="autoCardWindow(this)" href="javascript:void()">Perilous Myr</a><br />
+						1 <a onmouseover="ChangeBigCard(4, this)" keyName="name" keyValue="Sengir_Vampire" onclick="autoCardWindow(this)" href="javascript:void()">Sengir Vampire</a><br />
+						4 <a onmouseover="ChangeBigCard(4, this)" keyName="name" keyValue="Skinrender" onclick="autoCardWindow(this)" href="javascript:void()">Skinrender</a><br />
+						2 <a onmouseover="ChangeBigCard(4, this)" keyName="name" keyValue="Stromkirk_Patrol" onclick="autoCardWindow(this)" href="javascript:void()">Stromkirk Patrol</a><br />
+						<hr size="1" width="50%" align="left" />
+						21 creatures
+					</td>
+					<td width="200">
+						1 <a onmouseover="ChangeBigCard(4, this)" keyName="name" keyValue="Consume_Spirit" onclick="autoCardWindow(this)" href="javascript:void()">Consume Spirit</a><br />
+						1 <a onmouseover="ChangeBigCard(4, this)" keyName="name" keyValue="Dead_Weight" onclick="autoCardWindow(this)" href="javascript:void()">Dead Weight</a><br />
+						3 <a onmouseover="ChangeBigCard(4, this)" keyName="name" keyValue="Disentomb" onclick="autoCardWindow(this)" href="javascript:void()">Disentomb</a><br />
+						1 <a onmouseover="ChangeBigCard(4, this)" keyName="name" keyValue="Ghoulcaller[s_Chant" onclick="autoCardWindow(this)" href="javascript:void()">Ghoulcaller's Chant</a><br />
+						1 <a onmouseover="ChangeBigCard(4, this)" keyName="name" keyValue="Grasp_of_Darkness" onclick="autoCardWindow(this)" href="javascript:void()">Grasp of Darkness</a><br />
+						2 <a onmouseover="ChangeBigCard(4, this)" keyName="name" keyValue="Heartless_Summoning" onclick="autoCardWindow(this)" href="javascript:void()">Heartless Summoning</a><br />
+						1 <a onmouseover="ChangeBigCard(4, this)" keyName="name" keyValue="Hideous_Visage" onclick="autoCardWindow(this)" href="javascript:void()">Hideous Visage</a><br />
+						1 <a onmouseover="ChangeBigCard(4, this)" keyName="name" keyValue="Mimic_Vat" onclick="autoCardWindow(this)" href="javascript:void()">Mimic Vat</a><br />
+						1 <a onmouseover="ChangeBigCard(4, this)" keyName="name" keyValue="Skeletal_Grimace" onclick="autoCardWindow(this)" href="javascript:void()">Skeletal Grimace</a><br />
+						2 <a onmouseover="ChangeBigCard(4, this)" keyName="name" keyValue="Sorin[s_Thirst" onclick="autoCardWindow(this)" href="javascript:void()">Sorin's Thirst</a><br />
+						2 <a onmouseover="ChangeBigCard(4, this)" keyName="name" keyValue="Tribute_to_Hunger" onclick="autoCardWindow(this)" href="javascript:void()">Tribute to Hunger</a><br />
+						<hr size="1" width="50%" align="left" />
+						16 other spells
+						<br /><br />
+						2 <a onmouseover="ChangeBigCard(4, this)" keyName="name" keyValue="Contagion_Engine" onclick="autoCardWindow(this)" href="javascript:void()">Contagion Engine</a><br />
+						2 <a onmouseover="ChangeBigCard(4, this)" keyName="name" keyValue="Crossway_Vampire" onclick="autoCardWindow(this)" href="javascript:void()">Crossway Vampire</a><br />
+						1 <a onmouseover="ChangeBigCard(4, this)" keyName="name" keyValue="Diabolic_Tutor" onclick="autoCardWindow(this)" href="javascript:void()">Diabolic Tutor</a><br />
+						4 <a onmouseover="ChangeBigCard(4, this)" keyName="name" keyValue="Dismember" onclick="autoCardWindow(this)" href="javascript:void()">Dismember</a><br />
+						2 <a onmouseover="ChangeBigCard(4, this)" keyName="name" keyValue="Doom_Blade" onclick="autoCardWindow(this)" href="javascript:void()">Doom Blade</a><br />
+						1 <a onmouseover="ChangeBigCard(4, this)" keyName="name" keyValue="Gruesome_Deformity" onclick="autoCardWindow(this)" href="javascript:void()">Gruesome Deformity</a><br />
+						1 <a onmouseover="ChangeBigCard(4, this)" keyName="name" keyValue="Sengir_Vampire" onclick="autoCardWindow(this)" href="javascript:void()">Sengir Vampire</a><br />
+						1 <a onmouseover="ChangeBigCard(4, this)" keyName="name" keyValue="Shock" onclick="autoCardWindow(this)" href="javascript:void()">Shock</a><br />
+						1 <a onmouseover="ChangeBigCard(4, this)" keyName="name" keyValue="Swiftfoot_Boots" onclick="autoCardWindow(this)" href="javascript:void()">Swiftfoot Boots</a><br />
+						<hr size="1" width="50%" align="left" />
+						15 sideboard cards
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td>
+			<table width="240" padding:5px;>
+				<td>
+					<tr>
+						<div id="bigcard_4">
+							<img src="http://Gatherer.wizards.com/Handlers/Image.ashx?size=small&amp;multiverseid=10100000&amp;type=card" />
+						</div>
+						<!-- Card: 223x310, Box:  235x325 -->
+					</tr>
+				</td>
+			</table>
+		</td>
+	</tr>
+	</table>
+
+<BR><BR>
+
+
+<BR>
+	<table frame="box" style="vertical-align:top; text-align: center; padding:5px; background-color:#dddddd;">
+	<tr>
+		<td colspan="2">
+			<B><big>Vamproliferate</big></B>
+			<BR>Standard Format - 60 Cards
+			<BR><BR>
+		</td>
+	</tr>
+	<tr>
+		<td style="vertical-align:top;">
+			<table style="vertical-align:top; padding:5px;">
+				<tr style="vertical-align:top; text-align: left;">
+					<td width="200">
+						11 <a onmouseover="ChangeBigCard(2, this)" keyName="name" keyValue="Swamp" onclick="autoCardWindow(this)" href="javascript:void()">Swamp</a><br />
+						10 <a onmouseover="ChangeBigCard(2, this)" keyName="name" keyValue="Mountain" onclick="autoCardWindow(this)" href="javascript:void()">Mountain</a><br />
+						3 <a onmouseover="ChangeBigCard(2, this)" keyName="name" keyValue="Dragonskull_Summit" onclick="autoCardWindow(this)" href="javascript:void()">Dragonskull Summit</a><br />
+						<hr size="1" width="50%" align="left" />
+						24 lands
+						<br /><br />
+						2 <a onmouseover="ChangeBigCard(2, this)" keyName="name" keyValue="Bloodcrazed_Neonate" onclick="autoCardWindow(this)" href="javascript:void()">Bloodcrazed Neonate</a><br />
+						3 <a onmouseover="ChangeBigCard(2, this)" keyName="name" keyValue="Child_of_Night" onclick="autoCardWindow(this)" href="javascript:void()">Child of Night</a><br />
+						3 <a onmouseover="ChangeBigCard(2, this)" keyName="name" keyValue="Rakish_Heir" onclick="autoCardWindow(this)" href="javascript:void()">Rakish Heir</a><br />
+						3 <a onmouseover="ChangeBigCard(2, this)" keyName="name" keyValue="Vampire_Outcasts" onclick="autoCardWindow(this)" href="javascript:void()">Vampire Outcasts</a><br />
+						2 <a onmouseover="ChangeBigCard(2, this)" keyName="name" keyValue="Falkenrath_Marauders" onclick="autoCardWindow(this)" href="javascript:void()">Falkenrath Marauders</a><br />
+						2 <a onmouseover="ChangeBigCard(2, this)" keyName="name" keyValue="Bloodlord_of_Vaasgoth" onclick="autoCardWindow(this)" href="javascript:void()">Bloodlord of Vaasgoth</a><br />
+						3 <a onmouseover="ChangeBigCard(2, this)" keyName="name" keyValue="Sengir_Vampire" onclick="autoCardWindow(this)" href="javascript:void()">Sengir Vampire</a><br />
+						<hr size="1" width="50%" align="left" />
+						18 creatures
+					</td>
+					<td width="200">
+						1 <a onmouseover="ChangeBigCard(2, this)" keyName="name" keyValue="Shock" onclick="autoCardWindow(this)" href="javascript:void()">Shock</a><br />
+						1 <a onmouseover="ChangeBigCard(2, this)" keyName="name" keyValue="Geistflame" onclick="autoCardWindow(this)" href="javascript:void()">Geistflame</a><br />
+						1 <a onmouseover="ChangeBigCard(2, this)" keyName="name" keyValue="Bump_in_the_Night" onclick="autoCardWindow(this)" href="javascript:void()">Bump in the Night</a><br />
+						2 <a onmouseover="ChangeBigCard(2, this)" keyName="name" keyValue="Curse_of_Stalked_Prey" onclick="autoCardWindow(this)" href="javascript:void()">Curse of Stalked Prey</a><br />
+						2 <a onmouseover="ChangeBigCard(2, this)" keyName="name" keyValue="Doom_Blade" onclick="autoCardWindow(this)" href="javascript:void()">Doom Blade</a><br />
+						2 <a onmouseover="ChangeBigCard(2, this)" keyName="name" keyValue="Vampiric_Fury" onclick="autoCardWindow(this)" href="javascript:void()">Vampiric Fury</a><br />
+						1 <a onmouseover="ChangeBigCard(2, this)" keyName="name" keyValue="Swiftfoot_Boots" onclick="autoCardWindow(this)" href="javascript:void()">Swiftfoot Boots</a><br />
+						2 <a onmouseover="ChangeBigCard(2, this)" keyName="name" keyValue="Volt_Charge" onclick="autoCardWindow(this)" href="javascript:void()">Volt Charge</a><br />
+						1 <a onmouseover="ChangeBigCard(2, this)" keyName="name" keyValue="Brimstone_Volley" onclick="autoCardWindow(this)" href="javascript:void()">Brimstone Volley</a><br />
+						1 <a onmouseover="ChangeBigCard(2, this)" keyName="name" keyValue="Diabolic_Tutor" onclick="autoCardWindow(this)" href="javascript:void()">Diabolic Tutor</a><br />
+						2 <a onmouseover="ChangeBigCard(2, this)" keyName="name" keyValue="Spread_the_Sickness" onclick="autoCardWindow(this)" href="javascript:void()">Spread the Sickness</a><br />
+						2 <a onmouseover="ChangeBigCard(2, this)" keyName="name" keyValue="Contagion_Engine" onclick="autoCardWindow(this)" href="javascript:void()">Contagion Engine</a><br />
+						<hr size="1" width="50%" align="left" />
+						18 other spells
+						<br /><br />
+						2 <a onmouseover="ChangeBigCard(2, this)" keyName="name" keyValue="Go_for_the_Throat" onclick="autoCardWindow(this)" href="javascript:void()">Go for the Throat</a><br />
+						<hr size="1" width="50%" align="left" />
+						2 sideboard cards
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td>
+			<table width="240" padding:5px;>
+				<td>
+					<tr>
+						<div id="bigcard_2">
+							<img src="http://Gatherer.wizards.com/Handlers/Image.ashx?size=small&amp;multiverseid=10100000&amp;type=card" />
+						</div>
+						<!-- Card: 223x310, Box:  235x325 -->
+					</tr>
+				</td>
+			</table>
+		</td>
+	</tr>
+	</table>
+
+	
+	<!-- ***IN-LINE AND DECK LIST TEMPLATES***
+	<BR><BR><BR><BR>
+Testing in-line card preview:
+<a keyName="name" keyValue="Gutter_Grime" onmouseover="OpenTip(event, this)" onclick="autoCardWindow(this)" href="javascript:void()">Gutter Grime</a>
+<BR><BR>
+
+<BR>
+	<table frame="box" style="vertical-align:top; text-align: center; padding:5px; background-color:#dddddd;">
+	<tr>
+		<td colspan="2">
+			<B><big>Deck Name</big></B>
+			<BR>59 Cards
+		</td>
+	</tr>
+	<tr>
+		<td style="vertical-align:top;">
+			<table style="vertical-align:top; padding:5px;">
+				<tr style="vertical-align:top; text-align: left;">
+					<td width="200">
+						4 <a onmouseover="ChangeBigCard(1, this)" keyName="name" keyValue="Forest" onclick="autoCardWindow(this)" href="javascript:void()">Forest</a><br />
+						1 <a onmouseover="ChangeBigCard(1, this)" keyName="name" keyValue="Vampire_Outcasts" onclick="autoCardWindow(this)" href="javascript:void()">Vampire Outcasts</a><br />
+						2 <a onmouseover="ChangeBigCard(1, this)" keyName="name" keyValue="Krosan_Verge" onclick="autoCardWindow(this)" href="javascript:void()">Krosan Verge</a><br />
+						2 <a onmouseover="ChangeBigCard(1, this)" keyName="name" keyValue="Plains" onclick="autoCardWindow(this)" href="javascript:void()">Plains</a><br />
+						4 <a onmouseover="ChangeBigCard(1, this)" keyName="name" keyValue="Stirring_Wildwood" onclick="autoCardWindow(this)" href="javascript:void()">Stirring Wildwood</a><br />
+						4 <a onmouseover="ChangeBigCard(1, this)" keyName="name" keyValue="Temple_Garden" onclick="autoCardWindow(this)" href="javascript:void()">Temple Garden</a><br />
+						1 <a onmouseover="ChangeBigCard(1, this)" keyName="name" keyValue="Vitu-Ghazi,_the_City-Tree" onclick="autoCardWindow(this)" href="javascript:void()">Vitu-Ghazi, the City-Tree</a><br />
+						4 <a onmouseover="ChangeBigCard(1, this)" keyName="name" keyValue="Windswept_Heath" onclick="autoCardWindow(this)" href="javascript:void()">Windswept Heath</a><br />
+						<hr size="1" width="50%" align="left" />
+						22 lands
+						<br /><br />
+						1 <a onmouseover="ChangeBigCard(1, this)" keyName="name" keyValue="Mindbender_Spores" onclick="autoCardWindow(this)" href="javascript:void()">Mindbender Spores</a><br />
+						4 <a onmouseover="ChangeBigCard(1, this)" keyName="name" keyValue="Overgrown_Battlement" onclick="autoCardWindow(this)" href="javascript:void()">Overgrown Battlement</a><br />
+						3 <a onmouseover="ChangeBigCard(1, this)" keyName="name" keyValue="Plaguemaw_Beast" onclick="autoCardWindow(this)" href="javascript:void()">Plaguemaw Beast</a><br />
+						4 <a onmouseover="ChangeBigCard(1, this)" keyName="name" keyValue="Sakura-Tribe_Elder" onclick="autoCardWindow(this)" href="javascript:void()">Sakura-Tribe Elder</a><br />
+						4 <a onmouseover="ChangeBigCard(1, this)" keyName="name" keyValue="Wall_of_Blossoms" onclick="autoCardWindow(this)" href="javascript:void()">Wall of Blossoms</a><br />
+						4 <a onmouseover="ChangeBigCard(1, this)" keyName="name" keyValue="Wall_of_Mulch" onclick="autoCardWindow(this)" href="javascript:void()">Wall of Mulch</a><br />
+						3 <a onmouseover="ChangeBigCard(1, this)" keyName="name" keyValue="Wall_of_Omens" onclick="autoCardWindow(this)" href="javascript:void()">Wall of Omens</a><br />
+						<hr size="1" width="50%" align="left" />
+						23 creatures
+					</td>
+					<td width="200">
+						1 <a onmouseover="ChangeBigCard(1, this)" keyName="name" keyValue="Contagion_Clasp" onclick="autoCardWindow(this)" href="javascript:void()">Contagion Clasp</a><br />
+						4 <a onmouseover="ChangeBigCard(1, this)" keyName="name" keyValue="Gutter_Grime" onclick="autoCardWindow(this)" href="javascript:void()">Gutter Grime</a><br />
+						2 <a onmouseover="ChangeBigCard(1, this)" keyName="name" keyValue="Martyr[s_Bond" onclick="autoCardWindow(this)" href="javascript:void()">Martyr's Bond</a><br />
+						3 <a onmouseover="ChangeBigCard(1, this)" keyName="name" keyValue="Oblivion_Ring" onclick="autoCardWindow(this)" href="javascript:void()">Oblivion Ring</a><br />
+						4 <a onmouseover="ChangeBigCard(1, this)" keyName="name" keyValue="Rout" onclick="autoCardWindow(this)" href="javascript:void()">Rout</a><br />
+						<hr size="1" width="50%" align="left" />
+						14 other spells
+						<br /><br />
+						1 <a onmouseover="ChangeBigCard(1, this)" keyName="name" keyValue="Contagion_Clasp" onclick="autoCardWindow(this)" href="javascript:void()">Contagion Clasp</a><br />
+						4 <a onmouseover="ChangeBigCard(1, this)" keyName="name" keyValue="Gutter_Grime" onclick="autoCardWindow(this)" href="javascript:void()">Gutter Grime</a><br />
+						2 <a onmouseover="ChangeBigCard(1, this)" keyName="name" keyValue="Martyr[s_Bond" onclick="autoCardWindow(this)" href="javascript:void()">Martyr's Bond</a><br />
+						3 <a onmouseover="ChangeBigCard(1, this)" keyName="name" keyValue="Oblivion_Ring" onclick="autoCardWindow(this)" href="javascript:void()">Oblivion Ring</a><br />
+						4 <a onmouseover="ChangeBigCard(1, this)" keyName="name" keyValue="Rout" onclick="autoCardWindow(this)" href="javascript:void()">Rout</a><br />
+						<hr size="1" width="50%" align="left" />
+						14 sideboard cards
+					</td>
+				</tr>
+			</table>
+		</td>
+		<td>
+			<table width="240" padding:5px;>
+				<td>
+					<tr>
+						<div id="bigcard_1">
+							<img src="http://Gatherer.wizards.com/Handlers/Image.ashx?size=small&amp;multiverseid=10100000&amp;type=card" />
+						</div>
+						<!-- Card: 223x310, Box:  235x325
+					</tr>
+				</td>
+			</table>
+		</td>
+	</tr>
+	</table>
+-->
+
+</body>
+
+</html>
