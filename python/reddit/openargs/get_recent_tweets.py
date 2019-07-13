@@ -11,8 +11,7 @@ api = twitter.Api(consumer_key=twitter_consumer_key,
 twitter_user = api.VerifyCredentials()
 print("Running as user \"{0}\" (handle: {1})\n".format(twitter_user.name, twitter_user.screen_name))
 
-t = api.GetUserTimeline(screen_name="openargs", count=10)
+t = api.GetUserTimeline(screen_name="openargs", exclude_replies=True, count=30)
 tweets = [i.AsDict() for i in t]
 for t in tweets:
     print(t['id'], t['text'])
-
