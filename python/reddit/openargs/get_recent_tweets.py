@@ -1,7 +1,17 @@
 import sys
 sys.dont_write_bytecode = True
+from datetime import datetime, timedelta, timezone
+from email.utils import parsedate_tz
 import twitter
 from openargs_twitter_creds import *
+
+def to_datetime(datestring):
+    time_tuple = parsedate_tz(datestring.strip())
+    dt = datetime(*time_tuple[:6])
+    return dt - timedelta(seconds=time_tuple[-1])
+
+DESIRED_DATE_FORMAT = '%Y-%m-%d %H:%M:%S'
+#TWITTER_DATE_FORMAT = '%a %b %d %H:%M:%S +0000 %Y'
 
 api = twitter.Api(consumer_key=twitter_consumer_key,
                   consumer_secret=twitter_consumer_secret,
@@ -10,22 +20,29 @@ api = twitter.Api(consumer_key=twitter_consumer_key,
                   tweet_mode="extended")
 
 twitter_user = api.VerifyCredentials()
-print("Running as user \"{0}\" (handle: {1})\n".format(twitter_user.name, twitter_user.screen_name))
+print("Running as user \"{0}\" (handle: {1})\n".format(
+        twitter_user.name,
+        twitter_user.screen_name
+        )
+    )
 
 t = api.GetUserTimeline(screen_name="openargs", exclude_replies=True, count=30)
 tweets = [i.AsDict() for i in t]
 
 for t in tweets:
     if 'retweeted_status' in t.keys():
-        print(
-            t['created_at'] + "\n" + "RT by @" + t['user']['screen_name'] + " from @" + t['retweeted_status']['user']['screen_name'] + ", " + t['retweeted_status']['created_at'] + ":",
-            "\n",
-            t['retweeted_status']['full_text'],
-            "\n")
+        print("RT by @{0} ({1}) of @{2} ({3}):\n{4}\n\n".format(
+                t['user']['screen_name'],
+                datetime.strftime(to_datetime(t['created_at']), DESIRED_DATE_FORMAT + ' UTC'),
+                t['retweeted_status']['user']['screen_name'],
+                datetime.strftime(to_datetime(t['retweeted_status']['created_at']), DESIRED_DATE_FORMAT + ' UTC'),
+                t['retweeted_status']['full_text']
+                )
+            )
     else:
-        print(
-            t['created_at'] + "\n" + "Tweet from @" + t['user']['screen_name'] + ":",
-            "\n",
-            t['full_text'],
-            "\n")
-
+        print("Tweet from @{0} ({1}):\n{2}\n\n".format(
+                t['user']['screen_name'],
+                datetime.strftime(to_datetime(t['created_at']), DESIRED_DATE_FORMAT + ' UTC'),
+                t['full_text']
+                )
+            )
