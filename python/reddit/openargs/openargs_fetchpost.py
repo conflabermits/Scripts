@@ -13,7 +13,6 @@ import twitter
 from openargs_twitter_creds import *
 from openargs_reddit_creds import *
 
-
 parser = argparse.ArgumentParser(description='Grab tweets and retweets from a Twitter account and post to a given subreddit')
 parser.add_argument("-a",
                     "--account",
@@ -66,17 +65,20 @@ args = parser.parse_args()
 twitter_account = args.account
 #reddit_subreddit = args.subreddit
 
-if args.user is None and args.silent is True:
-    print("No output method defined. Exiting.\n")
-    sys.exit(2)
+#TWITTER_DATE_FORMAT = '%a %b %d %H:%M:%S +0000 %Y'
+DESIRED_DATE_FORMAT = '%Y-%m-%d %H:%M:%S'
+
+def check_output_method(user_arg, silent_arg):
+    if user_arg is None and silent_arg is True:
+        print("No output method defined. Exiting.\n")
+        sys.exit(2)
+
+check_output_method(args.user, args.silent)
 
 def convert_twitter_date_to_date_object(datestring):
     time_tuple = parsedate_tz(datestring.strip())
     dt = datetime(*time_tuple[:6])
     return dt - timedelta(seconds=time_tuple[-1])
-
-#TWITTER_DATE_FORMAT = '%a %b %d %H:%M:%S +0000 %Y'
-DESIRED_DATE_FORMAT = '%Y-%m-%d %H:%M:%S'
 
 def convert_utc_2_local(utc_time):
     utc = datetime.utcfromtimestamp(utc_time).strftime(DESIRED_DATE_FORMAT)
