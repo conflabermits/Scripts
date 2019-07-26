@@ -4,10 +4,8 @@ import sys
 sys.dont_write_bytecode = True
 import argparse
 import praw
-import calendar
 import textwrap
-#import re
-from datetime import datetime, timedelta, timezone
+from datetime import datetime, timedelta
 from email.utils import parsedate_tz
 import twitter
 from openargs_twitter_creds import *
@@ -83,17 +81,11 @@ def convert_twitter_date_to_date_object(datestring):
     dt = datetime(*time_tuple[:6])
     return dt - timedelta(seconds=time_tuple[-1])
 
-def convert_utc_2_local(utc_time):
-    utc = datetime.utcfromtimestamp(utc_time).strftime(DESIRED_DATE_FORMAT)
-    timestamp =  calendar.timegm((datetime.strptime(utc, DESIRED_DATE_FORMAT)).timetuple())
-    local = datetime.fromtimestamp(timestamp).strftime(DESIRED_DATE_FORMAT)
-    return(local)
-
 reddit = praw.Reddit(client_id=reddit_client_id,
                      client_secret=reddit_client_secret,
                      username=reddit_username,
                      password=reddit_password,
-                     user_agent='python:openargs_fetchposter:v0.1 (by /u/verylegalandcoolbot)')
+                     user_agent='python:openargs_fetchposter:v1.0 (by /u/conflabermits)')
 
 twitter_api = twitter.Api(consumer_key=twitter_consumer_key,
                   consumer_secret=twitter_consumer_secret,
