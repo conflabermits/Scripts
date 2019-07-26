@@ -24,13 +24,11 @@ parser.add_argument("-s",
                     help="Suppress terminal output",
                     action='store_true',
                     required=False)
-"""
 parser.add_argument("-r",
                     "--subreddit",
                     help="Post to specified subreddit",
                     type=str,
-                    required=True)
-"""
+                    required=False)
 parser.add_argument("-u",
                     "--user",
                     help="Send results to a user via Reddit message",
@@ -63,7 +61,9 @@ parser.add_argument("-e",
 args = parser.parse_args()
 
 twitter_account = args.account
-#reddit_subreddit = args.subreddit
+reddit_subreddit = args.subreddit
+twitter_pull_limit = args.limit * 2
+reddit_post_limit = args.limit
 
 #TWITTER_DATE_FORMAT = '%a %b %d %H:%M:%S +0000 %Y'
 DESIRED_DATE_FORMAT = '%Y-%m-%d %H:%M:%S'
@@ -90,7 +90,7 @@ reddit = praw.Reddit(client_id=reddit_client_id,
                      client_secret=reddit_client_secret,
                      username=reddit_username,
                      password=reddit_password,
-                     user_agent='openargs_fetchposter/0.1 by verylegalandcoolbot')
+                     user_agent='python:openargs_fetchposter:v0.1 (by /u/verylegalandcoolbot)')
 
 twitter_api = twitter.Api(consumer_key=twitter_consumer_key,
                   consumer_secret=twitter_consumer_secret,
@@ -103,7 +103,7 @@ twitter_user = twitter_api.VerifyCredentials()
 redditSeparator = "\n\n---\n\n"
 messageBody = "Generated at: {0}{1}".format(datetime.now().strftime(DESIRED_DATE_FORMAT), redditSeparator)
 
-tweet = twitter_api.GetUserTimeline(screen_name=twitter_account, exclude_replies=True, count=args.limit)
+tweet = twitter_api.GetUserTimeline(screen_name=twitter_account, exclude_replies=True, count=twitter_pull_limit)
 tweets = [i.AsDict() for i in tweet]
 
 for tweet in tweets:
@@ -138,3 +138,6 @@ if args.silent is False:
 if args.user is not None:
     print("Sending message to /u/{0}".format(args.user))
     reddit.redditor(args.user).message("Most recent tweets from @{0}".format(twitter_account), messageBody)
+
+if reddit_subreddit is not None:
+    reddit.subreddit(reddit_subreddit).submit('Most recent tweets from @{0}'.format(twitter_account), selftext=messageBody, send_replies=True)
