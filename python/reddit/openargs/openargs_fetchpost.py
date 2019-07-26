@@ -64,6 +64,9 @@ twitter_account = args.account
 reddit_subreddit = args.subreddit
 twitter_pull_limit = args.limit * 2
 reddit_post_limit = args.limit
+hour_limit = args.hours
+silent_arg = args.silent
+reddit_target_user = args.user
 
 #TWITTER_DATE_FORMAT = '%a %b %d %H:%M:%S +0000 %Y'
 DESIRED_DATE_FORMAT = '%Y-%m-%d %H:%M:%S'
@@ -73,7 +76,7 @@ def check_output_method(user_arg, silent_arg):
         print("No output method defined. Exiting.\n")
         sys.exit(2)
 
-check_output_method(args.user, args.silent)
+check_output_method(reddit_target_user, silent_arg)
 
 def convert_twitter_date_to_date_object(datestring):
     time_tuple = parsedate_tz(datestring.strip())
@@ -132,12 +135,12 @@ for tweet in tweets:
         )
         messageBody += redditSeparator
 
-if args.silent is False:
+if silent_arg is False:
     print(messageBody)
 
-if args.user is not None:
-    print("Sending message to /u/{0}".format(args.user))
-    reddit.redditor(args.user).message("Most recent tweets from @{0}".format(twitter_account), messageBody)
+if reddit_target_user is not None:
+    print("Sending message to /u/{0}".format(reddit_target_user))
+    reddit.redditor(reddit_target_user).message("Most recent tweets from @{0}".format(twitter_account), messageBody)
 
 if reddit_subreddit is not None:
     reddit.subreddit(reddit_subreddit).submit('Most recent tweets from @{0}'.format(twitter_account), selftext=messageBody, send_replies=True)
