@@ -129,6 +129,7 @@ if numTweets > 0:
     messageBody += 'For more information contact /u/conflabermits.'
 
     if silent_arg is False:
+        print(messageTitle)
         print(messageBody)
     
     if reddit_target_user is not None:
