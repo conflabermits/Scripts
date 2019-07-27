@@ -43,18 +43,6 @@ parser.add_argument("-H",
                     type=int,
                     default="24",
                     required=False)
-"""
-parser.add_argument("-i",
-                    "--include",
-                    help="Only include results matching <STRING>",
-                    type=str,
-                    required=False)
-parser.add_argument("-e",
-                    "--exclude",
-                    help="Exclude results matching <STRING>",
-                    type=str,
-                    required=False)
-"""
 
 args = parser.parse_args()
 
@@ -85,7 +73,7 @@ reddit = praw.Reddit(client_id=reddit_client_id,
                      client_secret=reddit_client_secret,
                      username=reddit_username,
                      password=reddit_password,
-                     user_agent='python:openargs_fetchposter:v1.0 (by /u/conflabermits)')
+                     user_agent='python3:openargs_fetchposter:v1.1.0 (by /u/conflabermits)')
 
 twitter_api = twitter.Api(consumer_key=twitter_consumer_key,
                   consumer_secret=twitter_consumer_secret,
@@ -96,43 +84,59 @@ twitter_api = twitter.Api(consumer_key=twitter_consumer_key,
 twitter_user = twitter_api.VerifyCredentials()
 
 redditSeparator = "\n\n---\n\n"
-messageBody = "Generated at: {0}{1}".format(datetime.now().strftime(DESIRED_DATE_FORMAT), redditSeparator)
+messageTitle = "Recent tweets from @{0}, {1}".format(twitter_account, (datetime.now() - timedelta(hours = hour_limit)).strftime('%A %B %d'))
+messageBody = "Generated at: {0} ET{1}".format(datetime.now().strftime(DESIRED_DATE_FORMAT), redditSeparator)
 
 tweet = twitter_api.GetUserTimeline(screen_name=twitter_account, exclude_replies=True, count=twitter_pull_limit)
 tweets = [i.AsDict() for i in tweet]
 
+numTweets = 0
+
 for tweet in tweets:
-    if 'retweeted_status' in tweet.keys():
-        messageBody += "RT by @{0} ({1}) of @{2} ({3}):\n\n".format(
-            tweet['user']['screen_name'],
-            datetime.strftime(convert_twitter_date_to_date_object(tweet['created_at']), DESIRED_DATE_FORMAT + ' UTC'),
-            tweet['retweeted_status']['user']['screen_name'],
-            datetime.strftime(convert_twitter_date_to_date_object(tweet['retweeted_status']['created_at']), DESIRED_DATE_FORMAT + ' UTC')
-        )
-        messageBody += textwrap.indent(
-            tweet['retweeted_status']['full_text'],
-            "> ",
-            lambda line: True
-        )
-        messageBody += redditSeparator
+    dateGateBool = datetime.now() - timedelta(hours = hour_limit) <= datetime.strptime(tweet['created_at'], '%a %b %d %H:%M:%S +0000 %Y')
+    if dateGateBool is True and numTweets < reddit_post_limit:
+        if 'retweeted_status' in tweet.keys():
+            messageBody += "RT by @{0} ({1}) of @{2} ({3}):\n\n".format(
+                tweet['user']['screen_name'],
+                datetime.strftime(convert_twitter_date_to_date_object(tweet['created_at']), DESIRED_DATE_FORMAT + ' UTC'),
+                tweet['retweeted_status']['user']['screen_name'],
+                datetime.strftime(convert_twitter_date_to_date_object(tweet['retweeted_status']['created_at']), DESIRED_DATE_FORMAT + ' UTC')
+            )
+            messageBody += textwrap.indent(
+                tweet['retweeted_status']['full_text'],
+                "> ",
+                lambda line: True
+            )
+            messageBody += redditSeparator
+        else:
+            messageBody += "Tweet from @{0} ({1}):\n\n".format(
+                tweet['user']['screen_name'],
+                datetime.strftime(convert_twitter_date_to_date_object(tweet['created_at']), DESIRED_DATE_FORMAT + ' UTC')
+            )
+            messageBody += textwrap.indent(
+                tweet['full_text'],
+                "> ",
+                lambda line: True
+            )
+            messageBody += redditSeparator
+        numTweets += 1
     else:
-        messageBody += "Tweet from @{0} ({1}):\n\n".format(
-            tweet['user']['screen_name'],
-            datetime.strftime(convert_twitter_date_to_date_object(tweet['created_at']), DESIRED_DATE_FORMAT + ' UTC')
-        )
-        messageBody += textwrap.indent(
-            tweet['full_text'],
-            "> ",
-            lambda line: True
-        )
-        messageBody += redditSeparator
+        break
 
-if silent_arg is False:
-    print(messageBody)
+if numTweets > 0:
+    messageBody += 'This is an automated message posted by the openargs_fetchposter (/u/verylegalandcoolbot).\n\n'
+    messageBody += 'Tweet times are in [UTC](http://www.timebie.com/std/utc.php).\n\n'
+    messageBody += 'For more information contact /u/conflabermits.'
 
-if reddit_target_user is not None:
-    print("Sending message to /u/{0}".format(reddit_target_user))
-    reddit.redditor(reddit_target_user).message("Most recent tweets from @{0}".format(twitter_account), messageBody)
-
-if reddit_subreddit is not None:
-    reddit.subreddit(reddit_subreddit).submit('Most recent tweets from @{0}'.format(twitter_account), selftext=messageBody, send_replies=True)
+    if silent_arg is False:
+        print(messageBody)
+    
+    if reddit_target_user is not None:
+        if silent_arg is False:
+            print("Sending message to /u/{0}".format(reddit_target_user))
+        reddit.redditor(reddit_target_user).message(messageTitle, messageBody)
+    
+    if reddit_subreddit is not None:
+        if silent_arg is False:
+            print("Posting message to /r/{0}".format(reddit_subreddit))
+        reddit.subreddit(reddit_subreddit).submit(messageTitle, selftext=messageBody, send_replies=True)
