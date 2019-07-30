@@ -57,12 +57,12 @@ reddit_target_user = args.user
 #TWITTER_DATE_FORMAT = '%a %b %d %H:%M:%S +0000 %Y'
 DESIRED_DATE_FORMAT = '%Y-%m-%d %H:%M:%S'
 
-def check_output_method(user_arg, silent_arg):
-    if user_arg is None and silent_arg is True:
+def check_output_method(user_arg, subreddit_arg, silent_arg):
+    if user_arg is None and subreddit_arg is None and silent_arg is True:
         print("No output method defined. Exiting.\n")
         sys.exit(2)
 
-check_output_method(reddit_target_user, silent_arg)
+check_output_method(reddit_target_user, reddit_subreddit, silent_arg)
 
 def convert_twitter_date_to_date_object(datestring):
     time_tuple = parsedate_tz(datestring.strip())
