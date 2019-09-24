@@ -1,5 +1,6 @@
 dbsDownload.sh
-.ipynb_checkpoints
+*.ipynb_checkpoints
 send_text_(with-creds)
-.idea
-.vscode
+*.idea
+*.vscode
+*.code-workspace
