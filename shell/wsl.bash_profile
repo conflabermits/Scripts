@@ -7,3 +7,4 @@ echo "Welcome `whoami` to `hostname`"
 echo
 
 alias cds='cd /local/git/Scripts'
+alias viprofile='vi ~/.bash_profile'
