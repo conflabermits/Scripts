@@ -32,8 +32,8 @@ HISTTIMEFORMAT='%F %T   '
 
 export PS1="\u@\h \$(smiley) \$(pwd) \$ "       # Set prompt to include user, host, current dir, and RC smiley
 export BLOCKSIZE=1k                             # Get consistent block output across "du", "df", and "ls -s"
-export CLICOLOR=1                               # Get colors in Terminal
-export LSCOLORS=ExFxBxDxCxegedabagacad          # Specify Terminal colors
+#export CLICOLOR=1                               # Get colors in Terminal
+#export LSCOLORS=ExFxBxDxCxegedabagacad          # Specify Terminal colors
 
 ffiles() { find . -type f; }
 
