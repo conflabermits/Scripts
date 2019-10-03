@@ -6,10 +6,17 @@ sudo mkdir -p /local/git/Scripts
 sudo chown -R chris:chris /local
 cd ~/.ssh
 ssh-keygen
-## ADD TO GITHUB ## cat id_rsa.pub
+cat id_rsa.pub
+echo "## ADD PUB KEY TO GITHUB: https://github.com/settings/keys ##"
+read -p "When finished, press Enter"
 git clone git@github.com:conflabermits/Scripts.git /local/git/Scripts/
 cd /local/git/Scripts/
-git config --global user.name "chris"
-## CHANGE BELL SETTING ## sudo vi /etc/inputrc
+echo "Enter git name then press Enter"
+read -e name
+git config --global user.name "${name}"
+echo "Enter email address then press Enter"
+read -e email
+git config --global user.email "${email}"
+sudo sed -i 's/# set bell-style none/set bell-style none/g' /etc/inputrc
 ln -s /local/git/Scripts/shell/wsl.bash_profile ~/.bash_profile
 ln -s /local/git/Scripts/shell/wsl.vimrc ~/.vimrc
