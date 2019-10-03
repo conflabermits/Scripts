@@ -19,6 +19,9 @@ alias ~='cd ~'                                  # Go to home dir
 alias ..='cd ../'                               # Go back 1 directory level
 alias rgrep='egrep -iR'
 
+# Green background highlighting on grep results
+export GREP_COLOR='1;42'
+
 # Enable history appending instead of overwriting.
 shopt -s histappend
 shopt -s cmdhist
