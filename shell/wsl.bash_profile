@@ -85,13 +85,15 @@ backup() {
 
 smiley() {
   RC="$?"
+  spRC="     $RC"
+  stRC="${spRC:(-3):3}"
   GOODCOLOR='\e[32m'
   BADCOLOR='\e[31m'
   ENDCOLOR='\e[0m'
   if [ "${RC}" == 0 ] ; then
-    echo -e "\001${GOODCOLOR}\002:)\001${ENDCOLOR}\002"
+    echo -e "\001${GOODCOLOR}\002:)   0\001${ENDCOLOR}\002"
   else
-    echo -e "\001${BADCOLOR}\002:( ${RC}\001${ENDCOLOR}\002"
+    echo -e "\001${BADCOLOR}\002:( ${stRC}\001${ENDCOLOR}\002"
   fi
 }
 
