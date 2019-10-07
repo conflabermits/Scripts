@@ -4,6 +4,8 @@ A container meant to avoid [some of] the frustration of troubleshooting network 
 
 ## Requirements
 
+To be clear, these are requirements for the ***CONTAINER*** to have, not the system running it.
+
 * MSSQL and mysql CLI clients
 * Net tools (ping, nslookup, dig, etc.)
 * Editors (vim, emacs, nano?)
@@ -55,6 +57,9 @@ A container meant to avoid [some of] the frustration of troubleshooting network 
 
 ### mysql info
 
+Just some lazy pasting until I get this into a mysql-specific README doc inside the container.
+
+```
 The syntax is as follows for both MariaDB and MySQL client:
 
 mysql -u user -p -e 'Your SQL Query Here' database-name
@@ -68,7 +73,9 @@ Where,
 -u : Specify mysql database user name
 -p : Prompt for password
 -e : Execute sql query
+
 database : Specify database name
 
 https://www.cyberciti.biz/faq/run-sql-query-directly-on-the-command-line/
+```
 
