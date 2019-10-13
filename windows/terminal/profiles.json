@@ -16,7 +16,7 @@
             "fontFace": "Consolas",
             "fontSize": 11,
             "colorScheme": "One Half Dark",
-            "startingDirectory": "/home/chris",
+            "startingDirectory": "//wsl$/Ubuntu/home/chris",
             "hidden": false
         },
         {
