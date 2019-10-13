@@ -1,0 +1,66 @@
+
+// To view the default settings, hold "alt" while clicking on the "Settings" button.
+// For documentation on these settings, see: https://aka.ms/terminal-documentation
+
+{
+    "$schema": "https://aka.ms/terminal-profiles-schema",
+
+    "defaultProfile": "{REPLACE WITH WSL UBUNTU GUID}",
+
+    "profiles":
+    [
+        {
+            "guid": "{REPLACE WITH WSL UBUNTU GUID}",
+            "name": "WSL Ubuntu",
+            "source": "Windows.Terminal.Wsl",
+            "fontFace": "Consolas",
+            "fontSize": 11,
+            "colorScheme": "One Half Dark",
+            "startingDirectory": "/home/chris",
+            "hidden": false
+        },
+        {
+            // Make changes here to the powershell.exe profile
+            "guid": "{REPLACE WITH POWERSHELL GUID}",
+            "name": "Windows PowerShell",
+            "commandline": "powershell.exe",
+            "fontFace": "Consolas",
+            "fontSize": 11,
+            "colorScheme": "Solarized Dark",
+            "hidden": false
+        },
+        {
+            // Make changes here to the cmd.exe profile
+            "guid": "{REPLACE WITH CMD GUID}",
+            "name": "cmd",
+            "commandline": "cmd.exe",
+            "fontFace": "Consolas",
+            "fontSize": 11,
+            "colorScheme": "Campbell",
+            "hidden": false
+        },
+        {
+            "guid": "{REPLACE WITH AZURE CLOUD SHELL GUID}",
+            "hidden": true,
+            "name": "Azure Cloud Shell",
+            "source": "Windows.Terminal.Azure"
+        }
+    ],
+
+    // Add custom color schemes to this array
+    "schemes": [],
+
+    // Add any keybinding overrides to this array.
+    // To unbind a default keybinding, set the command to "unbound"
+    "keybindings": [
+        {
+            "command": "duplicateTab",
+            "keys": [
+                "ctrl+alt+u"
+            ]
+        }
+    ],
+
+    "initialCols": 180,
+    "initialRows": 70
+}
