@@ -6,12 +6,13 @@
 
 * What is a file
 * What is a directory
-* What is the root folder on Windows, OSX, and Linux (W/O/L)
-* How other volumes are mounted on W/O/L
-* Windows uses backslashes (\) while OSX and Linux use forward slashes (/)
+* What is the root folder on Windows, OSX, and Linux
+* How other volumes are mounted on Windows, OSX, and Linux
+* Windows uses backslashes (\\) while OSX and Linux use forward slashes (/)
 * Absolute path vs relative path
 * "*" refers to current working directory
 * "**" refers to the parent directory of the current working directory
+* Plaintext vs binary files
 
 ### Using the OS module
 
@@ -111,16 +112,174 @@ Dir name vs base name:
     os.path.basename(testfile)
     'testfile.txt'
 
-* `os.path.split()` will split a full path into a tuple with the dirname and basenames as its two values.
+`os.path.split()` will split a full path into a tuple with the dirname and basenames as its two values.
 
-        calcFilePath = 'C:\\Windows\\System32\\calc.exe'
-        os.path.split(calcFilePath)
-        ('C:\\Windows\\System32', 'calc.exe')
+    calcFilePath = 'C:\\Windows\\System32\\calc.exe'
+    os.path.split(calcFilePath)
+    ('C:\\Windows\\System32', 'calc.exe')
 
-* If you want to split a path into a list of its successive dirnames/basenames, use the split() string method.
+If you want to split a path into a list of its successive dirnames/basenames, use the split() string method.
 
-        calcFilePath = 'C:\\Windows\\System32\\calc.exe'
-        calcFilePath.split(os.path.sep)
-        ['C:', 'Windows', 'System32', 'calc.exe']
+    calcFilePath = 'C:\\Windows\\System32\\calc.exe'
+    calcFilePath.split(os.path.sep)
+    ['C:', 'Windows', 'System32', 'calc.exe']
 
-## LEAVING OFF ON "FINDING FILE SIZES AND FOLDER CONTENTS" SECTION
+Examples for getsize, listdir, etc.
+
+    os.getcwd()
+
+    os.path.getsize('notes.md')
+    4100
+
+    os.path.getsize('testdir')
+    4096
+
+    os.listdir()
+    ['notes.md', 'testdir', 'testfile.txt']
+
+    os.listdir('.')
+    ['notes.md', 'testdir', 'testfile.txt']
+
+    os.listdir('./')
+    ['notes.md', 'testdir', 'testfile.txt']
+
+    os.listdir('../')
+    ['chapter8']
+
+    totalSize = 0
+    for filename in os.listdir():
+        totalSize = totalSize + os.path.getsize(filename)
+    print(totalSize)
+
+Other useful methods:
+
+* Calling `os.path.exists(path)` will return True if the file or folder referred to in the argument exists and will return False if it does not exist.
+* Calling `os.path.isfile(path)` will return True if the path argument exists and is a file and will return False otherwise.
+* Calling `os.path.isdir(path)` will return True if the path argument exists and is a folder and will return False otherwise.
+
+### Manipulating files
+
+There are three steps to reading or writing files in Python.
+
+1. Call the `open()` function to return a `File` object.
+    * `open()` will take a second argument to specify which mode to open the file with:
+        * `'r'`: readonly (default mode; no write)
+        * `'w'`: write (overwrites existing file; creates new file if needed)
+        * `'a'`: append (writes without overwriting; creates new file if needed)
+        * `'x'`: create (no write, only create)
+1. Call the `read()` or `write()` method on the `File` object.
+1. Close the file by calling the `close()` method on the `File` object.
+
+Sonnet example:
+
+    sonnetFile = open('sonnet29.txt')
+
+    sonnetFile.readlines()
+    ["When, in disgrace with fortune and men's eyes,\n", 'I all alone beweep my outcast state,\n', 'And trouble deaf heaven with my bootless cries,\n', 'And look upon myself and curse my fate,\n']
+
+    sonnetFile.close()
+
+    sonnetFile.readlines()
+    Traceback (most recent call last):
+      File "<stdin>", line 1, in <module>
+    ValueError: I/O operation on closed file.
+
+#### Reading vs writing vs appending
+
+Reading
+
+    testfile = open('testfile.txt', 'r')
+
+    testfile.readlines()
+    ['test text\n']
+
+    testfile.close()
+
+Writing
+
+    testfile = open('testfile.txt', 'w')
+
+    testfile.readlines()
+    Traceback (most recent call last):
+      File "<stdin>", line 1, in <module>
+    io.UnsupportedOperation: not readable
+
+    testfile.close()
+
+Creating
+
+    testfile = open('testfile.txt', 'x')
+    Traceback (most recent call last):
+      File "<stdin>", line 1, in <module>
+    FileExistsError: [Errno 17] File exists: 'testfile.txt'
+
+Write + read
+
+    testfile = open('testfile.txt', 'w+')
+
+    testfile.readlines()
+    []
+
+    testfile.write('First line')
+    10
+
+    testfile.write('Second line')
+    11
+
+    testfile.readlines()
+    []
+
+    testfile.close()
+
+    testfile = open('testfile.txt', 'r')
+
+    testfile.readlines()
+    ['First lineSecond line']
+
+    testfile.close()
+
+Append + read
+
+    testfile = open('testfile.txt', 'a+')
+
+    testfile.readlines()
+    []
+
+    testfile.write('Another line\n')
+    13
+
+    testfile.readlines()
+    []
+
+    testfile.close()
+
+    testfile = open('testfile.txt', 'r')
+
+    testfile.readlines()
+    ['First lineSecond lineAnother line\n']
+
+    testfile.close()
+
+Append without read
+
+    testfile = open('testfile.txt', 'a')
+
+    testfile.readlines()
+    Traceback (most recent call last):
+      File "<stdin>", line 1, in <module>
+    io.UnsupportedOperation: not readable
+
+    testfile.write('Last line\n')
+    10
+
+    testfile.close()
+
+    testfile = open('testfile.txt', 'r')
+
+    testfile.readlines()
+    ['First lineSecond lineAnother line\n', 'Last line\n']
+
+    testfile.close()
+
+# LEFT OFF AT: Saving Variables with the shelve Module
+# REMAINING: Saving Variables with the pprint.pformat() Function
