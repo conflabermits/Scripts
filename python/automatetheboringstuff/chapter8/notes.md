@@ -41,6 +41,8 @@ OK, cool... but how do I get the root folder ("C:\" or "/") in the mix? [STACK O
 > 
 > Windows: `C:\python\bin`
 
+Here's me making a full path to my python3 binary:
+
     os.path.abspath(os.path.join(os.sep, 'usr', 'bin', 'python3'))
     
     '/usr/bin/python3'
@@ -59,17 +61,17 @@ More os module stuff:
         os.makedirs('C:\\local')
         os.makedirs('C:\\local\\temp\\20191121')
 
-* Calling os.path.abspath(path) will return a string of the absolute path of the argument. This is an easy way to convert a relative path into an absolute one.
+* Calling `os.path.abspath(path)` will return a string of the absolute path of the argument. This is an easy way to convert a relative path into an absolute one.
 
         os.path.abspath('.')
         os.path.abspath('.\\Scripts')
 
-* Calling os.path.isabs(path) will return True if the argument is an absolute path and False if it is a relative path.
+* Calling `os.path.isabs(path)` will return True if the argument is an absolute path and False if it is a relative path.
 
         os.path.isabs('.')
         os.path.isabs(os.path.abspath('.'))
 
-* Calling os.path.relpath(path, start) will return a string of a relative path from the start path to path. If start is not provided, the current working directory is used as the start path.
+* Calling `os.path.relpath(path, start)` will return a string of a relative path from the start path to path. If start is not provided, the current working directory is used as the start path.
 
         os.getcwd()
         '/home/chris/Scripts/python/automatetheboringstuff/chapter8'
@@ -118,7 +120,7 @@ Dir name vs base name:
     os.path.split(calcFilePath)
     ('C:\\Windows\\System32', 'calc.exe')
 
-If you want to split a path into a list of its successive dirnames/basenames, use the split() string method.
+If you want to split a path into a list of its successive dirnames/basenames, use the `split()` string method.
 
     calcFilePath = 'C:\\Windows\\System32\\calc.exe'
     calcFilePath.split(os.path.sep)
@@ -153,9 +155,9 @@ Examples for getsize, listdir, etc.
 
 Other useful methods:
 
-* Calling `os.path.exists(path)` will return True if the file or folder referred to in the argument exists and will return False if it does not exist.
-* Calling `os.path.isfile(path)` will return True if the path argument exists and is a file and will return False otherwise.
-* Calling `os.path.isdir(path)` will return True if the path argument exists and is a folder and will return False otherwise.
+* Calling `os.path.exists(path)` will return `True` if the file or folder referred to in the argument exists and will return `False` if it does not exist.
+* Calling `os.path.isfile(path)` will return `True` if the path argument exists and is a file and will return `False` otherwise.
+* Calling `os.path.isdir(path)` will return `True` if the path argument exists and is a folder and will return `False` otherwise.
 
 ### Manipulating files
 
@@ -184,7 +186,7 @@ Sonnet example:
       File "<stdin>", line 1, in <module>
     ValueError: I/O operation on closed file.
 
-#### Reading vs writing vs appending
+### Reading vs writing vs appending
 
 Reading
 
@@ -281,5 +283,92 @@ Append without read
 
     testfile.close()
 
-# LEFT OFF AT: Saving Variables with the shelve Module
-# REMAINING: Saving Variables with the pprint.pformat() Function
+### Saving Variables with the shelve Module
+
+> You can save variables in your Python programs to binary shelf files using the shelve module. This way, your program can restore data to variables from the hard drive. The shelve module will let you add Save and Open features to your program.
+
+The below commands create a shelf file (mydata), stores a list called 'cats' to it, then closes it.
+
+    import shelve
+    shelfFile = shelve.open('mydata')
+    cats = ['Zophie', 'Pooka', 'Simon']
+    shelfFile['cats'] = cats
+    shelfFile.close()
+
+To reopen, use that file, and recreate the 'cats' variable, do this:
+
+
+    import shelve
+    shelfFile = shelve.open('mydata')
+
+    print(cats)
+    Traceback (most recent call last):
+      File "<stdin>", line 1, in <module>
+    NameError: name 'cats' is not defined
+
+    type(shelfFile)
+    <class 'shelve.DbfilenameShelf'>
+
+    shelfFile['cats']
+    ['Zophie', 'Pooka', 'Simon']
+
+    cats = shelfFile['cats']
+    
+    print(cats)
+    ['Zophie', 'Pooka', 'Simon']
+
+    shelfFile.close()
+
+Shelf files can read and write to the file once opened, no need to specify the mode.
+
+Shelf files have `keys` and `values` methods that return "list-like" values. Pass them to `list()` to get useful output.
+
+    
+    shelfFile = shelve.open('mydata')
+    
+    list(shelfFile.keys())
+    ['cats']
+    
+    list(shelfFile.values())
+    [['Zophie', 'Pooka', 'Simon']]
+    
+    shelfFile.close()
+
+### Saving Variables with the pprint.pformat() Function
+
+> Recall from Pretty Printing that the pprint.pprint() function will “pretty print” the contents of a list or dictionary to the screen, while the pprint.pformat() function will return this same text as a string instead of printing it. Not only is this string formatted to be easy to read, but **it is also syntactically correct Python code**.
+
+Basically, we can use `pprint.pformat()` with file operations to write variables to files to be imported into other things later.
+
+Create first:
+    
+    import pprint
+    
+    cats = [{'name': 'Zophie', 'desc': 'chubby'}, {'name': 'Pooka', 'desc': 'fluffy'}]
+    
+    pprint.pformat(cats)
+    "[{'desc': 'chubby', 'name': 'Zophie'}, {'desc': 'fluffy', 'name': 'Pooka'}]"
+    
+    fileObj = open('myCats.py', 'w')
+    
+    fileObj.write('cats = ' + pprint.pformat(cats) + '\n')
+    83
+    
+    fileObj.close()
+
+Use later:
+    
+    import myCats
+    
+    myCats.cats
+    [{'name': 'Zophie', 'desc': 'chubby'}, {'name': 'Pooka', 'desc': 'fluffy'}]
+    
+    myCats.cats[0]
+    {'name': 'Zophie', 'desc': 'chubby'}
+    
+    myCats.cats[0]['name']
+    'Zophie'
+
+> The benefit of creating a .py file (as opposed to saving variables with the shelve module) is that because it is a text file, the contents of the file can be read and modified by anyone with a simple text editor. For most applications, however, saving data using the shelve module is the preferred way to save variables to a file.
+
+> Only basic data types such as integers, floats, strings, lists, and dictionaries can be written to a file as simple text. File objects, for example, cannot be encoded as text.
