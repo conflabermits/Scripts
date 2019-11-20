@@ -6,6 +6,8 @@ clear
 echo "Welcome `whoami` to `hostname`"
 echo
 
+export PROFILE="/home/chris/.bash_profile"
+
 # No pycache trash
 export PYTHONDONTWRITEBYTECODE=1
 alias pytest='pytest -p no:cacheprovider'
