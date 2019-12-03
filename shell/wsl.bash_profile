@@ -86,6 +86,30 @@ backup() {
   echo
 }
 
+up () {
+    if [ -z $1 ]; then
+      COUNT=1
+    else
+      if [ $1 -ge 0 2>/dev/null ]; then
+        if [ $1 -le $(grep -o '/' <<<$PWD | wc -l) 2>/dev/null ]; then
+          COUNT=$1
+        else
+          echo "I'm sorry $USER, I can't do that"
+          return
+        fi
+      else
+        echo "up [integer]"
+        return
+      fi
+    fi
+
+    for ((i=1;i<=$COUNT;i++)); do
+      builtin cd ..
+    done
+
+    ll
+}
+
 smiley() {
   RC="$?"
   spRC="     $RC"
@@ -113,4 +137,9 @@ how() {
     less /local/git/Scripts/how/${1}.how
   fi
 }
+
+## WSL: Start ssh if not started
+if [ $(ps -ef | grep "/usr/sbin/sshd" | grep -v grep | wc -l) == "0" ] ; then
+  sudo /etc/init.d/ssh start
+fi
 
