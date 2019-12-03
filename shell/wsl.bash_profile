@@ -13,6 +13,7 @@ export PYTHONDONTWRITEBYTECODE=1
 alias pytest='pytest -p no:cacheprovider'
 
 alias cds='cd /local/git/Scripts && echo && git remote update && git status && echo'
+alias cdgit='cd /local/git/Scripts && echo && git remote update && git status && echo'
 alias viprofile='vi ~/.bash_profile'
 alias ll='ls -aGhlp'                            # List all, colors, size suffixes, long, slashes after dirs
 alias cat='cat -v'                              # Always output nonprinting characters
