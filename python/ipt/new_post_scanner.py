@@ -35,9 +35,6 @@ for i in range(0,50):
     item_time = item_times[i].next.split()[1]
     if item_time in time_range_list:
         results.append((item_name, item_time))
-    #results.append((item_names[i].next, item_times[i].next.split()[1]))
-    #results.append((item_names[i].next, ' '.join(item_times[i].next.split()[0:3])))
-    #results.append((item_names[i].next, item_times[i].next))
 
 if len(results) > 0:
     print(results)
