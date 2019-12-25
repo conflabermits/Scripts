@@ -32,7 +32,10 @@ item_times = soup.find_all('div', attrs={'class': site_item_times_class})
 results = list()
 for i in range(0,50):
     item_name = item_names[i].next
-    item_time = item_times[i].next.split()[1]
+    if item_times[i].next.split()[1] == '|':
+        item_time = item_times[i].next.split()[3]
+    else:
+        item_time = item_times[i].next.split()[1]
     if item_time in time_range_list:
         results.append((item_name, item_time))
 
