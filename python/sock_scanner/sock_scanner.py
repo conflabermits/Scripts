@@ -15,9 +15,10 @@ page = requests.get('https://www.nyandcompany.com/search/?Dy=1&Nty=1&Ntp=1&Ntt={
 soup = BeautifulSoup(page.content, 'html.parser')
 
 if soup.find_all(attrs={"class": "resultFound"}):
-    print("Results found!")
-    print(soup.find_all(attrs={"class": "resultFound"}))
+    soup2 = BeautifulSoup(str(soup.find(id="filteredRecCount")), 'html.parser')
+    num_results = soup2.get_text()
+    print('{0} results found!'.format(num_results))
 else:
-    print("No results found")
+    print("No results found.")
 
 
