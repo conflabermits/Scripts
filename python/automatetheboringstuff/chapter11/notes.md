@@ -143,3 +143,14 @@ https://github.com/conflabermits/Scripts/blob/master/python/pokemon/pokedex_list
 > The selenium module lets Python directly control the browser by programmatically clicking links and filling in login information
 
 I wasn't able to test any of this. Also, the chapter explains all of this better than I ever could. Go read the chapter if you're interested in this.
+
+Or if you continued to this paragraph thinking "screw that, I'm reading these notes so I *DON'T* have to read the chapter", here's a quick summary:
+
+* selenium connects through a webdriver to a browser and sends signals like clicks and keystrokes to the page in the browser.
+* selenium can allow you to programmatically access more websites than the requests module because the user traffic looks more realistic since it's coming through a browser.
+* Some websites, like ticket vending sites, are still able to track and block traffic coming from selenium-controlled browsers. You definitely shouldn't try messing with TicketMaster. That would be bad, because TicketMaster is such a good company. So don't do that. Definitely.
+* selenium sounds cool once it's set up, but getting selenium, the webdriver, and the browser to all play nicely can be a challenge.
+
+## Additional resources
+
+* https://towardsdatascience.com/web-scraping-101-in-python-35f8653b1c97
