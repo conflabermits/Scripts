@@ -138,6 +138,15 @@ how() {
   fi
 }
 
+psgrep() {
+  if [ -z $1 ]; then
+    echo "USAGE: psgrep \"<string>\""
+    echo "COMMAND: ps -ef | egrep -i \"\${1}\" | grep -v grep"
+  else
+    ps -ef | egrep -i "${1}" | grep -v grep
+  fi
+}
+
 ## WSL: Start ssh if not started
 if [ $(ps -ef | grep "/usr/sbin/sshd" | grep -v grep | wc -l) == "0" ] ; then
   sudo /etc/init.d/ssh start
