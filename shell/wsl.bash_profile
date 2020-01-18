@@ -7,13 +7,14 @@ echo "Welcome `whoami` to `hostname`"
 echo
 
 export PROFILE="/home/chris/.bash_profile"
+export MYGIT="/local/git/Scripts"
 
 # No pycache trash
 export PYTHONDONTWRITEBYTECODE=1
 alias pytest='pytest -p no:cacheprovider'
 
-alias cds='cd /local/git/Scripts && echo && git remote update && git status && echo'
-alias cdgit='cd /local/git/Scripts && echo && git remote update && git status && echo'
+alias cds='cd $MYGIT && echo && git remote update && git status && echo'
+alias cdgit='cd $MYGIT && echo && git remote update && git status && echo'
 alias viprofile='vi ~/.bash_profile'
 alias ll='ls -aGhlp'                            # List all, colors, size suffixes, long, slashes after dirs
 alias cat='cat -v'                              # Always output nonprinting characters
@@ -47,8 +48,6 @@ mkcd() { mkdir -p "$1" && cd "$1"; }            # Makes new Dir and jumps inside
 cd() { builtin cd "$@" && ll; }                 # Run ll after changing dir
 
 CD() { builtin cd "$@"; }                       # Force dir change to NOT run ll (with the power of ALL CAPS!)
-
-psgrep() { ps -ef | egrep -i "${1}" | grep -v grep; }
 
 curly() {
   if [ -z "$1" ] ; then
@@ -132,9 +131,14 @@ tempme() {
 how() {
   if [ -z $1 ]; then
     echo "USAGE: how <thing>"
-    echo -e "EXAMPLES:\n\thow docker\n\thow git\n"
+    echo -e "EXAMPLES:\n\thow docker\n\thow git"
+    echo "AVAILABLE HOW FILES:"
+    for file in $(ls -1 $MYGIT/how/ | awk -F".how" '{print $1}')
+    do
+      echo -e "\t${file}\n"
+    done
   else
-    less /local/git/Scripts/how/${1}.how
+    less $MYGIT/how/${1}.how
   fi
 }
 
