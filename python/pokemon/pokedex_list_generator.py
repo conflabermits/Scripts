@@ -34,13 +34,12 @@ except Exception as exc:
 soup = BeautifulSoup(page.content, 'html.parser')
 pokemon_infocards = soup.find_all('div', attrs={"class": "infocard"})
 
-for i in range(0,len(pokemon_infocards)):
-    soupi = BeautifulSoup(str(pokemon_infocards[i]), 'html.parser')
-    poketext = soupi.get_text().split()
+for i, infocard in enumerate(pokemon_infocards):
+    infocard_soup = BeautifulSoup(str(infocard), 'html.parser')
+    poketext = infocard_soup.get_text().split()
     if len(poketext[2:]) > 1:
         poketype = '{0},{1}'.format(poketext[2], poketext[-1])
     else:
         poketype = poketext[2]
     print('{0},{1},{2}'.format(poketext[0], poketext[1], poketype))
-    #print('{0}: {1}, {2}'.format(poketext[0], poketext[1], poketype))
 
