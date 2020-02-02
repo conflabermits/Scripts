@@ -22,6 +22,7 @@ alias mkdir='mkdir -p'                          # Create multiple dirs when give
 alias ~='cd ~'                                  # Go to home dir
 alias ..='cd ../'                               # Go back 1 directory level
 alias rgrep='egrep -iR'
+alias myrsync='time rsync -rtv --progress --stats'
 
 # Green background highlighting on grep results
 export GREP_COLOR='1;42'
