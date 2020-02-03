@@ -9,6 +9,7 @@
 
     "profiles":
     [
+            // WSL profile
         {
             "guid": "{REPLACE WITH WSL UBUNTU GUID}",
             "name": "WSL Ubuntu",
@@ -17,10 +18,27 @@
             "fontSize": 11,
             "colorScheme": "One Half Dark",
             "startingDirectory": "//wsl$/Ubuntu/home/chris",
+            "suppressApplicationTitle": true,
             "hidden": false
         },
         {
-            // Make changes here to the powershell.exe profile
+            // SSH profile
+            "closeOnExit": true,
+            "commandline": "ssh.exe <USERNAME>@<IPADDRESS>",
+            "guid": "{REPLACE WITH SSH GUID}",
+            "historySize": 9001,
+            "icon": "ms-appx:///ProfileIcons/{REPLACE WITH SOME GUID}.png",
+            "startingDirectory": "%USERPROFILE%",
+            "name": "<SERVERNAME> SSH",
+            "fontFace": "Consolas",
+            "fontSize": 11,
+            "colorScheme": "One Half Dark",
+            "tabTitle": "<SERVERNAME> SSH",
+            "suppressApplicationTitle": true,
+            "hidden": false
+        },
+        {
+            // powershell.exe profile
             "guid": "{REPLACE WITH POWERSHELL GUID}",
             "name": "Windows PowerShell",
             "commandline": "powershell.exe",
@@ -30,7 +48,7 @@
             "hidden": false
         },
         {
-            // Make changes here to the cmd.exe profile
+            // cmd.exe profile
             "guid": "{REPLACE WITH CMD GUID}",
             "name": "cmd",
             "commandline": "cmd.exe",
