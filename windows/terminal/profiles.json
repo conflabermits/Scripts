@@ -76,6 +76,12 @@
             "keys": [
                 "ctrl+alt+u"
             ]
+        },
+        {
+            "command": "closeTab",
+            "keys": [
+                "ctrl+w"
+            ]
         }
     ],
 
