@@ -8,6 +8,7 @@ echo
 
 export PROFILE="/home/chris/.bash_profile"
 export MYGIT="/local/git/Scripts"
+export SCREENDIR="/home/chris/.screen"
 
 # No pycache trash
 export PYTHONDONTWRITEBYTECODE=1
@@ -149,6 +150,21 @@ psgrep() {
     echo "COMMAND: ps -ef | egrep -i \"\${1}\" | grep -v grep"
   else
     ps -ef | egrep -i "${1}" | grep -v grep
+  fi
+}
+
+autobackup() {
+  if [ ! -d "/mnt/$1" ] || [ -z $1 ]; then
+    echo "USAGE: autobackup <driveletter>"
+    echo "AVAILABLE DRIVE LETTERS FOR BACKING UP:"
+    for drive in $(ls -1 /mnt/)
+    do
+      echo -e "\t${drive}\n"
+    done
+  else
+    driveletter="${1}"
+    echo "driveletter is: \"${driveletter}\""
+    time rsync -rtv --delete --progress --stats --itemize-changes --log-file=/home/chris/autobackup/logs/autobackup-`date +%Y%m%d-%H%M%S`-${driveletter}.log --exclude-from=/home/chris/autobackup/rsync_excludes.txt /mnt/${driveletter} chris@ubuntuServer:/media/chris/SuperDrive/BACKUPS/thesource/
   fi
 }
 
