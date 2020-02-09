@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-from math import *
+from math import tan, pi
 
 def polysum(n, s):
     area = (0.25*n*(s**2))/tan(pi/n)
