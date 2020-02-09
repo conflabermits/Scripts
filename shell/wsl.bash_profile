@@ -164,7 +164,7 @@ autobackup() {
   else
     driveletter="${1}"
     echo "driveletter is: \"${driveletter}\""
-    time rsync -rtv --delete --progress --stats --itemize-changes --log-file=/home/chris/autobackup/logs/autobackup-`date +%Y%m%d-%H%M%S`-${driveletter}.log --exclude-from=/home/chris/autobackup/rsync_excludes.txt /mnt/${driveletter} chris@ubuntuServer:/media/chris/SuperDrive/BACKUPS/thesource/
+    time rsync -rtv --delete-during --delete-excluded --ignore-errors --whole-file --progress --stats --itemize-changes --log-file=/home/chris/autobackup/logs/autobackup-`date +%Y%m%d-%H%M%S`-${driveletter}.log --exclude-from=/home/chris/autobackup/rsync_excludes.txt /mnt/${driveletter} chris@ubuntuServer:/media/chris/SuperDrive/BACKUPS/thesource/
   fi
 }
 
