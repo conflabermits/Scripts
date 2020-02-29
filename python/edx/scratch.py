@@ -1,16 +1,14 @@
 #!/usr/bin/env python3
 
-aTup = ('I', 'am', 'a', 'test', 'tuple')
+def fancy_divide(list_of_numbers, index):
+    denom = list_of_numbers[index]
+    return [simple_divide(item, denom) for item in list_of_numbers]
 
-def oddTuples(aTup):
-    '''
-    aTup: a tuple
-    
-    returns: tuple, every other element of aTup. 
-    '''
-    newTuple = ()
-    for tup in aTup[0::2]:
-        newTuple += (tup,)
-    return newTuple
 
-print(oddTuples(aTup))
+def simple_divide(item, denom):
+    try:
+        return item / denom
+    except ZeroDivisionError:
+        return 0
+
+fancy_divide([0, 2, 4], 0)
