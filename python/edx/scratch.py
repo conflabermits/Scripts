@@ -1,14 +1,9 @@
 #!/usr/bin/env python3
 
-def fancy_divide(list_of_numbers, index):
-    denom = list_of_numbers[index]
-    return [simple_divide(item, denom) for item in list_of_numbers]
-
-
-def simple_divide(item, denom):
+def avg(grades):
     try:
-        return item / denom
-    except ZeroDivisionError:
+        assert not len(grades) == 0
+    except AssertionError:
+        print('No grades entered')
         return 0
-
-fancy_divide([0, 2, 4], 0)
+    return sum(grades)/len(grades)
