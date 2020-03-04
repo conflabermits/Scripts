@@ -124,8 +124,57 @@ def playGame(wordList):
 
     wordList: list (string)
     """
-    # TO DO... <-- Remove this comment when you code this function
-    print("playGame not yet implemented.") # <-- Remove this when you code this function
+    gamesPlayed = 0
+    response = ''
+    player = ''
+    oldHand = {}
+    newHand = {}
+    while response != 'e':
+        response = input('Enter n to deal a new hand, r to replay the last hand, or e to end game: ')
+        if response == 'r':
+            if gamesPlayed == 0:
+                print('You have not played a hand yet. Please play a new hand first!')
+                continue
+            else:
+                while (player != 'u' or player != 'c'):
+                    player = input('Enter u to have yourself play, c to have the computer play: ')
+                    if player == 'u':
+                        playHand(oldHand, wordList, HAND_SIZE)
+                        gamesPlayed += 1
+                        player = ''
+                        break
+                    elif player == 'c':
+                        compPlayHand(oldHand, wordList, HAND_SIZE)
+                        gamesPlayed += 1
+                        player = ''
+                        break
+                    else:
+                        print('Invalid command.') 
+                        continue
+        elif response == 'n':
+            while (player != 'u' or player != 'c'):
+                player = input('Enter u to have yourself play, c to have the computer play: ')
+                if player == 'u':
+                    newHand = dealHand(HAND_SIZE)
+                    playHand(newHand, wordList, HAND_SIZE)
+                    gamesPlayed += 1
+                    player = ''
+                    break
+                elif player == 'c':
+                    newHand = dealHand(HAND_SIZE)
+                    compPlayHand(newHand, wordList, HAND_SIZE)
+                    gamesPlayed += 1
+                    player = ''
+                    break
+                else:
+                    print('Invalid command.') 
+                    continue
+        elif response == 'e':
+            break
+        else:
+            print('Invalid command.') 
+            continue
+        oldHand = newHand.copy()
 
         
 #
