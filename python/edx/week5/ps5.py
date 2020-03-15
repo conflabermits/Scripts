@@ -132,6 +132,21 @@ class Message(object):
                 encoded_message += char
         return encoded_message
 
+'''
+For this problem, the graders will use our implementation of the Message class, so don't worry if you did not get the previous parts correct.
+
+PlaintextMessage is a subclass of Message and has methods to encode a string using a specified shift value.
+Our class will always create an encoded version of the message, and will have methods for changing the encoding.
+
+Implement the methods in the class PlaintextMessage according to the specifications in ps6.py. The methods you should fill in are:
+
+* __init__(self, text, shift): Use the parent class constructor to make your code more concise.
+* The getter method get_shift(self)
+* The getter method get_encrypting_dict(self): This should return a COPY of self.encrypting_dict to prevent someone from mutating the original dictionary.
+* The getter method get_message_text_encrypted(self)
+* change_shift(self, shift): Think about what other methods you can use to make this easier. It shouldn’t take more than a couple lines of code.
+'''
+
 class PlaintextMessage(Message):
     def __init__(self, text, shift):
         '''
@@ -189,6 +204,32 @@ class PlaintextMessage(Message):
         '''
         pass #delete this line and replace with your code here
 
+'''
+For this problem, the graders will use our implementation of the Message and PlaintextMessage classes, so don't worry if you did not get the previous parts correct.
+
+Given an encrypted message, if you know the shift used to encode the message, decoding it is trivial. If message is the encrypted message,
+and s is the shift used to encrypt the message, then apply_shift(26-s) on a message gives you the original plaintext message. Do you see why?
+
+The problem, of course, is that you don’t know the shift. But our encryption method only has 26 distinct possible values for the shift!
+We know English is the main language of these emails, so if we can write a program that tries each shift and maximizes the number of
+English words in the decoded message, we can decrypt their cipher! A simple indication of whether or not the correct shift has been found is
+if most of the words obtained after a shift are valid words. Note that this only means that most of the words obtained are actual words.
+It is possible to have a message that can be decoded by two separate shifts into different sets of words. While there are various
+strategies for deciding between ambiguous decryptions, for this problem we are only looking for a simple solution.
+
+Fill in the methods in the class CiphertextMessage acording to the specifications in ps6.py. The methods you should fill in are:
+
+* __init__(self, text): Use the parent class constructor to make your code more concise.
+* decrypt_message(self): You may find the helper function is_word(wordlist, word) and the string method split() useful.
+  Note that is_word will ignore punctuation and other special characters when considering whether a word is valid.
+
+You may find the function string.split useful for dividing the text up into words.
+
+>>> 'Hello world!'.split('o')
+['Hell', ' w', 'rld!']
+>>> '6.00.1x is pretty fun'.split(' ')
+['6.00.1x', 'is', 'pretty', 'fun']
+'''
 
 class CiphertextMessage(Message):
     def __init__(self, text):
@@ -230,3 +271,14 @@ print('Actual Output:', plaintext.get_message_text_encrypted())
 ciphertext = CiphertextMessage('jgnnq')
 print('Expected Output:', (24, 'hello'))
 print('Actual Output:', ciphertext.decrypt_message())
+
+'''
+Problem 4 - Decrypt a Story
+
+For this problem, the graders will use our implementation of the Message, PlaintextMessage, and CiphertextMessage classes,
+so don't worry ifyou did not get the previous parts correct.
+
+Now that you have all the pieces to the puzzle, please use them to decode the file story.txt.
+The file ps6.py contains a helper function get_story_string() that returns the encrypted version of the story as a string.
+Create a CiphertextMessage object using the story string and use decrypt_message to return the appropriate shift value and unencrypted story string.
+'''
