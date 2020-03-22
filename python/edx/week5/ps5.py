@@ -247,7 +247,8 @@ class CiphertextMessage(Message):
             self.message_text (string, determined by input text)
             self.valid_words (list, determined using helper function load_words)
         '''
-        pass #delete this line and replace with your code here
+        self.message_text = text
+        self.valid_words = load_words(WORDLIST_FILENAME)
 
     def decrypt_message(self):
         '''
@@ -265,17 +266,31 @@ class CiphertextMessage(Message):
         Returns: a tuple of the best shift value used to decrypt the message
         and the decrypted message text using that shift value
         '''
-        pass #delete this line and replace with your code here
+        max_words_found = 0
+        best_shift_value = 0
+        valid_words = self.get_valid_words()
+        for i in range(1, 27):
+            words_found = 0
+            shifted_message = PlaintextMessage(self.message_text, 26 - i)
+            for word in shifted_message.get_message_text_encrypted().split(' '):
+                if is_word(valid_words, word):
+                    words_found += 1
+            if words_found >= max_words_found:
+                max_words_found = words_found
+                best_shift_value = (26 - i)
+        best_message = PlaintextMessage(self.message_text, best_shift_value).get_message_text_encrypted()
+        return (best_shift_value, best_message)
 
-#Example test case (PlaintextMessage)
-plaintext = PlaintextMessage('hello', 2)
-print('Expected Output: jgnnq')
-print('Actual Output:', plaintext.get_message_text_encrypted())
-    
-#Example test case (CiphertextMessage)
-ciphertext = CiphertextMessage('jgnnq')
-print('Expected Output:', (24, 'hello'))
-print('Actual Output:', ciphertext.decrypt_message())
+##Example test case (PlaintextMessage)
+#plaintext = PlaintextMessage('hello', 2)
+#print('Expected Output: jgnnq')
+#print('Actual Output:', plaintext.get_message_text_encrypted())
+#    
+##Example test case (CiphertextMessage)
+#ciphertext = CiphertextMessage('jgnnq')
+#print('Expected Output:', (24, 'hello'))
+#print('Actual Output:', ciphertext.decrypt_message())
+
 
 '''
 Problem 4 - Decrypt a Story
@@ -287,3 +302,9 @@ Now that you have all the pieces to the puzzle, please use them to decode the fi
 The file ps6.py contains a helper function get_story_string() that returns the encrypted version of the story as a string.
 Create a CiphertextMessage object using the story string and use decrypt_message to return the appropriate shift value and unencrypted story string.
 '''
+
+def decrypt_story():
+    cipherjoke = CiphertextMessage(get_story_string())
+    return cipherjoke.decrypt_message()
+
+print(decrypt_story())
