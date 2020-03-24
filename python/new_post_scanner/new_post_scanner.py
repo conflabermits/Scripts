@@ -4,6 +4,7 @@ import requests
 import argparse
 from bs4 import BeautifulSoup
 from site_vars import *
+import ezgmail
 
 parser = argparse.ArgumentParser(description='Scan website for recent items')
 parser.add_argument("-t",
@@ -11,6 +12,11 @@ parser.add_argument("-t",
                     type=str,
                     help="Specify how far back to look (e.g., seconds, hours, days, weeks)",
                     default="hours",
+                    required=False)
+parser.add_argument("-m",
+                    "--mailrecipient",
+                    type=str,
+                    help="Specify an email address to receive results",
                     required=False)
 
 args = parser.parse_args()
@@ -40,5 +46,11 @@ for i in range(0,50):
         results.append((item_name, item_time))
 
 if len(results) > 0:
-    print(results)
+    message_body = ''
+    for result in results:
+        message_body += '* {0}\n'.format(result[0])
+    print(message_body)
+    #print(results)
+    if args.mailrecipient:
+        ezgmail.send(args.mailrecipient, 'New posts from {0}'.format(site_hostname), message_body)
 
