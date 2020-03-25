@@ -31,10 +31,10 @@ export GREP_COLOR='1;42'
 # Enable history appending instead of overwriting.
 shopt -s histappend
 shopt -s cmdhist
-HISTFILESIZE=1000000
-HISTSIZE=1000000
-HISTCONTROL=ignoreboth
-HISTTIMEFORMAT='%F %T   '
+export HISTFILESIZE=1000000
+export HISTSIZE=1000000
+export HISTCONTROL=ignoreboth
+export HISTTIMEFORMAT='%F %T   '
 
 export PS1="\u@\h \$(smiley) \$(pwd) \$ "       # Set prompt to include user, host, current dir, and RC smiley
 export BLOCKSIZE=1k                             # Get consistent block output across "du", "df", and "ls -s"
