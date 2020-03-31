@@ -1,0 +1,7 @@
+* SCP files from ${TESLAUSB_IP}:/backingfiles/snapshots/snap-000000/mnt/TeslaCam to local
+** Remove files from source (teslausb) when complete
+* Run python script against clips
+** Smash 4 videos into 1, speed up or compress "uninteresting" sections of video
+* Notify via email when clips are ready for review
+* Delete clips after review
+
