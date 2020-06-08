@@ -19,6 +19,23 @@ Price is lower by $35.0
 
 # TO DO
 # add notification system (email/reddit)
+# add min/max price history && add dates to price history
+'''
+prices = {
+    'last': {
+        'price': 1714.99
+        'date': '2020-05-25'
+    },
+    'max': {
+        'price': 1749.99
+        'date': '2020-05-20'
+    },
+    'min': {
+        'price': 1714.99
+        'date': '2020-05-22'
+    }
+}
+'''
 
 parser = argparse.ArgumentParser(
     description="Check the price of the Dell XPS 15 9500"
