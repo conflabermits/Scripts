@@ -4,3 +4,6 @@ send_text_(with-creds)
 *.idea
 *.vscode
 *.code-workspace
+creds/*
+credentials/*
+__pycache__
