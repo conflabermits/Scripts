@@ -5,5 +5,7 @@ send_text_(with-creds)
 *.vscode
 *.code-workspace
 creds/*
+creds.json
 credentials/*
+credentials.json
 __pycache__

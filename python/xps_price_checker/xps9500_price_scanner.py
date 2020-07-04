@@ -6,19 +6,19 @@ import shelve
 import argparse
 import requests
 from bs4 import BeautifulSoup
+import ezgmail
 
 # Base URL: https://www.dell.com/en-us/member/shop/dell-laptops/new-xps-15-laptop/spd/xps-15-9500-laptop/xn9500cto210s
 # URL with 512GB SSD: https://www.dell.com/en-us/member/shop/dell-laptops/new-xps-15-laptop/spd/xps-15-9500-laptop/xn9500cto210s?configurationid=62e03267-650b-4469-be2d-38eda0ba102b
 
 # Example
 '''
-$ ./xps9500_price_scanner.py -u "https://www.dell.com/en-us/member/shop/dell-laptops/new-xps-15-laptop/spd/xps-15-9500-laptop/xn9500cto210s" -c "abc@xyz.tld" -f "histfile.bin"
+$ ./xps9500_price_scanner.py -u "https://www.dell.com/en-us/member/shop/dell-laptops/new-xps-15-laptop/spd/xps-15-9500-laptop/xn9500cto210s" -e "abc@xyz.tld" -f "histfile.bin"
 Item price is $1714.99
 Price is lower by $35.0
 '''
 
 # TO DO
-# add notification system (email/reddit)
 # add min/max price history && add dates to price history
 '''
 prices = {
@@ -48,6 +48,13 @@ parser.add_argument(
     required=True
 )
 parser.add_argument(
+    "-e",
+    "--email",
+    type=str,
+    help="Email address to send the results to",
+    required=False
+)
+parser.add_argument(
     "-c",
     "--contact",
     type=str,
@@ -72,7 +79,11 @@ if args.savefile:
 else:
     use_save_file = False
 user = args.contact
-headers = {"User-Agent": "{0} is looking for a discount".format(user)}
+email = args.email
+if (args.email and not args.contact):
+    headers = {"User-Agent": "{0} is looking for a discount".format(email)}
+else:
+    headers = {"User-Agent": "{0} is looking for a discount".format(user)}
 
 def check_file(file):
     return os.path.isfile(file)
@@ -119,21 +130,37 @@ def price_comparison(old_price, new_price):
             price_adjective = 'lower'
         return str("Price is {0} by ${1}".format(price_adjective, abs(price_difference)))
 
+def send_email(to, subject, message):
+    try:
+        ezgmail.send(to, subject, message)
+    except Exception as exc:
+        print('There was a problem sending the email to {0}: {1}'.format(to, exc))
+        sys.exit(4)
+
 def main(url, headers, use_save_file):
     try:
         price_page = get_page(url, headers)
         current_price = get_price(price_page)
-        print('Item price is ${0}'.format(current_price))
+        price_output = 'Item price is ${0}'.format(current_price)
+        print(price_output)
     except:
         print("No item found at that URL.")
         sys.exit(3)
     if use_save_file:
         if check_file(save_file):
             previous_price = get_previous_price(save_file)
-            print(price_comparison(previous_price, current_price))
+            comparison_output = price_comparison(previous_price, current_price)
+            print(comparison_output)
+            if args.email and (previous_price != current_price):
+                send_email(email, 'XPS 15 Price Update', '{0}\n{1}'.format(price_output, comparison_output))
+                print('Email sent to {0}'.format(email))
             put_new_price(save_file, current_price)
         else:
             put_new_price(save_file, current_price)
+    else:
+        if args.email:
+            send_email(email, 'XPS 15 Current Price', '{0}'.format(price_output))
+            print('Email sent to {0}'.format(email))
 
 if __name__ == "__main__":
     main(url, headers, use_save_file)
