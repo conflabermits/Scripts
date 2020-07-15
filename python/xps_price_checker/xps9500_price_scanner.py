@@ -152,7 +152,7 @@ def main(url, headers, use_save_file):
             comparison_output = price_comparison(previous_price, current_price)
             print(comparison_output)
             if args.email and (previous_price != current_price):
-                send_email(email, 'XPS 15 Price Update', '{0}\n{1}'.format(price_output, comparison_output))
+                send_email(email, 'XPS 15 Price Update', '{0}\n{1}\n\n{2}'.format(price_output, comparison_output, url))
                 print('Email sent to {0}'.format(email))
             put_new_price(save_file, current_price)
         else:
