@@ -1,0 +1,6 @@
+Blank Python Lambda function: https://github.com/awsdocs/aws-lambda-developer-guide/tree/master/sample-apps/blank-python
+
+AWS Lambda/Python documentation: https://docs.aws.amazon.com/lambda/latest/dg/lambda-python.html
+
+AWS Lambda/SES documentation: https://aws.amazon.com/premiumsupport/knowledge-center/lambda-send-email-ses/
+
