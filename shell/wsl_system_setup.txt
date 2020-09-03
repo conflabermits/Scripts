@@ -6,7 +6,13 @@ sudo mkdir -p /local/git/Scripts
 sudo chown -R chris:chris /local
 cd ~/.ssh
 ssh-keygen
-cat id_rsa.pub
+sudo sed -i 's/ Authentication:/ Authentication:\nPermitRootLogin no\nAllowUsers chris/g' /etc/ssh/sshd_config
+sudo sed -i 's/PasswordAuthentication no/PasswordAuthentication yes/' /etc/ssh/sshd_config
+if [ ! -f /etc/ssh/ssh_host_rsa_key ]; then echo "File /etc/ssh/ssh_host_rsa_key does not exist"; echo "Creating host key files"; sudo ssh-keygen -A; fi
+sudo /etc/init.d/ssh start
+sudo mkdir -p /local/git/Scripts
+sudo chown -R chris:chris /local
+cat ~/.ssh/id_rsa.pub
 echo "## ADD PUB KEY TO GITHUB: https://github.com/settings/keys ##"
 read -p "When finished, press Enter"
 git clone git@github.com:conflabermits/Scripts.git /local/git/Scripts/
