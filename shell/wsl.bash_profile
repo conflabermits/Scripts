@@ -170,7 +170,7 @@ autobackup() {
 }
 
 ## WSL: Start ssh if not started
-if [ $(ps -ef | grep "/usr/sbin/sshd" | grep -v grep | wc -l) == "0" ] ; then
+if [ $(ps -ef | egrep "/usr/sbin/sshd|sshd: /usr/sbin" | grep -v grep | wc -l) == "0" ] ; then
   sudo /etc/init.d/ssh start
 fi
 
