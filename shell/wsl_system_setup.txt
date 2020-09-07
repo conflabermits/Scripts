@@ -2,8 +2,6 @@ sudo update-alternatives --set editor /usr/bin/vim.basic
 sudo apt update
 sudo apt upgrade
 sudo apt install git tree python3-pip
-sudo mkdir -p /local/git/Scripts
-sudo chown -R chris:chris /local
 cd ~/.ssh
 ssh-keygen
 sudo sed -i 's/ Authentication:/ Authentication:\nPermitRootLogin no\nAllowUsers chris/g' /etc/ssh/sshd_config
