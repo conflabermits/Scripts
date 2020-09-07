@@ -24,3 +24,4 @@ git config --global user.email "${email}"
 sudo sed -i 's/# set bell-style none/set bell-style none/g' /etc/inputrc
 ln -s /local/git/Scripts/shell/wsl.bash_profile ~/.bash_profile
 ln -s /local/git/Scripts/shell/wsl.vimrc ~/.vimrc
+echo -e "Add the following to sudoers (sudo visudo):\n\n# Allow chris to run some commands\nchris\tALL=NOPASSWD:\t/etc/init.d/ssh\n\n"
