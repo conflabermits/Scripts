@@ -1,0 +1,13 @@
+## Instructions to export WSL (PowerShell)
+wsl --export Ubuntu C:\wsl-export\Ubuntu.tar
+
+
+## Instructions to import WSL (PowerShell)
+## Prerequisite: Install "Ubuntu" from Microsoft Store (Might be possible with "wsl --distribution Ubuntu --user chris")
+wsl --list --all --verbose
+wsl --unregister Ubuntu
+wsl --list --all --verbose
+wsl --import Ubuntu C:\wsl\Ubuntu C:\local\wsl-export\Ubuntu.tar --version 1
+wsl --list --all --verbose
+ubuntu config --default-user chris
+
