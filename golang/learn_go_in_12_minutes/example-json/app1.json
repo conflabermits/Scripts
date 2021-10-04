@@ -1,0 +1,30 @@
+{
+  "components": [
+    {
+      "description": "Most important check",
+      "essential": true,
+      "name": "probably-auth",
+      "statusCode": "OK",
+      "statusText": null,
+      "uri": "https://test.notadomain.yyz/probably-auth/v1/about"
+    },
+    {
+      "description": "Less important check",
+      "essential": false,
+      "name": "other-webservice",
+      "statusCode": "OK",
+      "statusText": null,
+      "uri": "https://test.notadomain.yyz/services/other-webservice/ping"
+    },
+    {
+      "description": "Some other cheeck",
+      "essential": true,
+      "name": "probably-db",
+      "statusCode": "OK",
+      "statusText": null,
+      "uri": "https://db.notadomain.yyz:9943/db-name"
+    }
+  ],
+  "name": "appname",
+  "statusCode": "OK"
+}
