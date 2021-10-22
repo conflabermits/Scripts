@@ -9,6 +9,9 @@ echo
 export PROFILE="/home/chris/.bash_profile"
 export MYGIT="/local/git/Scripts"
 export SCREENDIR="/home/chris/.screen"
+if [ -d /usr/local/go/bin ]; then
+    export PATH=$PATH:/usr/local/go/bin
+fi
 
 # No pycache trash
 export PYTHONDONTWRITEBYTECODE=1
