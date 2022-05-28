@@ -33,8 +33,6 @@ Just a simple markdown page to keep some notes for the stream. Definitely not be
 * Python 3
 * GitHub
 * VS Code
-* AWS
-* Ansible, Puppet, plenty of other stuff...
 </details>
 
 <details>
