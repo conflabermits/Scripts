@@ -30,4 +30,5 @@ What I'm planning to build is a simple web server that serves reliable, expected
 # Helpful Resources
 
 * [Go by Example: HTTP Servers](https://gobyexample.com/http-servers)
-* [Sample web server code (to borrow from)](https://github.com/conflabermits/Scripts/blob/master/golang/trusty_web_server/sample.go)
+* [Sample web server code (to borrow from)](https://github.com/conflabermits/Scripts/blob/master/stream/pilot/002/sample.go)
+* The finished product: [Trusty Web Server](https://github.com/conflabermits/Scripts/tree/master/golang/trusty_web_server)
