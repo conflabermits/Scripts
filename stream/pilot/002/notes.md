@@ -14,17 +14,17 @@ What I'm planning to build is a simple web server that serves reliable, expected
 
 ## Requests and Expected Responses
 
-| Request | HTTP Response Code | Response Content |
-| --- | --- | --- |
-| http://localhost:8080/ok | 200 | Health check response: "OK" |
-| http://localhost:8080/degraded | 200 | Health check response: "Degraded" |
-| http://localhost:8080/outage | 200 | Health check response: "Outage" |
-| http://localhost:8080/200 | 200 | Blank page |
-| http://localhost:8080/301 | 301 | Redirect to /200 |
-| http://localhost:8080/302 | 302 | Redirect to /200 |
-| http://localhost:8080/401 | 401 | Message indicating not authorized |
-| http://localhost:8080/404 | 404 | Page not found |
-| http://localhost:8080/501 | 501 | Server error |
+| Request | HTTP Response Code | Response Content | Status |
+| --- | --- | --- | --- |
+| http://localhost:8080/ok | 200 | Health check response: "OK" | DONE |
+| http://localhost:8080/degraded | 200 | Health check response: "Degraded" | DONE |
+| http://localhost:8080/outage | 200 | Health check response: "Outage" | DONE |
+| http://localhost:8080/200 | 200 | Blank page | DONE |
+| http://localhost:8080/301 | 301 | Redirect to /200 | DONE |
+| http://localhost:8080/302 | 302 | Redirect to /200 | DONE |
+| http://localhost:8080/401 | 401 | Message indicating not authorized | DONE |
+| http://localhost:8080/404 | 404 | Page not found | DONE |
+| http://localhost:8080/500 | 500 | Internal server error | DONE |
 
 
 # Helpful Resources
