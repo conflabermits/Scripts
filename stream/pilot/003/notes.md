@@ -12,11 +12,27 @@ The tool is currently capable of making an HTTP request to an endpoint, collecti
 
 # Proposed Solution
 
-There are a few features I want to add, at least one I want to remove, and other improvements I want to make. All are detailed in the readme for the [health_checker](https://github.com/conflabermits/Scripts/tree/master/golang/health_checker) project.
+## Updates to `health_checker`
+
+There are a few features I want to add, at least one I want to remove, and other improvements I want to make. All are detailed in the readme for the [Health Checker](https://github.com/conflabermits/Scripts/tree/master/golang/health_checker) project.
+
+At a high level, I'm looking to
+
+* Remove the features around taking in a JSON file and focus on just the CLI and webserver modes.
+* Integrate the webserver into the main binary, including the index page's HTML
+* Test and tweak the host header and timeout argument features
+* Test and tweak the user-agent request header
+* Optionally allow for the response to include HTTP response info
+
+## Updates to `trusty_web_server`
+
+One of the challenges in writing a program that makes an HTTP request to a remote endpoint is that you can't always control that endpoints or rely on its response. That's the purpose of the [Trusty Web Server](https://github.com/conflabermits/Scripts/tree/master/golang/trusty_web_server) I built! It makes it easier to test and verify the reliability of the health_checker tool since the responses should always be static and consistent.
+
+Additionally, I'll need a web server to test against. It'll need to respond with JSON that matches the types of responses I'm expecting to check with the health_checker tool. The [Trusty Web Server](https://github.com/conflabermits/Scripts/tree/master/golang/trusty_web_server) currently does the web server and static response stuff, but I need to add some additional functionality to have it serve back the JSON responses we're expecting.
 
 # Resources
 
-## Trusty Web Server
-
-One of the challenges in writing a program that makes an HTTP request to a remote endpoint is that you can't always control that endpoints or rely on its response. That's the purpose of the [trusty_web_server](https://github.com/conflabermits/Scripts/tree/master/golang/trusty_web_server) I built! It makes it easier to test and verify the reliability of the health_checker tool since the responses should always be static and consistent.
-
+* [Trusty Web Server](https://github.com/conflabermits/Scripts/tree/master/golang/trusty_web_server)
+* [Health Checker](https://github.com/conflabermits/Scripts/tree/master/golang/health_checker)
+* [Stream Notes](https://github.com/conflabermits/Scripts/blob/master/stream/pilot/003/notes.md)
+* [Google](https://google.com), probably
