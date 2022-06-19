@@ -8,103 +8,103 @@ import (
 
 func respond_ok(w http.ResponseWriter, req *http.Request) {
 	ok_text := `{
-        "components": [
-          {
+    "components": [
+        {
             "description": "Most important check",
             "essential": true,
             "name": "auth-service",
             "statusCode": "OK",
             "statusText": null,
             "uri": "http://localhost:38080/auth-service/health"
-          },
-          {
+        },
+        {
             "description": "Less important check",
             "essential": false,
             "name": "activity-webservice",
             "statusCode": "OK",
             "statusText": null,
             "uri": "http://localhost:38080/activity-service/health"
-          },
-          {
+        },
+        {
             "description": "Some other cheeck",
             "essential": true,
             "name": "database",
             "statusCode": "OK",
             "statusText": null,
             "uri": "http://localhost:48080/user-table"
-          }
-        ],
-        "name": "appname",
-        "statusCode": "OK"
-      }`
+         }
+    ],
+    "name": "appname",
+    "statusCode": "OK"
+}`
 	fmt.Fprintf(w, ok_text)
 }
 
 func respond_degraded(w http.ResponseWriter, req *http.Request) {
 	degraded_text := `{
-        "components": [
-          {
+    "components": [
+        {
             "description": "Most important check",
             "essential": true,
             "name": "auth-service",
             "statusCode": "OK",
             "statusText": null,
             "uri": "http://localhost:38080/auth-service/health"
-          },
-          {
+        },
+        {
             "description": "Less important check",
             "essential": false,
             "name": "activity-webservice",
             "statusCode": "CRITICAL",
             "statusText": "Can't reach activity service, returns 404",
             "uri": "http://localhost:38080/activity-service/health"
-          },
-          {
+        },
+        {
             "description": "Some other cheeck",
             "essential": true,
             "name": "database",
             "statusCode": "OK",
             "statusText": null,
             "uri": "http://localhost:48080/user-table"
-          }
-        ],
-        "name": "appname",
-        "statusCode": "DEGRADED"
-      }`
+        }
+    ],
+    "name": "appname",
+    "statusCode": "DEGRADED"
+}`
 	fmt.Fprintf(w, degraded_text)
 }
 
 func respond_outage(w http.ResponseWriter, req *http.Request) {
 	outage_text := `{
-        "components": [
-          {
+    "components": [
+        {
             "description": "Most important check",
             "essential": true,
             "name": "auth-service",
             "statusCode": "CRITICAL",
             "statusText": "Can't reach auth service, returns 500",
             "uri": "http://localhost:38080/auth-service/health"
-          },
-          {
+        },
+        {
             "description": "Less important check",
             "essential": false,
             "name": "activity-webservice",
             "statusCode": "OK",
             "statusText": null,
             "uri": "http://localhost:38080/activity-service/health"
-          },
-          {
+        },
+        {
             "description": "Some other cheeck",
             "essential": true,
             "name": "database",
             "statusCode": "OK",
             "statusText": null,
             "uri": "http://localhost:48080/user-table"
-          }
-        ],
-        "name": "appname",
-        "statusCode": "OUTAGE"
-      }`
+        }
+    ],
+    "name": "appname",
+    "statusCode": "OUTAGE"
+}`
 	fmt.Fprintf(w, outage_text)
 }
 
