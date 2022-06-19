@@ -51,43 +51,6 @@ func health_checker_http_req(url string, hostHeader string) string {
 	}
 }
 
-func parse_json_file(input_file string) map[string]interface{} {
-
-	//fmt.Println("\nHello parse_json_file!")
-	jsonFile, err := os.Open(input_file)
-	if err != nil {
-		fmt.Println(err)
-	} /* else {
-		fmt.Println("Successfully opened json file")
-	} */
-	defer jsonFile.Close()
-	//fmt.Println("\t", "jsonFile", reflect.TypeOf(jsonFile))
-
-	byteValue, _ := ioutil.ReadAll(jsonFile)
-	//fmt.Println("\t", "byteValue", reflect.TypeOf(byteValue))
-
-	var result map[string]interface{}
-	//fmt.Println("\t", "result", reflect.TypeOf(result))
-
-	json.Unmarshal([]byte(byteValue), &result)
-	//fmt.Println("\t", "&result", reflect.TypeOf(&result))
-
-	return result
-
-}
-
-func example_json(jsonfile string) {
-
-	//fmt.Println("\nHello example_json!")
-	//fmt.Println("jsonfile: ", jsonfile)
-
-	json := parse_json_file(jsonfile)
-	//json := parse_json_file("app1.json")
-	//fmt.Println("\t", "json", reflect.TypeOf(json))
-	fmt.Println(json["name"], json["statusCode"])
-
-}
-
 func parse_health_checker_json(jsonString string, depth string) {
 
 	var jsonMap map[string]interface{}
@@ -105,20 +68,20 @@ func parse_health_checker_json(jsonString string, depth string) {
 		}
 		jsonMap["broken_components"] = broken_components
 		delete(jsonMap, "components")
-		dynamic_json, err := json.MarshalIndent(jsonMap, "", "\t")
+		dynamic_json, err := json.MarshalIndent(jsonMap, "", "    ")
 		if err != nil {
 			fmt.Println(err)
 		}
 		fmt.Println(string(dynamic_json))
 	} else if depth == "short" {
 		short_output := ShortOutput{Name: jsonMap["name"].(string), StatusCode: jsonMap["statusCode"].(string)}
-		short_json, err := json.MarshalIndent(short_output, "", "\t")
+		short_json, err := json.MarshalIndent(short_output, "", "    ")
 		if err != nil {
 			fmt.Println(err)
 		}
 		fmt.Println(string(short_json))
 	} else if depth == "full" {
-		full_json, err := json.MarshalIndent(jsonMap, "", "\t")
+		full_json, err := json.MarshalIndent(jsonMap, "", "    ")
 		if err != nil {
 			fmt.Println(err)
 		}
@@ -130,7 +93,6 @@ func parseArgs() (*Options, error) {
 	options := &Options{}
 
 	flag.StringVar(&options.HostHeader, "hostHeader", "", "override Host specified in URL")
-	flag.StringVar(&options.JsonFile, "jsonFile", "", "relative path to health_checker json file")
 	flag.StringVar(&options.Url, "url", "", "url to check")
 	flag.StringVar(&options.Depth, "depth", "dynamic", "Determine amount/type of data to return")
 	flag.Usage = func() {
@@ -157,9 +119,5 @@ func main() {
 	if len(options.Url) > 0 {
 		response := health_checker_http_req(options.Url, options.HostHeader)
 		parse_health_checker_json(response, options.Depth)
-	}
-
-	if len(options.JsonFile) > 0 {
-		example_json(options.JsonFile)
 	}
 }
