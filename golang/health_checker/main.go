@@ -12,7 +12,6 @@ import (
 
 type Options struct {
 	HostHeader string
-	JsonFile   string
 	Url        string
 	Depth      string
 }
@@ -59,14 +58,15 @@ func parse_health_checker_json(jsonString string, depth string) {
 	if depth == "dynamic" {
 		comp := jsonMap["components"]
 		broken_components := make([]map[string]interface{}, 0)
-
 		for _, value := range comp.([]interface{}) {
 			value_map := value.(map[string]interface{})
 			if value_map["statusCode"] != "OK" {
 				broken_components = append(broken_components, value_map)
 			}
 		}
-		jsonMap["broken_components"] = broken_components
+		if len(broken_components) > 0 {
+			jsonMap["broken_components"] = broken_components
+		}
 		delete(jsonMap, "components")
 		dynamic_json, err := json.MarshalIndent(jsonMap, "", "    ")
 		if err != nil {
