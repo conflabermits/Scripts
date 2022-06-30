@@ -4,6 +4,27 @@ This is an attempt at making a "Wordle Helper" (and maybe one day a "Wordle Solv
 
 I'm creating this as part of a livestream on [Twitch](https://www.twitch.tv/conflabermits). Stream notes [here](https://github.com/conflabermits/Scripts/blob/master/stream/pilot/004/notes.md).
 
+# Status
+
+This program is unfinished, but here's what it can do so far:
+
+* Loads a "dictionary" file with about 16k five-letter words.
+* Collects user input for misses and greens. (Collects yellows too but doesn't do anything with them yet.)
+* Creates a new word list that filters out any words containing letters that aren't in the solution word.
+* Uses the filtered word list to look for words where the green letters are in the right places and puts them in a "final" word list.
+* Prints the contents and length of the "final" word list.
+
+## Examples
+
+```text
+$ ./wordle_helper.py --misses d l p n m o e --greens 2u 4t
+Misses: ['d', 'l', 'p', 'n', 'm', 'o', 'e']
+Greens: ['2u', '4t']
+Yellows: None
+Total suggested guesses: 41
+['rusts', 'butts', 'hurts', 'gurts', 'tuath', 'gusty', 'quits', 'kurta', 'tutty', 'rusty', 'quata', 'juxta', 'tutti', 'suits', 'butty', 'qurti', 'quitu', 'jutty', 'busty', 'yurts', 'justs', 'gutti', 'rutty', 'tufts', 'cutty', 'kusti', 'busti', 'hurty', 'sutta', 'fusty', 'tufty', 'cubti', 'gutta', 'yurta', 'gutty', 'suity', 'busts', 'jufts', 'gusts', 'kutta', 'jufti']
+```
+
 # Details
 
 ## What the program should do

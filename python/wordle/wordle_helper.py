@@ -33,7 +33,7 @@ if __name__ == '__main__':
     print('Yellows: {0}'.format(args.yellows))
 
     valid_guesses = load_words()
-    print(len(valid_guesses))
+    #print(len(valid_guesses))
 
     narrowed_list=[]
 
@@ -45,12 +45,12 @@ if __name__ == '__main__':
         if potential_guess != False:
             narrowed_list.append(guess)
         
-    print(narrowed_list)
+    #print(narrowed_list)
 
     final_list=[]
 
     for good_guess in narrowed_list:
-        print("good_guess = {0}".format(good_guess))
+        #print("good_guess = {0}".format(good_guess))
         potential_guess = True
         for green_letter in args.greens:
             slot = int(green_letter[0])
@@ -62,8 +62,8 @@ if __name__ == '__main__':
         if potential_guess != False:
             final_list.append(good_guess)
 
+    print("Total suggested guesses: {0}".format(len(final_list)))
     print(final_list)
-    print(len(final_list))
 
     """
     # Ensure input is only alpha
@@ -76,4 +76,4 @@ if __name__ == '__main__':
         tmp_letters = input_letters.lower()
         input_letters = tmp_letters
     """
-    print('MAIN finished executing!')
+    #print('MAIN finished executing!')
