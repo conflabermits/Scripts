@@ -46,5 +46,5 @@ Ideally this Wordle Helper would allow a user to specify which letters are used 
 
 I used the dictionary file from my countdown script to generate a file containing only five-letter words for this project, using this command:
 
-```egrep "^......$" ../countdown/words_alpha.txt > five-letter-words.txt```
+```egrep "^.....$" ../countdown/words_alpha.txt > five-letter-words.txt```
 
