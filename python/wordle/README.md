@@ -14,6 +14,8 @@ This program is unfinished, but here's what it can do so far:
 * Uses the filtered word list to look for words where the green letters are in the right places and puts them in a "final" word list.
 * Prints the contents and length of the "final" word list.
 
+I still need to add logic for handling yellows and duplicate letters, and figure out how best to filter and display the suggested guesses. I should also consider a better way to enter some of this info since the current method might not work for handling duplicate letters. 
+
 ## Examples
 
 ```text
@@ -35,9 +37,9 @@ Ideally this Wordle Helper would allow a user to specify which letters are used 
 
 * There are three expected types of letter inputs: misses, yellows, and greens.
   * Yellows and greens are location-specific.
-  * A letter can be a yellow AND a green.
-  * A yellow or green letter can show up more than once.
+  * A letter, when specified more than once, can show up as multiple colors: a yellow AND a green; a yellow AND a miss; a green AND a miss.
 * It would be cool if guesses were sorted by how many high-value or commonly-used letters they have.
+* Another cool feature would be "desired letters" (maybe could use a better name here). You could narrow the suggested guesses by asking the program to only include guesses that have certain letters.
 * For the sake of readability, the number of listed guesses should probably be limited to 10 or 20.
 * I'm planning to build this as a command line tool first. Building it as a web page, eventually, might be a nice way to break up the logic and the HTML design work.
   * I'm starting this in Python, but I really *really* don't want to mess with how to build and deploy something like this in Python. I might migrate it over to Go if that makes more sense as a server/page/program platform.
