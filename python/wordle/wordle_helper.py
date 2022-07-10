@@ -93,7 +93,7 @@ if __name__ == '__main__':
 
 
     print("Total suggested guesses: {0}".format(len(final_list)))
-    print(final_list)
+    print(sorted(final_list))
 
     """
     # Ensure input is only alpha
