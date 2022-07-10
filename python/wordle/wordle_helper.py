@@ -35,20 +35,31 @@ if __name__ == '__main__':
     valid_guesses = load_words()
     #print(len(valid_guesses))
 
-    narrowed_list=[]
+    # Steps:
+        # Collect inputs
+        # Load word list into "valid_guesses"
+        # valid_guesses - misses = narrowed_list
+        # narrowed_list + greens = narrower_list
+        # narrower_list + yellows = final_list
 
+    # Take the full list,
+    # remove anything that has definite missed letters,
+    # and spit it out into "narrowed_list"
+    narrowed_list=[]
     for guess in valid_guesses:
         potential_guess = True
         for miss_letter in args.misses:
             if miss_letter in guess:
                 potential_guess = False
-        if potential_guess != False:
+        if potential_guess == True:
             narrowed_list.append(guess)
-        
     #print(narrowed_list)
 
-    final_list=[]
 
+    # Take the greens, identify slot + letter combo,
+    # iterate over them to determine which words have that,
+    # and put results into "narrower_list"
+    narrower_list=[]
     for good_guess in narrowed_list:
         #print("good_guess = {0}".format(good_guess))
         potential_guess = True
@@ -60,7 +71,26 @@ if __name__ == '__main__':
             if good_guess[slot - 1] != letter:
                 potential_guess = False
         if potential_guess != False:
+            narrower_list.append(good_guess)
+
+
+    # Take the yellows, identify slot + letter combo,
+    # iterate over them to determine which words have that letter,
+    # but, importantly, NOT IN THAT SPOT,
+    # and put those results into "final_list"
+    final_list=[]
+    for good_guess in narrower_list:
+        potential_guess = True
+        for yellow_letter in args.yellows:
+            slot = int(yellow_letter[0])
+            letter = yellow_letter[1]
+            if letter not in good_guess:
+                potential_guess = False
+            if good_guess[slot - 1] == letter:
+                potential_guess = False
+        if potential_guess != False:
             final_list.append(good_guess)
+
 
     print("Total suggested guesses: {0}".format(len(final_list)))
     print(final_list)
@@ -77,3 +107,4 @@ if __name__ == '__main__':
         input_letters = tmp_letters
     """
     #print('MAIN finished executing!')
+
