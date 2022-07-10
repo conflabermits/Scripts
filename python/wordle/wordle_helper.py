@@ -26,21 +26,41 @@ def load_words():
 
 if __name__ == '__main__':
 
-    args = parser.parse_args()
+    # Steps:
+        # Collect inputs
+        # Load word list into "valid_guesses"
+        # Determine which letters are duplicates
+            # Duplicate letters can affect logic for misses (makes them location-specific)
+            # Duplicate letters can affect logic for yellows (condition might need to be combined, not separate for each letter)
+        # valid_guesses - misses = narrowed_list
+        # narrowed_list + greens = narrower_list
+        # narrower_list + yellows = final_list
 
+    # Collect inputs, display them for sanity
+    args = parser.parse_args()
     print('Misses: {0}'.format(args.misses))
     print('Greens: {0}'.format(args.greens))
     print('Yellows: {0}'.format(args.yellows))
 
+    # Load words from dictionary file into array variable
     valid_guesses = load_words()
     #print(len(valid_guesses))
 
-    # Steps:
-        # Collect inputs
-        # Load word list into "valid_guesses"
-        # valid_guesses - misses = narrowed_list
-        # narrowed_list + greens = narrower_list
-        # narrower_list + yellows = final_list
+    # Determine which leters are duplicates
+    all_letters = []
+    for green_arg in args.greens:
+        all_letters.append(green_arg[1])
+    for yellow_arg in args.yellows:
+        all_letters.append(yellow_arg[1])
+    for missed_letter in args.misses:
+        all_letters.append(missed_letter)
+    print("All letters: {0}".format(all_letters))
+    checked = set()
+    dupes = {letter for letter in all_letters if letter in checked or (checked.add(letter) or False)}
+    print("Duplicate letters: {0}".format(dupes))
+    #for letter in dupes:
+    #    print("Dupe letter: {0}".format(letter))
+
 
     # Take the full list,
     # remove anything that has definite missed letters,
@@ -49,7 +69,7 @@ if __name__ == '__main__':
     for guess in valid_guesses:
         potential_guess = True
         for miss_letter in args.misses:
-            if miss_letter in guess:
+            if miss_letter in guess and miss_letter not in dupes:
                 potential_guess = False
         if potential_guess == True:
             narrowed_list.append(guess)
@@ -70,7 +90,7 @@ if __name__ == '__main__':
             #print(good_guess[slot])
             if good_guess[slot - 1] != letter:
                 potential_guess = False
-        if potential_guess != False:
+        if potential_guess == True:
             narrower_list.append(good_guess)
 
 
@@ -88,7 +108,7 @@ if __name__ == '__main__':
                 potential_guess = False
             if good_guess[slot - 1] == letter:
                 potential_guess = False
-        if potential_guess != False:
+        if potential_guess == True:
             final_list.append(good_guess)
 
 
