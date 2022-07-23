@@ -38,9 +38,21 @@ if __name__ == '__main__':
 
     # Collect inputs, display them for sanity
     args = parser.parse_args()
-    print('Misses: {0}'.format(args.misses))
-    print('Greens: {0}'.format(args.greens))
-    print('Yellows: {0}'.format(args.yellows))
+    
+    # Account for empty variables
+    greens = []
+    yellows = []
+    misses = []
+    if args.greens:
+        greens = args.greens
+    if args.yellows:
+        yellows = args.yellows
+    if args.misses:
+        misses = args.misses
+    
+    print('Misses: {0}'.format(misses))
+    print('Greens: {0}'.format(greens))
+    print('Yellows: {0}'.format(yellows))
 
     # Load words from dictionary file into array variable
     valid_guesses = load_words()
@@ -48,11 +60,11 @@ if __name__ == '__main__':
 
     # Determine which leters are duplicates
     all_letters = []
-    for green_arg in args.greens:
+    for green_arg in greens:
         all_letters.append(green_arg[1])
-    for yellow_arg in args.yellows:
+    for yellow_arg in yellows:
         all_letters.append(yellow_arg[1])
-    for missed_letter in args.misses:
+    for missed_letter in misses:
         all_letters.append(missed_letter)
     print("All letters: {0}".format(all_letters))
     checked = set()
@@ -68,7 +80,7 @@ if __name__ == '__main__':
     narrowed_list=[]
     for guess in valid_guesses:
         potential_guess = True
-        for miss_letter in args.misses:
+        for miss_letter in misses:
             if miss_letter in guess and miss_letter not in dupes:
                 potential_guess = False
         if potential_guess == True:
@@ -83,7 +95,7 @@ if __name__ == '__main__':
     for good_guess in narrowed_list:
         #print("good_guess = {0}".format(good_guess))
         potential_guess = True
-        for green_letter in args.greens:
+        for green_letter in greens:
             slot = int(green_letter[0])
             letter = green_letter[1]
             #print("slot={0} and letter={1}".format(slot, letter))
@@ -101,7 +113,7 @@ if __name__ == '__main__':
     final_list=[]
     for good_guess in narrower_list:
         potential_guess = True
-        for yellow_letter in args.yellows:
+        for yellow_letter in yellows:
             slot = int(yellow_letter[0])
             letter = yellow_letter[1]
             if letter not in good_guess:
