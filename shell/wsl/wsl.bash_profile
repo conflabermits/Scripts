@@ -15,7 +15,7 @@ fi
 
 # No pycache trash
 export PYTHONDONTWRITEBYTECODE=1
-alias pytest='pytest -p no:cacheprovider'
+export PYTEST_ADDOPTS='-p no:cacheprovider'
 
 alias cds='cd $MYGIT && echo && git remote update && git status && echo'
 alias cdgit='cd $MYGIT && echo && git remote update && git status && echo'
