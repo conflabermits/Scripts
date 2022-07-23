@@ -1,10 +1,12 @@
-# Summary
+# Wordle Helper
+
+## Summary
 
 This is an attempt at making a "Wordle Helper" (and maybe one day a "Wordle Solver").
 
 I'm creating this as part of a livestream on [Twitch](https://www.twitch.tv/conflabermits). Stream notes [here](https://github.com/conflabermits/Scripts/blob/master/stream/pilot/004/notes.md) and [here](https://github.com/conflabermits/Scripts/blob/master/stream/pilot/005/notes.md).
 
-# Status
+## Status
 
 This program is unfinished, but here's what it can do so far:
 
@@ -18,13 +20,13 @@ This program is unfinished, but here's what it can do so far:
 
 I still need to figure out how best to filter and display the suggested guesses. I should also consider a better way to enter some of this info since the current method might not work for handling duplicate letters under certain conditions.
 
-# Details
+## Details
 
-## What the program should do
+### What the program should do
 
 Ideally this Wordle Helper would allow a user to specify which letters are used and where the yellow and green letters are, and return a list of words that could be possible answers.
 
-## Examples
+### Examples
 
 Example where second letter `U` and fourth letter `T` are green, and missed letters include `D`, `L`, `P`, `N`, `M`, `O`, and `E`. Solution word is `RUSTY`.
 
@@ -52,7 +54,7 @@ Total suggested guesses: 7
 ['batts', 'butts', 'matts', 'mutts', 'netts', 'watts', 'yetts']
 ```
 
-## Possible requirements or enhancements
+### Possible requirements or enhancements
 
 * There are three expected types of letter inputs: misses, yellows, and greens.
   * Yellows and greens are location-specific.
@@ -64,9 +66,8 @@ Total suggested guesses: 7
 * I'm planning to build this as a command line tool first. Building it as a web page, eventually, might be a nice way to break up the logic and the HTML design work.
   * I'm starting this in Python, but I really *really* don't want to mess with how to build and deploy something like this in Python. I might migrate it over to Go if that makes more sense as a server/page/program platform.
 
-## How the word list was made
+### How the word list was made
 
 I used the dictionary file from my countdown script to generate a file containing only five-letter words for this project, using this command:
 
 ```egrep "^.....$" ../countdown/words_alpha.txt > five-letter-words.txt```
-
