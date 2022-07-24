@@ -1,0 +1,17 @@
+# Git how doc
+
+## Summary
+
+For now this is a place to store a reminder for local changes when switching a git master branch to main.
+This should include more useful git stuff eventually.
+
+## Switching master branch to main
+
+Run these commands locally
+
+```bash
+git branch -m master main
+git fetch origin
+git branch -u origin/main main
+git remote set-head origin -a
+```
