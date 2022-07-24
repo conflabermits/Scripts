@@ -7,7 +7,7 @@ parser.add_argument("-m",
                     "--misses",
                     nargs='+',
                     help="A list of letters already guessed that aren't in the word",
-                    required=True)
+                    required=False)
 parser.add_argument("-g",
                     "--greens",
                     nargs='*',
@@ -23,6 +23,56 @@ def load_words():
     with open('five-letter-words.txt') as word_file:
         valid_words = set(word_file.read().split())
     return valid_words
+
+def process_misses(valid_guesses, misses, dupes):
+    # Take the full list,
+    # remove anything that has definite missed letters,
+    # Return result (as list)
+    result = []
+    for guess in valid_guesses:
+        potential_guess = True
+        for miss_letter in misses:
+            if miss_letter in guess and miss_letter not in dupes:
+                potential_guess = False
+        if potential_guess == True:
+            result.append(guess)
+    return result
+
+def process_greens(narrowed_list, greens):
+    # Take the greens, identify slot + letter combo,
+    # iterate over them to determine which words have that,
+    # Return result (as list)
+    result = []
+    for good_guess in narrowed_list:
+        potential_guess = True
+        for green_letter in greens:
+            slot = int(green_letter[0])
+            letter = green_letter[1]
+            if good_guess[slot - 1] != letter:
+                potential_guess = False
+        if potential_guess == True:
+            result.append(good_guess)
+    return result
+
+def process_yellows(narrower_list, yellows):
+    # Take the yellows, identify slot + letter combo,
+    # iterate over them to determine which words have that letter,
+    # but, importantly, NOT IN THAT SPOT,
+    # and return those results as a list
+    result = []
+    for good_guess in narrower_list:
+        potential_guess = True
+        for yellow_letter in yellows:
+            slot = int(yellow_letter[0])
+            letter = yellow_letter[1]
+            if letter not in good_guess:
+                potential_guess = False
+            if good_guess[slot - 1] == letter:
+                potential_guess = False
+        if potential_guess == True:
+            result.append(good_guess)
+    return result
+
 
 if __name__ == '__main__':
 
@@ -70,59 +120,12 @@ if __name__ == '__main__':
     checked = set()
     dupes = {letter for letter in all_letters if letter in checked or (checked.add(letter) or False)}
     print("Duplicate letters: {0}".format(dupes))
-    #for letter in dupes:
-    #    print("Dupe letter: {0}".format(letter))
 
-
-    # Take the full list,
-    # remove anything that has definite missed letters,
-    # and spit it out into "narrowed_list"
-    narrowed_list=[]
-    for guess in valid_guesses:
-        potential_guess = True
-        for miss_letter in misses:
-            if miss_letter in guess and miss_letter not in dupes:
-                potential_guess = False
-        if potential_guess == True:
-            narrowed_list.append(guess)
-    #print(narrowed_list)
-
-
-    # Take the greens, identify slot + letter combo,
-    # iterate over them to determine which words have that,
-    # and put results into "narrower_list"
-    narrower_list=[]
-    for good_guess in narrowed_list:
-        #print("good_guess = {0}".format(good_guess))
-        potential_guess = True
-        for green_letter in greens:
-            slot = int(green_letter[0])
-            letter = green_letter[1]
-            #print("slot={0} and letter={1}".format(slot, letter))
-            #print(good_guess[slot])
-            if good_guess[slot - 1] != letter:
-                potential_guess = False
-        if potential_guess == True:
-            narrower_list.append(good_guess)
-
-
-    # Take the yellows, identify slot + letter combo,
-    # iterate over them to determine which words have that letter,
-    # but, importantly, NOT IN THAT SPOT,
-    # and put those results into "final_list"
-    final_list=[]
-    for good_guess in narrower_list:
-        potential_guess = True
-        for yellow_letter in yellows:
-            slot = int(yellow_letter[0])
-            letter = yellow_letter[1]
-            if letter not in good_guess:
-                potential_guess = False
-            if good_guess[slot - 1] == letter:
-                potential_guess = False
-        if potential_guess == True:
-            final_list.append(good_guess)
-
+    # Process missed letters, green letters, and yellow letters,
+    # refining the list of potential guesses with each function
+    narrowed_list = process_misses(valid_guesses, misses, dupes)
+    narrower_list = process_greens(narrowed_list, greens)
+    final_list = process_yellows(narrower_list, yellows)
 
     print("Total suggested guesses: {0}".format(len(final_list)))
     print(sorted(final_list))
