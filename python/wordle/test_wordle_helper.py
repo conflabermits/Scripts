@@ -1,5 +1,7 @@
 #!/usr/bin/env pytest
 
+# Props to kinjasloth and IRegretzu for the help!
+
 import pytest
 import wordle_helper
 
