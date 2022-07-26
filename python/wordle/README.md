@@ -4,7 +4,7 @@
 
 This is an attempt at making a "Wordle Helper" (and maybe one day a "Wordle Solver").
 
-I'm creating this as part of a livestream on [Twitch](https://www.twitch.tv/conflabermits). Stream notes [here](https://github.com/conflabermits/Scripts/blob/master/stream/pilot/004/notes.md) and [here](https://github.com/conflabermits/Scripts/blob/master/stream/pilot/005/notes.md).
+I'm creating this as part of a livestream on [Twitch](https://www.twitch.tv/conflabermits). The notes span multiple streams, [here](https://github.com/conflabermits/Scripts/blob/master/stream/pilot/004/notes.md), [here](https://github.com/conflabermits/Scripts/blob/master/stream/pilot/005/notes.md), and [here](https://github.com/conflabermits/Scripts/blob/master/stream/pilot/006/notes.md).
 
 ## Status
 
@@ -12,10 +12,10 @@ This program is unfinished, but here's what it can do so far:
 
 * Loads a "dictionary" file with about 16k five-letter words.
 * Collects user input for misses, yellows, and greens.
-* Identifies duplicate letters to ensure logic for misses/greens/yellows doesn't remove guesses it shouldn't.
-* Searches the 16k word list, filters out any words containing letters that aren't in the solution word, and puts them in a filtered word list.
-* Uses the filtered word list to look for words where the green letters are in the right places and puts them in a second filtered word list.
-* Uses the second filtered word list to look for words where the yellow letters are in the word but not in the guessed locations to generate a final word list.
+* Identifies duplicate letters to ensure logic for misses doesn't remove guesses it shouldn't.
+* Filters out any words containing letters that aren't in the solution word.
+* Identifies words that have letters matching the given green letters in the right places and filters out the rest.
+* Identifies words that have letters matching the given yellow letters in other parts of the word and filters out the rest.
 * Sorts and prints the contents of the final word list, as well as its length.
 
 I still need to figure out how best to filter and display the suggested guesses. I should also consider a better way to enter some of this info since the current method might not work for handling duplicate letters under certain conditions.
@@ -54,11 +54,30 @@ Total suggested guesses: 7
 ['batts', 'butts', 'matts', 'mutts', 'netts', 'watts', 'yetts']
 ```
 
+### Testing
+
+Some basic test cases, using pytest, were added to catch functional regressions and help identify if changes create a new problem or solve an existing one.
+
+```text
+$ pytest --verbose test_wordle_helper.py
+============================================== test session starts ==============================================
+platform linux -- Python 3.6.9, pytest-6.1.2, py-1.9.0, pluggy-0.13.1 -- /usr/bin/python3
+rootdir: /local/git/Scripts/python/wordle
+collected 7 items
+
+test_wordle_helper.py::test_load_words PASSED                                                             [ 14%]
+test_wordle_helper.py::test_process_misses[missed_letters0-dupe_letters0-expected_result0] PASSED         [ 28%]
+test_wordle_helper.py::test_process_misses[missed_letters1-dupe_letters1-expected_result1] PASSED         [ 42%]
+test_wordle_helper.py::test_process_greens[green_letters0-expected_result0] PASSED                        [ 57%]
+test_wordle_helper.py::test_process_greens[green_letters1-expected_result1] PASSED                        [ 71%]
+test_wordle_helper.py::test_process_yellows[yellow_letters0-expected_result0] PASSED                      [ 85%]
+test_wordle_helper.py::test_process_yellows[yellow_letters1-expected_result1] PASSED                      [100%]
+
+=============================================== 7 passed in 0.05s ===============================================
+```
+
 ### Possible requirements or enhancements
 
-* There are three expected types of letter inputs: misses, yellows, and greens.
-  * Yellows and greens are location-specific.
-  * A letter, when specified more than once, can show up as multiple colors: a yellow AND a green; a yellow AND a miss; a green AND a miss.
 * It should verify its inputs to ensure we have letters and numbers where we expect them, and not symbols or emoji.
 * It would be cool if guesses were sorted by how many high-value or commonly-used letters they have.
 * Another cool feature would be "desired letters" (maybe could use a better name here). You could narrow the suggested guesses by asking the program to only include guesses that have certain letters.
