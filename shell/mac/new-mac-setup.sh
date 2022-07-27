@@ -22,3 +22,5 @@ git config --global user.email "${email}"
 cd $HOME && ln -s local/git/Scripts/shell/mac/mac.bash_profile && ln -s local/git/Scripts/shell/mac/mac.vimrc && echo "source $HOME/mac.bash_profile" >> .bash_profile
 cd $HOME && if [ ! -f $HOME/.vimrc ] ; then ln -s mac.vimrc .vimrc; else echo ".vimrc file already exists, check before linking .vimrc to mac.vimrc"; fi
 
+defaults write NSGlobalDomain NSAutomaticWindowAnimationsEnabled -bool false
+
