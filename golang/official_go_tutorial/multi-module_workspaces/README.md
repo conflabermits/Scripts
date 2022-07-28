@@ -4,7 +4,16 @@ Source: [Tutorial: Getting started with multi-module workspaces](https://go.dev/
 
 ## Usage
 
+Run from hello directory:
+
 ```text
-$ go run example.com/hello
+.../multi-module_workspaces/workspace/hello $ go run example.com/hello
+olleH
+```
+
+Run from parent workspace directory:
+
+```text
+.../multi-module_workspaces/workspace $ go run example.com/hello
 olleH
 ```
