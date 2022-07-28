@@ -8,12 +8,12 @@ Run from hello directory:
 
 ```text
 .../multi-module_workspaces/workspace/hello $ go run example.com/hello
-olleH
+HELLO
 ```
 
 Run from parent workspace directory:
 
 ```text
 .../multi-module_workspaces/workspace $ go run example.com/hello
-olleH
+HELLO
 ```
