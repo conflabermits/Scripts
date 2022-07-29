@@ -4,7 +4,7 @@
 
 This is an attempt at making a "Wordle Helper" (and maybe one day a "Wordle Solver").
 
-I'm creating this as part of a livestream on [Twitch](https://www.twitch.tv/conflabermits). The notes span multiple streams, [here](https://github.com/conflabermits/Scripts/blob/master/stream/pilot/004/notes.md), [here](https://github.com/conflabermits/Scripts/blob/master/stream/pilot/005/notes.md), and [here](https://github.com/conflabermits/Scripts/blob/master/stream/pilot/006/notes.md).
+I'm creating this as part of a livestream on [Twitch](https://www.twitch.tv/conflabermits). The notes span multiple streams, [here](https://github.com/conflabermits/Scripts/blob/main/stream/pilot/004/notes.md), [here](https://github.com/conflabermits/Scripts/blob/main/stream/pilot/005/notes.md), and [here](https://github.com/conflabermits/Scripts/blob/main/stream/pilot/006/notes.md).
 
 ## Status
 

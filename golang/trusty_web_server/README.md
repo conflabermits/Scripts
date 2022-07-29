@@ -43,7 +43,7 @@ go run trusty_web_server.go --port 38080
 
 ## Resources and References
 
-* [Stream Notes](https://github.com/conflabermits/Scripts/blob/master/stream/pilot/002/notes.md)
+* [Stream Notes](https://github.com/conflabermits/Scripts/blob/main/stream/pilot/002/notes.md)
 * [Example HTTP server code](https://gobyexample.com/http-servers)
 * [List of HTTP status codes](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes)
 * [How to set HTTP status code in response in Go](https://golangbyexample.com/set-http-status-code-golang/)

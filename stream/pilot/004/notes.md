@@ -4,4 +4,4 @@ Aiming to play around with Python enough to create a "Wordle Helper" that can as
 
 # Project Location
 
-The files should all be in the [python/wordle](https://github.com/conflabermits/Scripts/tree/master/python/wordle) part of this Scripts repo, unless I decide to do this in Go instead. 😁
+The files should all be in the [python/wordle](https://github.com/conflabermits/Scripts/tree/main/python/wordle) part of this Scripts repo, unless I decide to do this in Go instead. 😁

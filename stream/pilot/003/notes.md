@@ -1,8 +1,8 @@
 # Summary
 
-I'm trying to take an existing [health check](https://github.com/conflabermits/Scripts/tree/master/golang/health_checker) tool written in Go/golang and add a few features to it. I don't know Go.
+I'm trying to take an existing [health check](https://github.com/conflabermits/Scripts/tree/main/golang/health_checker) tool written in Go/golang and add a few features to it. I don't know Go.
 
-(This is a follow-up from [the previous stream](https://github.com/conflabermits/Scripts/blob/master/stream/pilot/002/notes.md) where I built a simple web server.)
+(This is a follow-up from [the previous stream](https://github.com/conflabermits/Scripts/blob/main/stream/pilot/002/notes.md) where I built a simple web server.)
 
 # Details
 
@@ -22,13 +22,13 @@ There are a few features I want to add, at least one I want to remove, and other
 
 ## Updates to `trusty_web_server`
 
-One of the challenges in writing a program that makes an HTTP request to a remote endpoint is that you can't always control that endpoints or rely on its response. That's the purpose of the [Trusty Web Server](https://github.com/conflabermits/Scripts/tree/master/golang/trusty_web_server) I built! It makes it easier to test and verify the reliability of the `health_checker` tool since the responses should always be static and consistent.
+One of the challenges in writing a program that makes an HTTP request to a remote endpoint is that you can't always control that endpoints or rely on its response. That's the purpose of the [Trusty Web Server](https://github.com/conflabermits/Scripts/tree/main/golang/trusty_web_server) I built! It makes it easier to test and verify the reliability of the `health_checker` tool since the responses should always be static and consistent.
 
 The web server needs some additional functionality to have it serve back the JSON responses we're expecting. I'll need to modify that tool to respond with JSON that matches the types of responses I'm expecting to check with the health_checker tool in addition to tweaking `health_checker` itself.
 
 # Resources
 
-* [Trusty Web Server](https://github.com/conflabermits/Scripts/tree/master/golang/trusty_web_server)
-* [Health Checker](https://github.com/conflabermits/Scripts/tree/master/golang/health_checker)
-* [Stream Notes](https://github.com/conflabermits/Scripts/blob/master/stream/pilot/003/notes.md)
+* [Trusty Web Server](https://github.com/conflabermits/Scripts/tree/main/golang/trusty_web_server)
+* [Health Checker](https://github.com/conflabermits/Scripts/tree/main/golang/health_checker)
+* [Stream Notes](https://github.com/conflabermits/Scripts/blob/main/stream/pilot/003/notes.md)
 * [Google](https://google.com), probably

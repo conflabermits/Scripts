@@ -97,7 +97,7 @@ These are some actual things I actually wrote to attempt to solve my actual firs
 
 My wife asked me if the python stuff I'm learning can be used to tell her when socks arrive on the New York And Company website. "Sure", I said, as I began work on a script that I had every intentino of finishing. Seven months later and I put together something that just takes in a query string and returns either "No results found" or the number of results found.
 
-https://github.com/conflabermits/Scripts/blob/master/python/sock_scanner/sock_scanner.py
+https://github.com/conflabermits/Scripts/blob/main/python/sock_scanner/sock_scanner.py
 
     $ ./sock_scanner.py --query socks
     26 results found!
@@ -108,7 +108,7 @@ https://github.com/conflabermits/Scripts/blob/master/python/sock_scanner/sock_sc
 
 On a particularly cold day in December, while debating with myself whether or not I should move south, I went to the mall with my wife. I poked around in the store looking at their warmer threads and thought that if I waited until after Christmas or New Years I could probably get a better deal on some of their microfleece undershirts and underpants. I put together a simple script that takes in a URL and returns the price of the item.
 
-https://github.com/conflabermits/Scripts/blob/master/python/uniqlo/uniqlo_product_price_scanner.py
+https://github.com/conflabermits/Scripts/blob/main/python/uniqlo/uniqlo_product_price_scanner.py
 
     $ ./uniqlo_product_price_scanner.py --url "https://www.uniqlo.com/us/en/men-heattech-ultra-warm-turtleneck-long-sleeve-t-shirt-420942.html"
     Item price is 29.90
@@ -121,7 +121,7 @@ https://github.com/conflabermits/Scripts/blob/master/python/uniqlo/uniqlo_produc
 
 On my week off I spent a bunch of time playing the new Pokemon game. I set a goal that I, for the first time ever in a core Pokemon game, would catch and trade as much as I needed to in order to fill the Pokedex. Stop judging. What I needed was an easier way to track which of the 400 pokemon I had registered already and which remained. Since I was sharing this responsibility with my wife I decided a Google Sheets page was easiest, but I needed a quick and easy way to fill the cells with the number and names of all 400 pokemon, and I wasn't about to do it manually.
 
-https://github.com/conflabermits/Scripts/blob/master/python/pokemon/pokedex_list_generator.py
+https://github.com/conflabermits/Scripts/blob/main/python/pokemon/pokedex_list_generator.py
 
     $ ./pokedex_list_generator.py --url "https://pokemondb.net/pokedex/game/sword-shield"
     #001,Grookey,Grass

@@ -38,11 +38,11 @@ Just a simple markdown page to keep some notes for the stream. Definitely not be
 <details>
   <summary>Demos</summary>
 
-* [scan_subreddit.py](https://github.com/conflabermits/Scripts/blob/master/python/reddit/scan_subreddit.py) - Scan subreddits for posts matching given criteria
-* [openargs_fetchpost.py](https://github.com/conflabermits/Scripts/blob/master/python/reddit/openargs/openargs_fetchpost.py) - Grab tweeks from Twitter and post them to a Subreddit
-* [uniqlo_product_price_scanner.py](https://github.com/conflabermits/Scripts/blob/master/python/uniqlo/uniqlo_product_price_scanner.py) - Check the price of an item on a retail site
-* [WSL setup files](https://github.com/conflabermits/Scripts/tree/master/shell/wsl) - References and config files useful for setting up Windows Subsystem for Linux
-* [getBusy.sh](https://github.com/conflabermits/Scripts/blob/master/shell/getBusy/getBusy.sh) - Early shell script meant to make my screen look more busy
+* [scan_subreddit.py](https://github.com/conflabermits/Scripts/blob/main/python/reddit/scan_subreddit.py) - Scan subreddits for posts matching given criteria
+* [openargs_fetchpost.py](https://github.com/conflabermits/Scripts/blob/main/python/reddit/openargs/openargs_fetchpost.py) - Grab tweeks from Twitter and post them to a Subreddit
+* [uniqlo_product_price_scanner.py](https://github.com/conflabermits/Scripts/blob/main/python/uniqlo/uniqlo_product_price_scanner.py) - Check the price of an item on a retail site
+* [WSL setup files](https://github.com/conflabermits/Scripts/tree/main/shell/wsl) - References and config files useful for setting up Windows Subsystem for Linux
+* [getBusy.sh](https://github.com/conflabermits/Scripts/blob/main/shell/getBusy/getBusy.sh) - Early shell script meant to make my screen look more busy
 </details>
 
 # Recommended Resources
