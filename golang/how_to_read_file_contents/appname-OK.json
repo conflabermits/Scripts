@@ -1,0 +1,30 @@
+{
+    "components": [
+        {
+            "description": "Most important check",
+            "essential": true,
+            "name": "auth-service",
+            "statusCode": "OK",
+            "statusText": null,
+            "uri": "http://localhost:38080/auth-service/health"
+        },
+        {
+            "description": "Less important check",
+            "essential": false,
+            "name": "activity-webservice",
+            "statusCode": "OK",
+            "statusText": null,
+            "uri": "http://localhost:38080/activity-service/health"
+        },
+        {
+            "description": "Some other cheeck",
+            "essential": true,
+            "name": "database",
+            "statusCode": "OK",
+            "statusText": null,
+            "uri": "http://localhost:48080/user-table"
+        }
+    ],
+    "name": "appname",
+    "statusCode": "OK"
+}
