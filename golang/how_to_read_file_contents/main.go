@@ -5,10 +5,17 @@ import (
 	"os"
 )
 
-func main() {
-	content, err := os.ReadFile("appname-OK.json")
+func loadText(file string) string {
+	content, err := os.ReadFile(file)
 	if err != nil {
 		os.Exit(7)
 	}
-	fmt.Println(string(content))
+	return string(content)
+}
+
+func main() {
+	fmt.Println("Start of program")
+	filecontent := loadText("appname-OK.json")
+	fmt.Println(filecontent)
+	fmt.Println("End of program")
 }
