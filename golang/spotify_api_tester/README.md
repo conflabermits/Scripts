@@ -75,3 +75,8 @@ Track:
     L'Via L'Viaquez
     L'Via L'Viaquez - Radio Edit
 ```
+
+## References
+
+Some examples pulled from [here](https://github.com/zmb3/spotify/blob/master/examples/], and *usually* modified as part of my learning process.
+
