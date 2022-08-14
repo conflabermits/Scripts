@@ -4,6 +4,7 @@ import (
 	"context"
 	"log"
 	"os"
+	"reflect"
 
 	"github.com/zmb3/spotify/v2"
 	spotifyauth "github.com/zmb3/spotify/v2/auth"
@@ -40,6 +41,7 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
+	log.Printf("Object %v is of type %v", tracks, reflect.TypeOf(tracks))
 
 	log.Printf("Playlist has %d total tracks", tracks.Total)
 	for page := 1; ; page++ {
@@ -52,4 +54,15 @@ func main() {
 			log.Fatal(err)
 		}
 	}
+
+	/*
+		playlistTrack, err := client.GetPlaylistTracks(
+			ctx,
+			spotify.ID(playlistID)
+		)
+		if err != nil {
+			log.Fatal(err)
+		}
+		log.Printf("Playlist %d tracks:", playlistTrack.name)
+	*/
 }
