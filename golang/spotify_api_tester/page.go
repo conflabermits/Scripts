@@ -27,7 +27,8 @@ func main() {
 
 	// Public playlist owned by noah.stride:
 	// "Long playlist for testing pagination"
-	playlistID := "1ckDytqUi4BUYzs6HIhcAN"
+	//playlistID := "1ckDytqUi4BUYzs6HIhcAN"
+	playlistID := "4APcFEwscoVfmwJelij53o"
 	if id := os.Getenv("SPOTIFY_PLAYLIST"); id != "" {
 		playlistID = id
 	}
@@ -52,4 +53,3 @@ func main() {
 		}
 	}
 }
-

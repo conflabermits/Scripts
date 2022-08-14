@@ -4,7 +4,7 @@ The one with an actual, specific end-goal!
 
 ## Summary
 
-I want to take [this playlist](https://open.spotify.com/playlist/4APcFEwscoVfmwJelij53o?si=x9H5UlGuREKa6z3ZjOhL2w) and generate a list of the artists and the number of times they appear, in decending order.
+I want to take [this playlist](https://open.spotify.com/playlist/4APcFEwscoVfmwJelij53o) and generate a list of the artists and the number of times they appear, in decending order.
 
 ## Details
 
