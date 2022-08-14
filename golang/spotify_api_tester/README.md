@@ -4,10 +4,14 @@ More to come...
 
 ## Usage
 
+So far I've only documented `search.go`.
+
+### search.go
+
 Doesn't run if you don't specify a query
 
 ```text
-$ go run main.go
+$ go run search.go
 Try specifying a word or phrase to search for
 
 exit status 2
@@ -16,8 +20,8 @@ exit status 2
 Help returns help text
 
 ```text
-$ go run main.go -help
-Usage: go run main.go -query "search string" [-type "album"]
+$ go run search.go -help
+Usage: go run search.go -query "search string" [-type "album"]
 
   -query string
         Search string used to query Spotify API
@@ -28,7 +32,7 @@ Usage: go run main.go -query "search string" [-type "album"]
 Search tracks for a query
 
 ```text
-$ go run main.go -query "l'via l'viaquez" -type track
+$ go run search.go -query "l'via l'viaquez" -type track
 Searching tracks for l'via l'viaquez:
 Track:
     L'Via L'Viaquez
@@ -38,7 +42,7 @@ Track:
 Search artists for a query
 
 ```text
-$ go run main.go -query "l'via l'viaquez" -type artist
+$ go run search.go -query "l'via l'viaquez" -type artist
 Searching artists for l'via l'viaquez:
 Artists:
 ```
@@ -46,7 +50,7 @@ Artists:
 Search albums for a query
 
 ```text
-$ go run main.go -query "l'via l'viaquez" -type album
+$ go run search.go -query "l'via l'viaquez" -type album
 Searching albums for l'via l'viaquez:
 Albums:
     L'Via L'Viaquez
@@ -55,7 +59,7 @@ Albums:
 Search playlists for a query
 
 ```text
-$ go run main.go -query "l'via l'viaquez" -type playlist
+$ go run search.go -query "l'via l'viaquez" -type playlist
 Searching playlists for l'via l'viaquez:
 Playlists:
     L'Via L'Viaquez
@@ -69,7 +73,7 @@ Playlists:
 Only specifying query will default to search type "track"
 
 ```text
-$ go run main.go -query "l'via l'viaquez"
+$ go run search.go -query "l'via l'viaquez"
 Searching tracks for l'via l'viaquez:
 Track:
     L'Via L'Viaquez
