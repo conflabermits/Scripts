@@ -41,11 +41,14 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("Object %v is of type %v", tracks, reflect.TypeOf(tracks))
+	log.Printf("Object 'tracks' is of type %v", reflect.TypeOf(tracks))
+	log.Printf("Object 'tracks.Items' is of type %v", reflect.TypeOf(tracks.Items))
+	log.Printf("Object 'tracks.Items[0]':\n%v", tracks.Items[10])
 
 	log.Printf("Playlist has %d total tracks", tracks.Total)
 	for page := 1; ; page++ {
 		log.Printf("  Page %d has %d tracks", page, len(tracks.Items))
+		//log.Printf("Object 'tracks.Items' is of type %v", reflect.TypeOf(tracks.Items))
 		err = client.NextPage(ctx, tracks)
 		if err == spotify.ErrNoMorePages {
 			break
@@ -56,9 +59,10 @@ func main() {
 	}
 
 	/*
-		playlistTrack, err := client.GetPlaylistTracks(
+		playlistTrack, err := client.GetPlaylistTracksOpt(
 			ctx,
-			spotify.ID(playlistID)
+			spotify.ID(playlistID),
+			fields = "items(track(name,href,album(name,href)))"
 		)
 		if err != nil {
 			log.Fatal(err)
