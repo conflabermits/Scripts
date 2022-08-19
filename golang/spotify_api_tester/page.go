@@ -41,9 +41,12 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("Object 'tracks' is of type %v", reflect.TypeOf(tracks))
-	log.Printf("Object 'tracks.Items' is of type %v", reflect.TypeOf(tracks.Items))
-	log.Printf("Object 'tracks.Items[0]':\n%v", tracks.Items[10])
+	//log.Printf("Object 'tracks' is of type %v", reflect.TypeOf(tracks))
+	//log.Printf("Object 'tracks.Items' is of type %v", reflect.TypeOf(tracks.Items))
+	log.Printf("Object 'tracks.Items[10].Track.Track.Name' is of type %v", reflect.TypeOf(tracks.Items[10].Track.Track.Name))
+	log.Printf("Object 'tracks.Items[10].Track.Track.Name' == %v", tracks.Items[10].Track.Track.Name)
+	log.Printf("Object 'tracks.Items[10].Track.Track.SimpleTrack.Artists[0].Name' is of type %v", tracks.Items[10].Track.Track.SimpleTrack.Artists[0].Name)
+	log.Printf("Object 'tracks.Items[10].Track.Track.SimpleTrack.Artists[0].Name' == %v", tracks.Items[10].Track.Track.SimpleTrack.Artists[0].Name)
 
 	log.Printf("Playlist has %d total tracks", tracks.Total)
 	for page := 1; ; page++ {
