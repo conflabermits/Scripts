@@ -33,7 +33,7 @@ func parseArgs() (*Options, error) {
 	return options, nil
 }
 
-func main() {
+func search() {
 	options, err := parseArgs()
 	if err != nil {
 		os.Exit(1)
