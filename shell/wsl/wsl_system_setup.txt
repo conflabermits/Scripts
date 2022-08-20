@@ -2,6 +2,7 @@ sudo update-alternatives --set editor /usr/bin/vim.basic
 sudo apt update
 sudo apt upgrade
 sudo apt install git tree python3-pip
+mkdir -p ~/.ssh
 cd ~/.ssh
 ssh-keygen
 sudo sed -i 's/ Authentication:/ Authentication:\nPermitRootLogin no\nAllowUsers chris/g' /etc/ssh/sshd_config
@@ -22,6 +23,6 @@ echo "Enter email address then press Enter"
 read -e email
 git config --global user.email "${email}"
 sudo sed -i 's/# set bell-style none/set bell-style none/g' /etc/inputrc
-ln -s /local/git/Scripts/shell/wsl.bash_profile ~/.bash_profile
-ln -s /local/git/Scripts/shell/wsl.vimrc ~/.vimrc
+ln -s /local/git/Scripts/shell/wsl/wsl.bash_profile ~/.bash_profile
+ln -s /local/git/Scripts/shell/wsl/wsl.vimrc ~/.vimrc
 echo -e "Add the following to sudoers (sudo visudo):\n\n# Allow chris to run some commands\nchris\tALL=NOPASSWD:\t/etc/init.d/ssh\n\n"
