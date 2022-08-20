@@ -17,12 +17,22 @@ read -p "When finished, press Enter"
 git clone git@github.com:conflabermits/Scripts.git /local/git/Scripts/
 cd /local/git/Scripts/
 echo "Enter git name then press Enter"
-read -e name
-git config --global user.name "${name}"
+read -e gitname
+git config --global user.name "${gitname}"
 echo "Enter email address then press Enter"
-read -e email
-git config --global user.email "${email}"
+read -e gitemail
+git config --global user.email "${gitemail}"
 sudo sed -i 's/# set bell-style none/set bell-style none/g' /etc/inputrc
 ln -s /local/git/Scripts/shell/wsl/wsl.bash_profile ~/.bash_profile
 ln -s /local/git/Scripts/shell/wsl/wsl.vimrc ~/.vimrc
 echo -e "Add the following to sudoers (sudo visudo):\n\n# Allow chris to run some commands\nchris\tALL=NOPASSWD:\t/etc/init.d/ssh\n\n"
+read -p "When finished, press Enter"
+echo "Go here (https://go.dev/dl/), determine the latest version of Go (like '1.19.1'), and enter it here:"
+read -e gover
+cd /tmp
+wget -O /tmp/go${gover}.linux-amd64.tar.gz https://go.dev/dl/go${gover}.linux-amd64.tar.gz
+tar -xzf /tmp/go${gover}.linux-amd64.tar.gz
+mv go go-${gover}
+sudo mv go-${gover} /usr/local/
+sudo ln -s /usr/local/go-${gover} /usr/local/go
+sudo su -c "echo 'export PATH=\$PATH:/usr/local/go/bin' >> /etc/profile"
