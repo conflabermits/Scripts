@@ -2,9 +2,10 @@ package main
 
 import (
 	"context"
+	"fmt"
 	"log"
 	"os"
-	"reflect"
+	"sort"
 
 	"github.com/zmb3/spotify/v2"
 	spotifyauth "github.com/zmb3/spotify/v2/auth"
@@ -26,9 +27,6 @@ func main() {
 	httpClient := spotifyauth.New().Client(ctx, token)
 	client := spotify.New(httpClient)
 
-	// Public playlist owned by noah.stride:
-	// "Long playlist for testing pagination"
-	//playlistID := "1ckDytqUi4BUYzs6HIhcAN"
 	playlistID := "4APcFEwscoVfmwJelij53o"
 	if id := os.Getenv("SPOTIFY_PLAYLIST"); id != "" {
 		playlistID = id
@@ -41,17 +39,18 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	//log.Printf("Object 'tracks' is of type %v", reflect.TypeOf(tracks))
-	//log.Printf("Object 'tracks.Items' is of type %v", reflect.TypeOf(tracks.Items))
 
-	log.Printf("Playlist has %d total tracks", tracks.Total)
+	artistmap := make(map[string]int)
+
+	//log.Printf("Playlist has %d total tracks", tracks.Total)
 	for page := 1; ; page++ {
-		log.Printf("  Page %d has %d tracks", page, len(tracks.Items))
-		//log.Printf("Object 'tracks.Items' is of type %v", reflect.TypeOf(tracks.Items))
-		log.Printf("Object 'tracks.Items[17].Track.Track.Name' is of type %v", reflect.TypeOf(tracks.Items[17].Track.Track.Name))
-		log.Printf("Object 'tracks.Items[17].Track.Track.Name' == %v", tracks.Items[17].Track.Track.Name)
-		log.Printf("Object 'tracks.Items[17].Track.Track.SimpleTrack.Artists[0].Name' is of type %v", tracks.Items[17].Track.Track.SimpleTrack.Artists[0].Name)
-		log.Printf("Object 'tracks.Items[17].Track.Track.SimpleTrack.Artists[0].Name' == %v", tracks.Items[17].Track.Track.SimpleTrack.Artists[0].Name)
+		//log.Printf("  Page %d has %d tracks", page, len(tracks.Items))
+		for _, track := range tracks.Items {
+			for _, artist := range track.Track.Track.SimpleTrack.Artists {
+				artistname := string(artist.Name)
+				artistmap[artistname]++
+			}
+		}
 		err = client.NextPage(ctx, tracks)
 		if err == spotify.ErrNoMorePages {
 			break
@@ -60,16 +59,19 @@ func main() {
 			log.Fatal(err)
 		}
 	}
-
-	/*
-		playlistTrack, err := client.GetPlaylistTracksOpt(
-			ctx,
-			spotify.ID(playlistID),
-			fields = "items(track(name,href,album(name,href)))"
-		)
-		if err != nil {
-			log.Fatal(err)
+	//log.Printf("raw artistmap:\n%v", artistmap)
+	keys := make([]string, 0, len(artistmap))
+	for key := range artistmap {
+		keys = append(keys, key)
+	}
+	//log.Printf("unsorted keys:\n%v", keys)
+	sort.SliceStable(keys, func(i, j int) bool {
+		return artistmap[keys[i]] > artistmap[keys[j]]
+	})
+	//log.Printf("sorted keys:\n%v", keys)
+	for _, key := range keys {
+		if artistmap[key] > 2 {
+			fmt.Printf("%d || %s\n", artistmap[key], key)
 		}
-		log.Printf("Playlist %d tracks:", playlistTrack.name)
-	*/
+	}
 }
