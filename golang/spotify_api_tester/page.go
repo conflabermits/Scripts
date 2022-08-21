@@ -43,15 +43,15 @@ func main() {
 	}
 	//log.Printf("Object 'tracks' is of type %v", reflect.TypeOf(tracks))
 	//log.Printf("Object 'tracks.Items' is of type %v", reflect.TypeOf(tracks.Items))
-	log.Printf("Object 'tracks.Items[10].Track.Track.Name' is of type %v", reflect.TypeOf(tracks.Items[10].Track.Track.Name))
-	log.Printf("Object 'tracks.Items[10].Track.Track.Name' == %v", tracks.Items[10].Track.Track.Name)
-	log.Printf("Object 'tracks.Items[10].Track.Track.SimpleTrack.Artists[0].Name' is of type %v", tracks.Items[10].Track.Track.SimpleTrack.Artists[0].Name)
-	log.Printf("Object 'tracks.Items[10].Track.Track.SimpleTrack.Artists[0].Name' == %v", tracks.Items[10].Track.Track.SimpleTrack.Artists[0].Name)
 
 	log.Printf("Playlist has %d total tracks", tracks.Total)
 	for page := 1; ; page++ {
 		log.Printf("  Page %d has %d tracks", page, len(tracks.Items))
 		//log.Printf("Object 'tracks.Items' is of type %v", reflect.TypeOf(tracks.Items))
+		log.Printf("Object 'tracks.Items[17].Track.Track.Name' is of type %v", reflect.TypeOf(tracks.Items[17].Track.Track.Name))
+		log.Printf("Object 'tracks.Items[17].Track.Track.Name' == %v", tracks.Items[17].Track.Track.Name)
+		log.Printf("Object 'tracks.Items[17].Track.Track.SimpleTrack.Artists[0].Name' is of type %v", tracks.Items[17].Track.Track.SimpleTrack.Artists[0].Name)
+		log.Printf("Object 'tracks.Items[17].Track.Track.SimpleTrack.Artists[0].Name' == %v", tracks.Items[17].Track.Track.SimpleTrack.Artists[0].Name)
 		err = client.NextPage(ctx, tracks)
 		if err == spotify.ErrNoMorePages {
 			break
