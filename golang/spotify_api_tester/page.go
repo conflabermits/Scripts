@@ -71,7 +71,13 @@ func main() {
 	//log.Printf("sorted keys:\n%v", keys)
 	for _, key := range keys {
 		if artistmap[key] > 2 {
-			fmt.Printf("%d || %s\n", artistmap[key], key)
+			progress := ""
+			for i := 1; i < artistmap[key]; i++ {
+				progress += "▓"
+			}
+			fmt.Printf("%s %d %s\n", progress, artistmap[key], key) //credit: @TheD3vil
+			//fmt.Printf("%d || %s\n", artistmap[key], key)
 		}
 	}
+
 }
