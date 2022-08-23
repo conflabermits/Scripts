@@ -82,5 +82,4 @@ Track:
 
 ## References
 
-Some examples pulled from [here](https://github.com/zmb3/spotify/blob/master/examples/], and *usually* modified as part of my learning process.
-
+Some examples pulled from [here](https://github.com/zmb3/spotify/blob/master/examples/), and *usually* modified as part of my learning process.
