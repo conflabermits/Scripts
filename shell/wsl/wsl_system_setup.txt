@@ -1,7 +1,14 @@
+# Set VIM as default editor
 sudo update-alternatives --set editor /usr/bin/vim.basic
+
+# Run apt updates
 sudo apt update
 sudo apt upgrade
+
+# Install a few extra packages
 sudo apt install git tree python3-pip
+
+# Set up SSH
 mkdir -p ~/.ssh
 cd ~/.ssh
 ssh-keygen
@@ -9,6 +16,8 @@ sudo sed -i 's/ Authentication:/ Authentication:\nPermitRootLogin no\nAllowUsers
 sudo sed -i 's/PasswordAuthentication no/PasswordAuthentication yes/' /etc/ssh/sshd_config
 if [ ! -f /etc/ssh/ssh_host_rsa_key ]; then echo "File /etc/ssh/ssh_host_rsa_key does not exist"; echo "Creating host key files"; sudo ssh-keygen -A; fi
 sudo /etc/init.d/ssh start
+
+# Set up git
 sudo mkdir -p /local/git/Scripts
 sudo chown -R chris:chris /local
 cat ~/.ssh/id_rsa.pub
@@ -22,11 +31,19 @@ git config --global user.name "${gitname}"
 echo "Enter email address then press Enter"
 read -e gitemail
 git config --global user.email "${gitemail}"
+
+# Fix annoying bell
 sudo sed -i 's/# set bell-style none/set bell-style none/g' /etc/inputrc
+
+# Link bash and vim profiles to home dir
 ln -s /local/git/Scripts/shell/wsl/wsl.bash_profile ~/.bash_profile
 ln -s /local/git/Scripts/shell/wsl/wsl.vimrc ~/.vimrc
+
+# Add sudo permission for ssh startup
 echo -e "Add the following to sudoers (sudo visudo):\n\n# Allow chris to run some commands\nchris\tALL=NOPASSWD:\t/etc/init.d/ssh\n\n"
 read -p "When finished, press Enter"
+
+# Set up Go
 echo "Go here (https://go.dev/dl/), determine the latest version of Go (like '1.19.1'), and enter it here:"
 read -e gover
 cd /tmp
@@ -36,3 +53,4 @@ mv go go-${gover}
 sudo mv go-${gover} /usr/local/
 sudo ln -s /usr/local/go-${gover} /usr/local/go
 sudo su -c "echo 'export PATH=\$PATH:/usr/local/go/bin' >> /etc/profile"
+
