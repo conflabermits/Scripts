@@ -6,6 +6,7 @@ clear
 echo "Welcome `whoami` to `hostname`"
 echo
 
+export EDITOR="vim"
 export PROFILE="/home/chris/.bash_profile"
 export MYGIT="/local/git/Scripts"
 export SCREENDIR="/home/chris/.screen"
