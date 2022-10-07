@@ -13,6 +13,7 @@ This stream I'm looking to close a couple other gaps and prepare the application
 * Embed the json files into the binary properly for easier distribution as a single-file web server program.
 * Restructure the project directories to put static files somewhere other than `pkg`.
 * Test, update documentation, push, and cut a final release version of the program!
+* Stretch goal: Add proper request/access logging to STDOUT.
 
 ## References
 
