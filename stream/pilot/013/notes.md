@@ -10,10 +10,10 @@ In the last stream I fixed up [health_checker](https://github.com/conflabermits/
 
 This stream I'm looking to close a couple other gaps and prepare the application for a v1.0.0 release:
 
-* Embed the json files into the binary properly for easier distribution as a single-file web server program.
-* Restructure the project directories to put static files somewhere other than `pkg`.
-* Test, update documentation, push, and cut a final release version of the program!
-* Stretch goal: Add proper request/access logging to STDOUT.
+* Embed the json files into the binary properly for easier distribution as a single-file web server program. ✅
+* Restructure the project directories to put static files somewhere other than `pkg`. ⚠️ (Deferred.)
+* Test, update documentation, push, and cut a final release version of the program! ✅
+* Stretch goal: Add proper request/access logging to STDOUT. ⚠️ (Deferred.)
 
 ## References
 
