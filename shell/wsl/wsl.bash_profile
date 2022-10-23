@@ -8,7 +8,8 @@ echo
 
 export EDITOR="vim"
 export PROFILE="/home/chris/.bash_profile"
-export MYGIT="/local/git/Scripts"
+export MYGITROOT="/local/git"
+export MYGITSCRIPTS="$MYGITROOT/Scripts"
 export SCREENDIR="/home/chris/.screen"
 if [ -d /usr/local/go/bin ]; then
     export GOROOT='/usr/local/go'
@@ -22,8 +23,7 @@ fi
 export PYTHONDONTWRITEBYTECODE=1
 export PYTEST_ADDOPTS='-p no:cacheprovider'
 
-alias cds='cd $MYGIT && echo && git remote update && git status && echo'
-alias cdgit='cd $MYGIT && echo && git remote update && git status && echo'
+alias cds='cd $MYGITSCRIPTS && echo && git remote update && git status && echo'
 alias viprofile='vi ~/.bash_profile'
 alias ll='ls -aGhlp'                            # List all, colors, size suffixes, long, slashes after dirs
 alias cat='cat -v'                              # Always output nonprinting characters
@@ -58,6 +58,20 @@ mkcd() { mkdir -p "$1" && cd "$1"; }            # Makes new Dir and jumps inside
 cd() { builtin cd "$@" && ll; }                 # Run ll after changing dir
 
 CD() { builtin cd "$@"; }                       # Force dir change to NOT run ll (with the power of ALL CAPS!)
+
+cdgit() {
+  CD $MYGITROOT
+  if [ -z "$1" ] ; then
+    ls -1 | egrep -v "^BACKUP|^OLD" && read -p "Choose a git directory: " USERINPUT
+  else
+    USERINPUT="$1"
+  fi
+  if [ -d "$USERINPUT" ] ; then
+    cd $USERINPUT && echo && git remote update && git status && echo
+  else
+    echo "Directory not found" && echo && ll
+  fi
+}
 
 curly() {
   if [ -z "$1" ] ; then
@@ -143,12 +157,12 @@ how() {
     echo "USAGE: how <thing>"
     echo -e "EXAMPLES:\n\thow docker\n\thow git"
     echo "AVAILABLE HOW FILES:"
-    for file in $(ls -1 $MYGIT/how/ | awk -F".how" '{print $1}')
+    for file in $(ls -1 $MYGITSCRIPTS/how/ | awk -F".how" '{print $1}')
     do
       echo -e "\t${file}\n"
     done
   else
-    less $MYGIT/how/${1}.how
+    less $MYGITSCRIPTS/how/${1}.how
   fi
 }
 
