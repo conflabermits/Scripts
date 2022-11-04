@@ -49,7 +49,7 @@ export BLOCKSIZE=1k                             # Get consistent block output ac
 #export CLICOLOR=1                               # Get colors in Terminal
 #export LSCOLORS=ExFxBxDxCxegedabagacad          # Specify Terminal colors
 
-ffiles() { find . -type f; }
+ffiles() { find . -type f -not -path "*/.git/*"; }
 
 fname() { find . -iname "*${1}*"; }
 
