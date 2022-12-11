@@ -12,6 +12,14 @@ GitHub Copilot sounds like it's a useful tool for speeding up code generation an
 
 I haven't come up with a good idea yet for the challenge, but as soon as I do I'll update here and figure out when to stream it.
 
+## Potential Ideas
+
+* Wordle Helper reboot
+* Countdown solver
+* Pokemon lister
+* JSON prettifier webpage
+* Database webservice
+
 ## References
 
 * [GitHub Copilot](https://github.com/features/copilot)
