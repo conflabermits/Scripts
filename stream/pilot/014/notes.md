@@ -31,9 +31,8 @@ I haven't come up with a good idea yet for the challenge, but as soon as I do I'
 * [GitHub Copilot](https://github.com/features/copilot)
 * [ChatGPT](https://openai.com/blog/chatgpt)
 * Videos with comments about ChatGPT and GitHub Copilot:
-    * [ByteByteGo - Top 7 ChatGPT Developer Hacks](https://www.youtube.com/watch?v=9W_U1y7RYuE)
-    * [ThePrimeagen - CoPilot Review: My Thoughts After 6 Months](https://www.youtube.com/watch?v=RDd71IUIgpg&t=306s)
-    * [Fireship - AWS CodeWhisperer... The Copilot Killer?](https://www.youtube.com/watch?v=FJACTC9wFhU)
-    * [Anthony GG - Why ChatGPT and Copilot Are bad for Developers](https://www.youtube.com/watch?v=T3cxUhptzaI)
-    * [Fireship - I built my own AutoGPT that makes videos](https://www.youtube.com/watch?v=_rGXIXyNqpk)
-
+  * [ByteByteGo - Top 7 ChatGPT Developer Hacks](https://www.youtube.com/watch?v=9W_U1y7RYuE)
+  * [ThePrimeagen - CoPilot Review: My Thoughts After 6 Months](https://www.youtube.com/watch?v=RDd71IUIgpg&t=306s)
+  * [Fireship - AWS CodeWhisperer... The Copilot Killer?](https://www.youtube.com/watch?v=FJACTC9wFhU)
+  * [Anthony GG - Why ChatGPT and Copilot Are bad for Developers](https://www.youtube.com/watch?v=T3cxUhptzaI)
+  * [Fireship - I built my own AutoGPT that makes videos](https://www.youtube.com/watch?v=_rGXIXyNqpk)
