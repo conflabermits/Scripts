@@ -19,7 +19,6 @@ I haven't come up with a good idea yet for the challenge, but as soon as I do I'
 ## Potential Ideas
 
 * Font-changer browser plugin
-* Patreon comment sorter
 * Wordle Helper reboot
 * Countdown solver
 * Pokemon lister
