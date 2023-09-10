@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday!</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #fff3f3; /* Very light pink */
+        }
+        .container {
+            background-color: rgb(228, 245, 252);
+            width: 80%;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+        h1 {
+            color: #ff4500; /* OrangeRed */
+        }
+        p {
+            font-size: 18px;
+            line-height: 1.6;
+        }
+        .rainbow-text {
+            background: linear-gradient(45deg, #f06, #9f6, #06f, #f06);
+            background-size: 400% 400%;
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: rainbow-animation 4s linear infinite;
+        }
+
+        @keyframes rainbow-animation {
+            0% {
+                background-position: 0 50%;
+            }
+            100% {
+                background-position: 100% 50%;
+            }
+        }
+        .birthday-image {
+            max-width: 100%; /* Ensure the image doesn't exceed its container */
+            overflow: hidden; /* Crop any overflowing content */
+            height: auto; /* Automatically adjust the height to maintain aspect ratio */
+
+            /* Adjust the image's position to crop 10 pixels from the bottom */
+            margin-bottom: -10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="rainbow-text">Happy Nth Birthday, niece!</h1>
+        <img src="hbd/images/bday-niece-unicorn.gif" alt="Dabbing Unicorn" width="360" class="birthday-image">
+        <p>
+            🎈 Wishing you a day filled with joy, laughter, and lots of surprises. May this special day bring you happiness and wonderful memories that last a lifetime. 🎉
+        </p>
+        <p>
+            🥳 Remember to make a big wish when you blow out the candles on your cake! 🎂
+        </p>
+        <p>
+            💖 With love and best wishes,<br>
+            Aunt and Uncle 💑
+        </p>
+        <p>
+            🤭 P.S. We hope you like the ponies! 🦄
+        </p>
+        <iframe src="https://panzi.github.io/Browser-Ponies/ponies-iframe.html#fadeDuration=500&volume=1&fps=25&speed=3&audioEnabled=false&dontSpeak=true&showFps=false&showLoadProgress=true&speakProbability=0.1&spawn.allie%20way=1&spawn.aloe=1&spawn.applejack=1&spawn.archer=1&spawn.berry%20punch=1&spawn.blossomforth=1&spawn.diamond%20mint=1&spawn.fancypants=1&spawn.fluttershy=1&spawn.mrs%20cake=1&spawn.pinkie%20pie=1&spawn.princess%20celestia=1&spawn.rainbow%20dash=1&spawn.rarity=1&spawn.twilight%20sparkle=1&paddock=true&grass=true" style="overflow:hidden;border-style:none;margin:0;padding:0;background:transparent;width:100%;" width="640" height="2000" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
+    </div>
+</body>
+</html>
