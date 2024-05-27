@@ -9,8 +9,13 @@ export PROFILE="$HOME/mac.bash_profile"
 export MYGITROOT="$HOME/local/git"
 export MYGITSCRIPTS="$MYGITROOT/Scripts"
 export SCREENDIR="$HOME/.screen"
-if [ -d /usr/local/go/bin ]; then
-    export PATH=$PATH:/usr/local/go/bin
+export GOROOT='/usr/local/go'
+export GOPATH='/Users/chris/go'
+if [ -d $GOROOT/bin ]; then
+    export PATH=$PATH:$GOROOT/bin
+fi
+if [ -d $GOPATH/bin ]; then
+    export PATH=$PATH:$GOPATH/bin
 fi
 
 # No pycache trash
