@@ -22,6 +22,11 @@ fi
 export PYTHONDONTWRITEBYTECODE=1
 export PYTEST_ADDOPTS='-p no:cacheprovider'
 
+# Stream shortcuts
+alias donorbox='cd ~/local/git/stream/tools/donorbox-overlay/ && go run main.go -port 38080 -timeout 61 -url https://donorbox.org/support-black-girls-code/fundraiser/christopher-dunaj'
+alias oauth='cd ~/local/git/stream/tools/chatbot/twitch-oauth-authorization-code-example/ && for line in $(cat ../.creds); do export ${line}; done && go run main.go'
+alias chatbot='cd ~/local/git/stream/tools/chatbot/chatgpt-chatbot-example/ && vi ../.creds  && for line in $(cat ../.creds); do export ${line}; done && go run main.go'
+
 alias cds='cd $MYGITSCRIPTS && echo && git remote update && git status && echo'
 alias viprofile='vi $PROFILE'
 alias ll='ls -aGhlp'                            # List all, colors, size suffixes, long, slashes after dirs
@@ -31,6 +36,7 @@ alias ~='cd $HOME'                              # Go to home dir
 alias ..='cd ../'                               # Go back 1 directory level
 alias rgrep='egrep -iR'
 alias myrsync='time rsync -rtv --progress --stats'
+alias alphab='/Users/chris/local/git/Scripts/shell/alphab/alphab.sh'
 
 # Green background highlighting on grep results
 export GREP_COLOR='1;42'
