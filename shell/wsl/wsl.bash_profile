@@ -23,6 +23,11 @@ fi
 export PYTHONDONTWRITEBYTECODE=1
 export PYTEST_ADDOPTS='-p no:cacheprovider'
 
+# Stream shortcuts
+alias donorbox='cd ${MYGITROOT}/stream/tools/donorbox-overlay/ && go run main.go -port 38080 -timeout 61 -url https://donorbox.org/support-black-girls-code/fundraiser/christopher-dunaj'
+alias oauth='cd ${MYGITROOT}/stream/tools/chatbot/twitch-oauth-authorization-code-example/ && for line in $(cat ../.creds); do export ${line}; done && go run main.go'
+alias chatbot='cd ${MYGITROOT}/stream/tools/chatbot/chatgpt-chatbot-example/ && vi ../.creds  && for line in $(cat ../.creds); do export ${line}; done && go run main.go'
+
 alias cds='cd $MYGITSCRIPTS && echo && git remote update && git status && echo'
 alias viprofile='vi ~/.bash_profile'
 alias ll='ls -aGhlp'                            # List all, colors, size suffixes, long, slashes after dirs
