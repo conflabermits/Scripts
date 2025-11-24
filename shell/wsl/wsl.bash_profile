@@ -24,9 +24,7 @@ export PYTHONDONTWRITEBYTECODE=1
 export PYTEST_ADDOPTS='-p no:cacheprovider'
 
 # Stream shortcuts
-alias donorbox='cd ${MYGITROOT}/stream/tools/donorbox-overlay/ && go run main.go -port 38080 -timeout 61 -url https://donorbox.org/support-black-girls-code/fundraiser/christopher-dunaj'
-alias oauth='cd ${MYGITROOT}/stream/tools/chatbot/twitch-oauth-authorization-code-example/ && for line in $(cat ../.creds); do export ${line}; done && go run main.go'
-alias chatbot='cd ${MYGITROOT}/stream/tools/chatbot/chatgpt-chatbot-example/ && vi ../.creds  && for line in $(cat ../.creds); do export ${line}; done && go run main.go'
+alias chatbot='cd ${MYGITROOT}/stream-chatbot/ && go run main.go'
 
 alias cds='cd $MYGITSCRIPTS && echo && git remote update && git status && echo'
 alias viprofile='vi ~/.bash_profile'
@@ -199,5 +197,10 @@ autobackup() {
 ## WSL: Start ssh if not started
 if [ $(ps -ef | egrep "/usr/sbin/sshd|sshd: /usr/sbin" | grep -v grep | wc -l) == "0" ] ; then
   sudo /etc/init.d/ssh start
+fi
+
+## Docker: Start docker if not started
+if [ $(ps -ef | egrep "\/usr\/bin\/dockerd -p \/var\/run\/docker\.pid" | grep -v grep | wc -l) == "0" ] ; then
+  sudo service docker start
 fi
 
