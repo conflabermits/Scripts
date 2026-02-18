@@ -47,7 +47,7 @@ export HISTSIZE=1000000
 export HISTCONTROL=ignoreboth
 export HISTTIMEFORMAT='%F %T   '
 
-export PS1="\u@\h \$(smiley) \$(pwd) \$ "       # Set prompt to include user, host, current dir, and RC smiley
+export PS1="\n\u@\h \$(smiley) \$(pwd) \n\$ "       # Set prompt to include user, host, current dir, and RC smiley
 export BLOCKSIZE=1k                             # Get consistent block output across "du", "df", and "ls -s"
 #export CLICOLOR=1                               # Get colors in Terminal
 #export LSCOLORS=ExFxBxDxCxegedabagacad          # Specify Terminal colors
